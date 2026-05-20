@@ -488,6 +488,7 @@
       font-size: 10px;
       font-weight: 500;
       width: fit-content;
+      white-space: nowrap;
     }
     .badge-signed   { background: #DCFCE7; color: #166534; }
     .badge-employer { background: #FEF9C3; color: #854D0E; }
@@ -717,10 +718,16 @@
     .footer-link:hover { color: var(--black); }
 
     /* ── VIEW TABS ── */
-    .view-tabs { display: flex; border-bottom: 1px solid var(--gray-200); background: #fafafa; padding: 0 14px; }
-    .view-tab { padding: 9px 13px; font-size: 11.5px; font-weight: 500; color: var(--gray-400); cursor: pointer; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color 0.15s, border-color 0.15s; user-select: none; white-space: nowrap; }
-    .view-tab:hover { color: var(--dark); }
-    .view-tab.active { color: var(--dark); border-bottom-color: var(--dark); font-weight: 600; }
+    .mockup-header { text-align: center; margin-bottom: 28px; }
+    .mockup-header-sub { font-size: 15px; color: var(--gray-600); margin-top: 8px; line-height: 1.5; }
+    .role-selector { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
+    .role-btn { padding: 10px 20px; border-radius: 10px; border: 1.5px solid var(--gray-200); background: var(--white); cursor: pointer; transition: border-color 0.18s, background 0.18s; text-align: center; min-width: 120px; user-select: none; }
+    .role-btn:hover:not(.active) { border-color: #aaa; }
+    .role-btn.active { background: var(--dark); border-color: var(--dark); }
+    .role-btn-label { font-size: 13px; font-weight: 600; color: var(--dark); }
+    .role-btn.active .role-btn-label { color: var(--white); }
+    .role-btn-sub { font-size: 11px; color: var(--gray-400); margin-top: 3px; }
+    .role-btn.active .role-btn-sub { color: rgba(247,247,247,0.55); }
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
 
@@ -852,6 +859,28 @@
 
   <!-- ── DASHBOARD MOCKUP ── -->
   <div class="mockup-wrap">
+    <div class="mockup-header">
+      <p class="section-eyebrow">Platform views</p>
+      <p class="mockup-header-sub">Every participant gets their own tailored view. Click a role to explore.</p>
+    </div>
+    <div class="role-selector">
+      <div class="role-btn active" onclick="switchTab('dashboard')">
+        <div class="role-btn-label">Admin</div>
+        <div class="role-btn-sub">Coordinator dashboard</div>
+      </div>
+      <div class="role-btn" onclick="switchTab('student')">
+        <div class="role-btn-label">Student</div>
+        <div class="role-btn-sub">Submit an application</div>
+      </div>
+      <div class="role-btn" onclick="switchTab('employer')">
+        <div class="role-btn-label">Employer</div>
+        <div class="role-btn-sub">Review &amp; sign</div>
+      </div>
+      <div class="role-btn" onclick="switchTab('approval')">
+        <div class="role-btn-label">Staff</div>
+        <div class="role-btn-sub">Approve placements</div>
+      </div>
+    </div>
     <div class="browser-frame">
       <div class="browser-chrome">
         <div class="browser-dots">
@@ -865,14 +894,7 @@
         </div>
       </div>
 
-      <div class="view-tabs">
-        <div class="view-tab active" onclick="switchTab('dashboard')">Dashboard</div>
-        <div class="view-tab" onclick="switchTab('student')">Student</div>
-        <div class="view-tab" onclick="switchTab('employer')">Employer</div>
-        <div class="view-tab" onclick="switchTab('approval')">Staff approval</div>
-      </div>
-
-      <div id="panel-dashboard" class="tab-panel active">
+<div id="panel-dashboard" class="tab-panel active">
       <div class="dashboard">
         <!-- Sidebar -->
         <div class="db-sidebar">
@@ -1260,7 +1282,7 @@
 
     function switchTab(name) {
       const tabs = ['dashboard', 'student', 'employer', 'approval'];
-      document.querySelectorAll('.view-tab').forEach((t, i) => {
+      document.querySelectorAll('.role-btn').forEach((t, i) => {
         t.classList.toggle('active', tabs[i] === name);
       });
       document.querySelectorAll('.tab-panel').forEach(p => {
