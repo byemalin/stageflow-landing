@@ -612,6 +612,31 @@
     }
     .step p { font-size: 14px; color: var(--gray-600); line-height: 1.68; }
 
+    .flow-note {
+      margin-top: 48px;
+      padding: 20px 24px;
+      background: #f9f9f9;
+      border: 1px solid var(--gray-200);
+      border-radius: 10px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .flow-note-icon {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      color: var(--teal);
+    }
+    .flow-note p {
+      font-size: 13.5px;
+      color: var(--gray-600);
+      line-height: 1.65;
+      margin: 0;
+    }
+    .flow-note strong { color: var(--dark); font-weight: 600; }
+
     /* ── PROOF ── */
     .proof {
       background: var(--dark);
@@ -992,6 +1017,10 @@
           <p>The fully signed convention is stored, searchable, and exportable. Every record in one place, permanently.</p>
         </div>
       </div>
+      <div class="flow-note reveal" style="transition-delay:0.28s">
+        <svg class="flow-note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <p><strong>This flow is an example.</strong> Because StageFlow is deployed per institution, the entire process can be tailored to fit your programme's exact requirements &mdash; signing order, approval stages, required fields, notification logic, and more. You own the flow.</p>
+      </div>
     </div>
   </section>
 
@@ -1008,8 +1037,7 @@
     <div class="cta-inner">
       <h2 class="reveal">Ready to bring this to your institution?</h2>
       <p class="reveal" style="transition-delay:0.08s">
-        StageFlow is deployed per institution with a tailored setup.
-        Get in touch to see whether it is a fit for your programme.
+        StageFlow is deployed per institution, which means the workflow, fields, and approval logic are fully customised to fit your programme's exact needs. Get in touch to see whether it is a fit for you.
       </p>
       <a href="mailto:hello@stageflow.careers" class="cta-email-link reveal" style="transition-delay:0.16s">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
