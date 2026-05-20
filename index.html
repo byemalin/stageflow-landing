@@ -728,6 +728,7 @@
     .role-btn.active .role-btn-label { color: var(--white); }
     .role-btn-sub { font-size: 11px; color: var(--gray-400); margin-top: 3px; }
     .role-btn.active .role-btn-sub { color: rgba(247,247,247,0.55); }
+    .mockup-disclaimer { text-align: center; font-size: 12px; color: var(--gray-400); margin-top: 14px; font-style: italic; }
     .tab-panel { display: none; }
     .tab-panel.active { display: block; }
 
@@ -865,8 +866,8 @@
     </div>
     <div class="role-selector">
       <div class="role-btn active" onclick="switchTab('dashboard')">
-        <div class="role-btn-label">Admin</div>
-        <div class="role-btn-sub">Coordinator dashboard</div>
+        <div class="role-btn-label">Coordinator</div>
+        <div class="role-btn-sub">Dashboard, approvals &amp; more</div>
       </div>
       <div class="role-btn" onclick="switchTab('student')">
         <div class="role-btn-label">Student</div>
@@ -875,10 +876,6 @@
       <div class="role-btn" onclick="switchTab('employer')">
         <div class="role-btn-label">Employer</div>
         <div class="role-btn-sub">Review &amp; sign</div>
-      </div>
-      <div class="role-btn" onclick="switchTab('approval')">
-        <div class="role-btn-label">Staff</div>
-        <div class="role-btn-sub">Approve placements</div>
       </div>
     </div>
     <div class="browser-frame">
@@ -921,6 +918,11 @@
           <div class="db-nav-item">
             <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
             Reports
+          </div>
+          <div class="db-nav-item">
+            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+            Approvals
+            <span class="db-nav-count" style="background:#FEF9C3;color:#854D0E;">2</span>
           </div>
         </div>
 
@@ -1127,6 +1129,7 @@
       </div>
 
     </div>
+    <p class="mockup-disclaimer">A simplified overview of a few key screens. The full platform includes many more views, settings, and features.</p>
   </div>
 
   <!-- ── NO MORE STRIP ── -->
@@ -1281,7 +1284,7 @@
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
     function switchTab(name) {
-      const tabs = ['dashboard', 'student', 'employer', 'approval'];
+      const tabs = ['dashboard', 'student', 'employer'];
       document.querySelectorAll('.role-btn').forEach((t, i) => {
         t.classList.toggle('active', tabs[i] === name);
       });
