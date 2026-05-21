@@ -1347,7 +1347,7 @@
         If your internship office is still managing conventions by email, spreadsheet, or paper, get in touch. StageFlow is configured around your institution's process and can be ready before September.
       </p>
       <p class="cta-pricing reveal" style="transition-delay:0.12s">Institutional subscription, billed annually. Pricing on request.</p>
-      <form class="cta-form reveal" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" style="transition-delay:0.16s">
+      <form id="contact-form" class="cta-form reveal" style="transition-delay:0.16s">
         <div class="cta-form-row">
           <div class="cta-form-field">
             <label for="cf-name">Your name</label>
@@ -1372,12 +1372,49 @@
           <label for="cf-message">Message (optional)</label>
           <textarea id="cf-message" name="message" placeholder="Tell us about your current process or any questions you have."></textarea>
         </div>
-        <button type="submit" class="cta-form-submit">
+        <button type="submit" id="cf-submit" class="cta-form-submit">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
           Send message
         </button>
+        <p id="cf-status" class="cta-form-note" style="display:none"></p>
         <p class="cta-form-note">We will get back to you within 48 hours.</p>
       </form>
+      <script>
+        document.getElementById('contact-form').addEventListener('submit', async function(e) {
+          e.preventDefault();
+          const btn = document.getElementById('cf-submit');
+          const status = document.getElementById('cf-status');
+          btn.disabled = true;
+          btn.style.opacity = '0.5';
+          status.style.display = 'none';
+          try {
+            const res = await fetch('https://stageflow-contact.malin-73f.workers.dev/', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                name: document.getElementById('cf-name').value,
+                institution: document.getElementById('cf-institution').value,
+                role: document.getElementById('cf-role').value,
+                email: document.getElementById('cf-email').value,
+                message: document.getElementById('cf-message').value,
+              }),
+            });
+            if (res.ok) {
+              status.textContent = 'Message sent — we\'ll be in touch within 48 hours.';
+              status.style.color = 'var(--teal)';
+              this.reset();
+            } else {
+              throw new Error();
+            }
+          } catch {
+            status.textContent = 'Something went wrong. Please email us directly.';
+            status.style.color = '#e05';
+          }
+          status.style.display = 'block';
+          btn.disabled = false;
+          btn.style.opacity = '';
+        });
+      </script>
     </div>
   </section>
 
