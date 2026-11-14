@@ -143,9 +143,10 @@
     .hero h1 { font-size: clamp(40px, 5.7vw, 78px); margin-bottom: 28px; }
     .hero-sub { font-size: 19px; max-width: 32em; color: var(--muted); margin-bottom: 34px; }
     .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 52px; }
-    .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; padding-top: 22px; border-top: 1px solid var(--hair); }
-    .facts .label { display: block; color: var(--muted); margin-bottom: 5px; }
-    .facts p { font-size: 15px; line-height: 1.35; font-weight: 550; }
+    .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+    .facts div { background: var(--soft); border-radius: var(--r-m); padding: 13px 16px 14px; }
+    .facts .label { display: block; color: var(--muted); margin-bottom: 4px; }
+    .facts p { font-size: 14.5px; line-height: 1.35; font-weight: 600; }
 
     /* ---------- The convention (hero paper) ---------- */
     .sheet-zone { position: relative; }
@@ -208,26 +209,27 @@
     .sec-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: end; margin-bottom: 48px; }
     .sec-head p { color: var(--muted); max-width: 34em; }
 
-    /* Routing slip */
+    /* Flow diagram */
     .circuit { padding-top: 40px; }
-    .slip { background: var(--card); border: 1px solid var(--hair); border-radius: var(--r-l); overflow: hidden; }
-    .slip-row { display: grid; grid-template-columns: 64px 190px minmax(0, 1fr) 150px; align-items: start; border-top: 1px solid var(--hair); }
-    .slip-row > * { padding: 24px 22px; }
-    .slip-cols { border-top: 0; background: var(--soft); color: var(--muted); }
-    .slip-cols > * { padding: 11px 22px; }
-    .slip ol { list-style: none; }
-    .slip .n { font-family: var(--typed); font-size: 20px; font-weight: 700; color: var(--muted); }
-    .slip .who { font-weight: 650; font-size: 15.5px; line-height: 1.4; padding-top: 27px; }
-    .slip h3 { font-size: 20px; font-stretch: 106%; font-weight: 700; letter-spacing: -0.012em; line-height: 1.25; margin-bottom: 5px; }
-    .slip p { font-size: 15.5px; color: var(--muted); max-width: 46em; }
-    .tick { display: flex; align-items: center; gap: 10px; font-family: var(--typed); font-size: 14px; }
-    .tick svg { width: 26px; height: 26px; flex: none; overflow: visible; }
-    .tick rect { fill: none; stroke: var(--ink); stroke-width: 1.5; }
-    .tick path { fill: none; stroke: var(--pen); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 40; stroke-dashoffset: 40; transition: stroke-dashoffset .45s ease-out; }
-    .tick span { opacity: .35; transition: opacity .3s .3s; }
-    .slip-row.done .tick path { stroke-dashoffset: 0; }
-    .slip-row.done .tick span { opacity: 1; }
-    .footnote { display: grid; grid-template-columns: 22px minmax(0, 1fr); margin-top: 20px; font-size: 15px; color: var(--muted); max-width: 58em; }
+    .flow { list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 44px; }
+    .step { position: relative; background: var(--card); border-radius: var(--r-l); padding: 22px 22px 24px; box-shadow: 0 1px 2px rgba(17,15,15,.05), 0 18px 36px -28px rgba(17,15,15,.25); }
+    .step:not(:last-child)::after {
+      content: '\2192'; position: absolute; top: 50%; right: -37px; transform: translateY(-50%);
+      width: 30px; height: 30px; display: grid; place-items: center;
+      background: var(--ink); color: #fff; border-radius: 50%; font-size: 15px; line-height: 1;
+    }
+    .actor { display: inline-flex; align-items: center; gap: 8px; padding: 5px 13px 5px 5px; background: var(--soft); border-radius: 999px; font-size: 13.5px; font-weight: 650; margin-bottom: 18px; }
+    .actor i { display: grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--card); font-style: normal; font-family: var(--typed); font-size: 13px; font-weight: 700; }
+    .step h3 { font-size: 20px; font-stretch: 106%; font-weight: 700; letter-spacing: -0.014em; line-height: 1.2; margin-bottom: 8px; text-wrap: balance; }
+    .step p { font-size: 15px; color: var(--muted); }
+    .chain { display: flex; flex-wrap: wrap; align-items: center; gap: 5px; margin-top: 14px; font-size: 12.5px; font-weight: 600; }
+    .chain span { padding: 3px 9px; background: var(--soft); border-radius: 999px; }
+    .chain b { color: var(--pen); font-weight: 700; }
+    .flow-end { position: relative; display: flex; align-items: center; gap: 14px; margin-top: 44px; padding: 18px 22px; background: var(--ink); color: rgba(255,255,255,.72); border-radius: var(--r-l); font-size: 15.5px; }
+    .flow-end::before { content: '\2193'; position: absolute; top: -37px; right: calc(12.5% - 31.5px); width: 30px; height: 30px; display: grid; place-items: center; background: var(--ink); color: #fff; border-radius: 50%; font-size: 15px; line-height: 1; }
+    .flow-end i { display: grid; place-items: center; flex: none; width: 30px; height: 30px; border-radius: 50%; background: #fff; color: var(--ink); font-style: normal; font-weight: 800; font-size: 15px; }
+    .flow-end b { color: #fff; }
+    .footnote { display: grid; grid-template-columns: 22px minmax(0, 1fr); margin-top: 26px; font-size: 15px; color: var(--muted); max-width: 58em; }
     .footnote b { color: var(--ink); }
 
     /* ---------- Platform mock + school themes ---------- */
@@ -299,13 +301,45 @@
     .fake-btn.alt { background: none; color: var(--ink); box-shadow: inset 0 0 0 1px var(--hair); margin-left: 8px; }
     .caption { margin-top: 16px; font-size: 14px; color: var(--muted); max-width: 52em; }
 
-    /* ---------- Articles ---------- */
-    .articles { border-top: 1px solid var(--ink); }
-    .article { display: grid; grid-template-columns: 88px minmax(0, .9fr) minmax(0, 1.1fr); gap: 0 32px; padding: 28px 0 30px; border-bottom: 1px solid var(--hair); }
-    .article .art { font-family: var(--typed); font-size: 14.5px; color: var(--muted); padding-top: 5px; }
-    .article h3 { font-size: 24px; font-stretch: 106%; font-weight: 700; letter-spacing: -0.016em; line-height: 1.18; text-wrap: balance; }
-    .article p { color: var(--muted); font-size: 16.5px; }
-    .article p + p { margin-top: 10px; font-family: var(--typed); font-size: 13.5px; color: var(--ink); }
+    /* ---------- Features ---------- */
+    .feats { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 16px; }
+    .feat { grid-column: span 2; display: flex; flex-direction: column; background: var(--card); border-radius: var(--r-l); padding: 14px 14px 26px; box-shadow: 0 1px 2px rgba(17,15,15,.05), 0 18px 36px -28px rgba(17,15,15,.25); }
+    .feat.half { grid-column: span 3; }
+    .feat.full { grid-column: span 6; flex-direction: row-reverse; align-items: center; padding-bottom: 14px; }
+    .feat.full .vig { flex: 1.1; margin-bottom: 0; }
+    .feat.full .txt { flex: 1; padding: 12px 30px 12px 14px; }
+    .feat .txt { padding: 0 14px; }
+    .feat h3 { font-size: 21px; font-stretch: 106%; font-weight: 700; letter-spacing: -0.015em; line-height: 1.2; margin-bottom: 8px; text-wrap: balance; }
+    .feat p { color: var(--muted); font-size: 15.5px; }
+    .feat .by { margin-top: 12px; font-size: 13px; font-weight: 600; color: var(--ink); }
+    .vig { background: var(--soft); border-radius: var(--r-m); height: 172px; margin-bottom: 22px; display: flex; align-items: center; justify-content: center; gap: 14px; padding: 18px; overflow: hidden; font-size: 13px; }
+    .vig .go { font-size: 18px; color: var(--muted); }
+    .pill { display: block; background: var(--card); border-radius: 9px; padding: 7px 12px; font-size: 13px; font-weight: 550; white-space: nowrap; box-shadow: 0 1px 2px rgba(17,15,15,.08); }
+    .stack { display: grid; gap: 7px; }
+    .mini-doc { width: 104px; background: var(--card); border-radius: 4px; padding: 11px 11px 13px; box-shadow: 0 10px 20px -12px rgba(17,15,15,.4); transform: rotate(2deg); }
+    .mini-doc b { display: block; font-stretch: 118%; font-weight: 800; font-size: 8.5px; line-height: 1.15; padding-bottom: 5px; margin-bottom: 7px; border-bottom: 1.5px solid var(--ink); }
+    .mini-doc u { display: block; height: 4px; border-radius: 2px; background: var(--hair); margin-bottom: 5px; }
+    .mini-doc u:nth-of-type(2n) { width: 70%; }
+    .mini-doc em { display: inline-block; margin-top: 4px; font-style: normal; font-family: var(--typed); font-size: 9px; font-weight: 700; color: var(--red); border: 1.5px solid var(--red); border-radius: 3px; padding: 0 4px; }
+    .signer { flex: 1; min-width: 0; max-width: 150px; background: var(--card); border-radius: 12px; padding: 10px 10px 9px; text-align: center; box-shadow: 0 1px 2px rgba(17,15,15,.08); }
+    .signer i { display: grid; place-items: center; width: 22px; height: 22px; margin: 0 auto; border-radius: 50%; background: var(--ink); color: #fff; font-style: normal; font-family: var(--typed); font-size: 12px; font-weight: 700; }
+    .signer .sg { display: block; height: 44px; line-height: 44px; color: var(--pen); font-size: 27px; white-space: nowrap; }
+    .signer .sg.none { color: var(--hair); font-family: var(--typed); font-size: 20px; }
+    .signer small { display: inline-block; font-size: 11.5px; font-weight: 600; padding: 1px 8px; border-radius: 999px; background: #e3f1e8; color: #14573f; }
+    .signer small.wait { background: #fff3c4; color: #6b4e00; }
+    .who-row { display: flex; align-items: center; gap: 9px; }
+    .who-row::before { content: ''; width: 9px; height: 9px; border-radius: 50%; background: var(--c); }
+    .toast { width: 100%; max-width: 250px; background: var(--card); border-radius: 14px; padding: 12px 14px 13px; box-shadow: 0 12px 24px -14px rgba(17,15,15,.35); }
+    .toast div { display: flex; justify-content: space-between; font-size: 12px; color: var(--muted); margin-bottom: 3px; }
+    .toast div b { color: var(--ink); }
+    .toast p { font-size: 13.5px; line-height: 1.35; color: var(--ink); font-weight: 550; }
+    .bars { display: flex; align-items: flex-end; gap: 9px; height: 112px; }
+    .bars i { width: 22px; border-radius: 6px 6px 2px 2px; background: var(--ink); height: var(--h); }
+    .bars i:nth-child(2n) { background: #b9b8b2; }
+    .csv { align-self: flex-end; background: var(--card); border-radius: 9px; padding: 6px 11px; font-family: var(--typed); font-size: 12.5px; font-weight: 700; box-shadow: 0 1px 2px rgba(17,15,15,.08); }
+    .opts { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; max-width: 440px; }
+    .opt-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; white-space: normal; line-height: 1.25; }
+    .opt-row::after { content: ''; flex: none; width: 30px; height: 18px; border-radius: 999px; background: radial-gradient(circle at 21px 9px, #fff 6.5px, transparent 7px) var(--ink); }
 
     /* ---------- Reference ---------- */
     .reference { padding: 0; }
@@ -318,20 +352,20 @@
     /* ---------- FAQ ---------- */
     .faq-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 56px; align-items: start; }
     .faq-grid h2 { position: sticky; top: 32px; }
-    .faq-list { border-top: 1px solid var(--ink); }
-    details { border-bottom: 1px solid var(--hair); }
+    .faq-list { display: grid; gap: 10px; }
+    details { background: var(--card); border-radius: var(--r-m); padding: 0 22px; box-shadow: 0 1px 2px rgba(17,15,15,.05); }
     summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 19px 0; font-size: 18px; font-weight: 650; line-height: 1.3; }
     summary::-webkit-details-marker { display: none; }
     summary::after { content: '+'; display: grid; place-items: center; flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--soft); font-size: 18px; font-weight: 400; line-height: 1; }
     details[open] summary::after { content: '\2212'; background: var(--ink); color: #fff; }
-    details p { padding: 0 56px 22px 0; color: var(--muted); font-size: 16.5px; }
+    details p { padding: 0 44px 22px 0; color: var(--muted); font-size: 16.5px; }
 
     /* ---------- Contact ---------- */
     .contact { padding-top: 0; }
     .contact-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 64px; align-items: start; }
     .contact h2 { margin-bottom: 24px; }
     .contact-copy p { color: var(--muted); max-width: 30em; }
-    .contact-copy .terms { margin-top: 26px; padding-top: 20px; border-top: 1px solid var(--hair); font-size: 15px; }
+    .contact-copy .terms { margin-top: 22px; font-size: 15px; }
     .contact-copy .terms a { color: var(--ink); font-weight: 650; text-underline-offset: 4px; }
     .request { background: var(--card); border: 1px solid var(--hair); border-radius: var(--r-l); padding: 30px; box-shadow: 0 30px 60px -40px rgba(17, 15, 15, .3); }
     .request h3 { font-size: 21px; font-stretch: 106%; letter-spacing: -0.012em; margin-bottom: 20px; }
@@ -350,7 +384,7 @@
     #cf-status.ok { color: #14573f; }
     #cf-status.err { color: var(--red); }
 
-    footer { border-top: 1px solid var(--hair); padding: 26px 0 30px; font-size: 14.5px; color: var(--muted); }
+    footer { padding: 0 0 34px; font-size: 14.5px; color: var(--muted); }
     footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 14px 28px; flex-wrap: wrap; }
     footer .mark { width: 96px; height: 25px; display: block; color: var(--ink); }
     footer div { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
@@ -365,11 +399,16 @@
       .sec-head, .faq-grid, .contact-grid { grid-template-columns: 1fr; gap: 22px; }
       .sec-head { margin-bottom: 36px; }
       .faq-grid h2 { position: static; }
-      .article { grid-template-columns: 64px minmax(0, 1fr); }
-      .article p, .article > div { grid-column: 2; margin-top: 10px; }
-      .slip-row { grid-template-columns: 52px 140px minmax(0, 1fr) 138px; }
-      .slip-row > * { padding-left: 18px; padding-right: 10px; }
       .ref-card { padding: 56px 40px; }
+      .flow { grid-template-columns: 1fr; gap: 40px; }
+      .flow-end { margin-top: 40px; }
+      .flow-end::before { top: -35px; right: calc(50% - 15px); }
+      .step:not(:last-child)::after { content: '\2193'; top: auto; bottom: -35px; right: 50%; transform: translateX(50%); }
+      .signer .sg { font-size: 21px; }
+      .feat, .feat.half { grid-column: span 3; }
+      .feat.full { flex-direction: column; align-items: stretch; padding-bottom: 26px; }
+      .feat.full .vig { flex: none; margin-bottom: 22px; }
+      .feat.full .txt { padding: 0 14px; }
     }
     @media (max-width: 760px) {
       body { font-size: 16px; }
@@ -379,21 +418,17 @@
       .top nav { gap: 14px; }
       .top nav .btn { display: none; }
       .top .mark { width: 112px; height: 29px; }
-      .facts { grid-template-columns: 1fr; gap: 14px; }
+      .facts { grid-template-columns: 1fr; gap: 8px; }
+      .feat, .feat.half, .feat.full { grid-column: span 6; }
+      .opts { grid-template-columns: 1fr; }
+      .vig { height: auto; min-height: 150px; }
+      details { padding: 0 16px; }
       .sheet { padding: 20px 18px 18px; }
       .boxes .typed { font-size: 11.5px; }
       .boxes > div { padding: 5px 7px 6px; }
       .hand-a { font-size: 27px; } .hand-b { font-size: 26px; } .hand-c { font-size: 23px; }
       .sig { min-height: 88px; padding: 6px; }
       .stamp { font-size: 17px; right: 12px; }
-      .slip-cols { display: none; }
-      .slip-row { grid-template-columns: 44px minmax(0, 1fr); }
-      .slip li:first-child { border-top: 0; }
-      .slip-row > * { padding: 0 16px 0 0; }
-      .slip-row .n { grid-row: span 3; padding: 18px 0 0 16px; }
-      .slip-row .who { padding-top: 20px; font-size: 13.5px; color: var(--muted); }
-      .slip-row > div { padding-top: 2px; }
-      .slip-row .tick { padding: 10px 0 18px; }
       .seg { width: 100%; }
       .tab { flex: 1; padding: 8px 6px; font-size: 13.5px; }
       .control { width: 100%; }
@@ -406,9 +441,6 @@
       .hide-s { display: none; }
       .formgrid, .fields { grid-template-columns: 1fr; }
       .fake-btn.alt { margin-left: 0; }
-      .article { grid-template-columns: 1fr; padding: 22px 0 24px; }
-      .article p, .article > div { grid-column: 1; }
-      .article h3 { font-size: 21px; margin-top: 4px; }
       .ref-card { padding: 44px 26px; border-radius: 24px; }
       details p { padding-right: 0; }
       .request { padding: 20px; }
@@ -417,7 +449,7 @@
       html { scroll-behavior: auto; }
       .sig .hand, .sig .when, .stamp { animation: none; }
       .stamp { opacity: .92; }
-      .tick path, .tick span, .mock, .mock * { transition: none; }
+      .mock, .mock * { transition: none; }
     }
   </style>
 </head>
@@ -493,38 +525,33 @@
     <div class="wrap">
       <div class="sec-head">
         <h2 class="display" data-i18n="how.h2">From submission to signed agreement. <span class="thin">Hours, not weeks.</span></h2>
-        <p data-i18n="how.p">One agreement, passed along like a routing slip. Each person does their part once and StageFlow hands it to the next. No scanning, no printing, no chasing.</p>
+        <p data-i18n="how.p">One agreement, handed from one person to the next. Each person does their part once and StageFlow passes it on. No scanning, no printing, no chasing.</p>
       </div>
 
-      <div class="slip">
-        <div class="slip-row slip-cols label" aria-hidden="true"><span data-i18n="slip.c1">No.</span><span data-i18n="slip.c2">Handled by</span><span data-i18n="slip.c3">What happens</span><span data-i18n="slip.c4">Done</span></div>
-        <ol>
-          <li class="slip-row">
-            <span class="n">1</span>
-            <span class="who" data-i18n="role.student">Student</span>
-            <div><h3 data-i18n="s1.h">Student submits</h3><p data-i18n="s1.p">The student fills out internship details (employer, role, dates, supervisor) through a guided online form. No attachments, no PDFs, no back and forth.</p></div>
-            <span class="tick"><svg viewBox="0 0 26 26" aria-hidden="true"><rect x="1" y="3" width="20" height="20" rx="5"/><path d="M5 13.5l5 5.5L24 2"/></svg><span data-i18n="s1.t">Submitted</span></span>
-          </li>
-          <li class="slip-row">
-            <span class="n">2</span>
-            <span class="who">StageFlow</span>
-            <div><h3 data-i18n="s2.h">Convention generated</h3><p data-i18n="s2.p">StageFlow generates a fully compliant convention de stage PDF from those details. No manual editing. No copy-pasting between systems.</p></div>
-            <span class="tick"><svg viewBox="0 0 26 26" aria-hidden="true"><rect x="1" y="3" width="20" height="20" rx="5"/><path d="M5 13.5l5 5.5L24 2"/></svg><span data-i18n="s2.t">Generated</span></span>
-          </li>
-          <li class="slip-row">
-            <span class="n">3</span>
-            <span class="who" data-i18n="s3.who">Every signatory</span>
-            <div><h3 data-i18n="s3.h">All parties sign</h3><p data-i18n="s3.p">DocuSign routes the agreement to the student, employer, academic tutor, and institution director, in the right sequence, automatically.</p></div>
-            <span class="tick"><svg viewBox="0 0 26 26" aria-hidden="true"><rect x="1" y="3" width="20" height="20" rx="5"/><path d="M5 13.5l5 5.5L24 2"/></svg><span data-i18n="s3.t">Signed</span></span>
-          </li>
-          <li class="slip-row">
-            <span class="n">4</span>
-            <span class="who" data-i18n="role.office">Internship office</span>
-            <div><h3 data-i18n="s4.h">Agreement archived</h3><p data-i18n="s4.p">The fully signed convention is recorded, searchable, and exportable. Every record in one place.</p></div>
-            <span class="tick"><svg viewBox="0 0 26 26" aria-hidden="true"><rect x="1" y="3" width="20" height="20" rx="5"/><path d="M5 13.5l5 5.5L24 2"/></svg><span data-i18n="s4.t">Filed</span></span>
-          </li>
-        </ol>
-      </div>
+      <ol class="flow">
+        <li class="step">
+          <span class="actor"><i>1</i><span data-i18n="role.student">Student</span></span>
+          <h3 data-i18n="s1.h">Student submits</h3>
+          <p data-i18n="s1.p">The student fills out internship details (employer, role, dates, supervisor) through a guided online form. No attachments, no PDFs, no back and forth.</p>
+        </li>
+        <li class="step">
+          <span class="actor"><i>2</i><span data-i18n="role.office">Internship office</span></span>
+          <h3 data-i18n="s2.h">Internship office approves</h3>
+          <p data-i18n="s2.p">The internship office reviews the request and approves it before anything goes out for signature.</p>
+        </li>
+        <li class="step">
+          <span class="actor"><i>3</i><span data-i18n="role.employer">Employer</span></span>
+          <h3 data-i18n="s3.h">Employer completes the details</h3>
+          <p data-i18n="s3.p">The employer adds their side (supervisor, tasks, hours, pay) and previews the convention de stage, generated automatically. No manual editing.</p>
+        </li>
+        <li class="step">
+          <span class="actor"><i>4</i><span data-i18n="s4.who">All three</span></span>
+          <h3 data-i18n="s4.h">All three parties sign</h3>
+          <p data-i18n="s4.p">DocuSign sends the convention to each signatory in order, automatically.</p>
+          <div class="chain"><span data-i18n="role.employer">Employer</span><b>&rarr;</b><span data-i18n="role.student">Student</span><b>&rarr;</b><span data-i18n="sg.school">School</span></div>
+        </li>
+      </ol>
+      <p class="flow-end"><i aria-hidden="true">&#10003;</i><span data-i18n="s5"><b>Convention complete.</b> The fully signed agreement is recorded, searchable, and exportable. Every record in one place.</span></p>
       <p class="footnote"><span aria-hidden="true">*</span><span data-i18n="how.note"><b>This flow is an example.</b> StageFlow is deployed per institution, so the process is set up around your programme: signing order, approval stages, required fields, notification logic, and more. You own the flow.</span></p>
     </div>
   </section>
@@ -623,39 +650,75 @@
         <h2 class="display" data-i18n="feat.h2">Everything your internship office <span class="thin">needs.</span></h2>
         <p data-i18n="feat.p">Built for the convention de stage process, not adapted from a generic HR tool.</p>
       </div>
-      <div class="articles">
-        <div class="article">
-          <span class="art">Art. 1</span>
-          <h3 data-i18n="a1.h">Automated agreement generation</h3>
-          <p data-i18n="a1.p">Your team stops editing templates and chasing PDFs by email. Students submit their details once, and StageFlow generates a compliant, pre-filled convention de stage, ready to route for signatures.</p>
-        </div>
-        <div class="article">
-          <span class="art">Art. 2</span>
-          <h3 data-i18n="a2.h">DocuSign e&#8209;signature routing</h3>
-          <div>
-            <p data-i18n="a2.p">Every party signs in the correct legal sequence, automatically. Full audit trail included. DocuSign signatures are eIDAS-compliant and legally binding across the EU.</p>
-            <p data-i18n="a2.n">Powered by DocuSign</p>
+      <div class="feats">
+        <div class="feat half">
+          <div class="vig" aria-hidden="true">
+            <div class="stack"><span class="pill">Maison Vauclair</span><span class="pill">01/02 &rarr; 30/06/2027</span><span class="pill">35 h, 700 &euro;</span></div>
+            <span class="go">&rarr;</span>
+            <div class="mini-doc"><b>CONVENTION<br>DE STAGE</b><u></u><u></u><u></u><u></u><u></u><em>PDF</em></div>
+          </div>
+          <div class="txt">
+            <h3 data-i18n="a1.h">Automated agreement generation</h3>
+            <p data-i18n="a1.p">Your team stops editing templates and chasing PDFs by email. Students submit their details once, and StageFlow generates a compliant, pre-filled convention de stage, ready to route for signatures.</p>
           </div>
         </div>
-        <div class="article">
-          <span class="art">Art. 3</span>
-          <h3 data-i18n="a3.h">Role-based dashboards</h3>
-          <p data-i18n="a3.p">Students never need to chase their coordinator for updates. Coordinators have every internship visible in one place. Employers confirm online in minutes. No one is left guessing about where things stand.</p>
+        <div class="feat half">
+          <div class="vig" aria-hidden="true">
+            <div class="signer"><i>1</i><span class="sg hand-a">L. Dupont</span><small data-i18n="st.signed">Signed</small></div>
+            <div class="signer"><i>2</i><span class="sg hand-b">S. Renard</span><small data-i18n="st.signed">Signed</small></div>
+            <div class="signer"><i>3</i><span class="sg none">. . .</span><small class="wait" data-i18n="st.next">Up next</small></div>
+          </div>
+          <div class="txt">
+            <h3 data-i18n="a2.h">DocuSign e&#8209;signature routing</h3>
+            <p data-i18n="a2.p">Every party signs in the correct legal sequence, automatically. Full audit trail included. DocuSign signatures are eIDAS-compliant and legally binding across the EU.</p>
+            <p class="by" data-i18n="a2.n">Powered by DocuSign</p>
+          </div>
         </div>
-        <div class="article">
-          <span class="art">Art. 4</span>
-          <h3 data-i18n="a4.h">Automated email notifications</h3>
-          <p data-i18n="a4.p">Your team stops being the messenger. Every status change notifies the right person at the right moment, so coordinators are only involved when a decision is actually needed.</p>
+        <div class="feat">
+          <div class="vig" aria-hidden="true">
+            <div class="stack">
+              <span class="pill who-row" style="--c:#110f0f" data-i18n="role.office">Internship office</span>
+              <span class="pill who-row" style="--c:#1a30c9" data-i18n="role.student">Student</span>
+              <span class="pill who-row" style="--c:#e2351f" data-i18n="role.employer">Employer</span>
+            </div>
+          </div>
+          <div class="txt">
+            <h3 data-i18n="a3.h">Role-based dashboards</h3>
+            <p data-i18n="a3.p">Students never need to chase their coordinator for updates. Coordinators have every internship visible in one place. Employers confirm online in minutes. No one is left guessing about where things stand.</p>
+          </div>
         </div>
-        <div class="article">
-          <span class="art">Art. 5</span>
-          <h3 data-i18n="a5.h">Reporting, charts, and CSV export</h3>
-          <p data-i18n="a5.p">Live charts by cohort, employer, and status. Export filtered CSV reports at any time. Only the structured data needed for the agreement is stored. No contracts are retained on our servers, which keeps your data lean and GDPR-friendly.</p>
+        <div class="feat">
+          <div class="vig" aria-hidden="true">
+            <div class="toast"><div><b>StageFlow</b><span>09:14</span></div><p data-i18n="v.toast">Your convention de stage is ready for your signature.</p></div>
+          </div>
+          <div class="txt">
+            <h3 data-i18n="a4.h">Automated email notifications</h3>
+            <p data-i18n="a4.p">Your team stops being the messenger. Every status change notifies the right person at the right moment, so coordinators are only involved when a decision is actually needed.</p>
+          </div>
         </div>
-        <div class="article">
-          <span class="art">Art. 6</span>
-          <h3 data-i18n="a6.h">Designed around the convention de stage</h3>
-          <p data-i18n="a6.p">Document templates, signing sequences, approval stages, and required fields are all configured to fit your institution's exact requirements.</p>
+        <div class="feat">
+          <div class="vig" aria-hidden="true">
+            <div class="bars"><i style="--h:46%"></i><i style="--h:72%"></i><i style="--h:58%"></i><i style="--h:100%"></i><i style="--h:80%"></i></div>
+            <span class="csv">&darr; CSV</span>
+          </div>
+          <div class="txt">
+            <h3 data-i18n="a5.h">Reporting, charts, and CSV export</h3>
+            <p data-i18n="a5.p">Live charts by cohort, employer, and status. Export filtered CSV reports at any time. Only the structured data needed for the agreement is stored. No contracts are retained on our servers, which keeps your data lean and GDPR-friendly.</p>
+          </div>
+        </div>
+        <div class="feat full">
+          <div class="vig" aria-hidden="true">
+            <div class="opts">
+              <span class="pill opt-row" data-i18n="cf.1">Signing order</span>
+              <span class="pill opt-row" data-i18n="cf.2">Approval stages</span>
+              <span class="pill opt-row" data-i18n="cf.3">Required fields</span>
+              <span class="pill opt-row" data-i18n="cf.4">Document templates</span>
+            </div>
+          </div>
+          <div class="txt">
+            <h3 data-i18n="a6.h">Designed around the convention de stage</h3>
+            <p data-i18n="a6.p">Document templates, signing sequences, approval stages, and required fields are all configured to fit your institution's exact requirements.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -767,27 +830,27 @@
       'fact3.l': "Disponibilité",
       'fact3.v': "Ouvert aux nouveaux établissements",
       'how.h2': 'De la demande à la convention signée. <span class="thin">En quelques heures, pas en semaines.</span>',
-      'how.p': "Une seule convention, transmise comme un bordereau de circulation. Chacun fait sa part une fois, et StageFlow la passe au suivant. Pas de scan, pas d'impression, pas de relances.",
-      'slip.c1': "N°",
-      'slip.c2': "Qui",
-      'slip.c3': "Ce qui se passe",
-      'slip.c4': "Fait",
+      'how.p': "Une seule convention, transmise d'une personne à la suivante. Chacun fait sa part une fois, et StageFlow la passe au suivant. Pas de scan, pas d'impression, pas de relances.",
       'role.student': "Étudiant",
       'role.office': "Bureau des stages",
       'role.employer': "Employeur",
       's1.h': "L'étudiant dépose sa demande",
       's1.p': "L'étudiant renseigne les informations du stage (employeur, poste, dates, tuteur) dans un formulaire guidé en ligne. Pas de pièces jointes, pas de PDF, pas d'allers-retours.",
-      's1.t': "Déposée",
-      's2.h': "La convention est générée",
-      's2.p': "À partir de ces informations, StageFlow génère une convention de stage conforme, au format PDF. Aucune modification manuelle. Aucun copier-coller entre outils.",
-      's2.t': "Générée",
-      's3.who': "Chaque signataire",
-      's3.h': "Toutes les parties signent",
-      's3.p': "DocuSign transmet la convention à l'étudiant, à l'employeur, au tuteur pédagogique et à la direction de l'établissement, dans le bon ordre, automatiquement.",
-      's3.t': "Signée",
-      's4.h': "La convention est archivée",
-      's4.p': "La convention entièrement signée est enregistrée, consultable et exportable. Tous les dossiers au même endroit.",
-      's4.t': "Archivée",
+      's2.h': "Le bureau des stages valide",
+      's2.p': "Le bureau des stages examine la demande et la valide avant tout envoi en signature.",
+      's3.h': "L'employeur complète les informations",
+      's3.p': "L'employeur ajoute sa partie (tuteur, missions, horaires, gratification) et relit la convention de stage, générée automatiquement. Aucune modification manuelle.",
+      's4.who': "Les trois parties",
+      's4.h': "Les trois parties signent",
+      's4.p': "DocuSign envoie la convention à chaque signataire, dans l'ordre, automatiquement.",
+      'sg.school': "Établissement",
+      's5': "<b>Convention finalisée.</b> La convention entièrement signée est enregistrée, consultable et exportable. Tous les dossiers au même endroit.",
+      'st.next': "À signer",
+      'v.toast': "Votre convention de stage est prête à être signée.",
+      'cf.1': "Ordre des signatures",
+      'cf.2': "Étapes de validation",
+      'cf.3': "Champs obligatoires",
+      'cf.4': "Modèles de documents",
       'how.note': "<b>Ce parcours est un exemple.</b> StageFlow est déployé établissement par établissement. Le processus est donc configuré selon votre programme : ordre des signatures, étapes de validation, champs obligatoires, logique de notification, etc. Le parcours vous appartient.",
       'plat.h2': 'Une convention, trois bureaux. <span class="thin">Aux couleurs de votre école.</span>',
       'plat.p': "Le bureau des stages, l'étudiant et l'employeur voient chacun leur partie de la même convention. StageFlow est déployé établissement par établissement et peut donc porter votre nom, vos couleurs et votre typographie. Essayez avec trois écoles fictives.",
@@ -951,19 +1014,6 @@
         next.focus();
       });
     });
-
-    /* ---------- Routing slip: tick each box in turn once it is on screen ---------- */
-    const rows = document.querySelectorAll('.slip li');
-    if ('IntersectionObserver' in window) {
-      const io = new IntersectionObserver(entries => {
-        if (!entries[0].isIntersecting) return;
-        rows.forEach((row, i) => setTimeout(() => row.classList.add('done'), 250 + i * 450));
-        io.disconnect();
-      }, { threshold: 0.35 });
-      io.observe(document.querySelector('.slip'));
-    } else {
-      rows.forEach(row => row.classList.add('done'));
-    }
 
     /* ---------- Contact form ---------- */
     document.getElementById('contact-form').addEventListener('submit', async function (e) {
