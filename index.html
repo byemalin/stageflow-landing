@@ -7,6 +7,7 @@
   <title>StageFlow: Internship Management Software for Universities</title>
   <meta name="description" content="StageFlow is internship management software built for higher education. Automate convention de stage generation, collect e-signatures via DocuSign, and give coordinators a clear dashboard. Built for French institutions.">
   <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#f6f6f4">
   <link rel="canonical" href="https://stageflow.careers/">
 
   <!-- Open Graph -->
@@ -14,15 +15,16 @@
   <meta property="og:url" content="https://stageflow.careers/">
   <meta property="og:title" content="StageFlow: Internship Management Software for Universities">
   <meta property="og:description" content="Stop managing internship agreements by email and spreadsheet. StageFlow automates convention de stage generation, e-signatures, and approvals for higher education institutions.">
-  <meta property="og:image" content="https://stageflow.careers/og-image.png">
+  <meta property="og:image" content="https://stageflow.careers/og_image.png">
   <meta property="og:site_name" content="StageFlow">
   <meta property="og:locale" content="en_GB">
+  <meta property="og:locale:alternate" content="fr_FR">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="StageFlow: Internship Management Software for Universities">
   <meta name="twitter:description" content="Stop managing internship agreements by email and spreadsheet. StageFlow automates convention de stage generation, e-signatures, and approvals for higher education institutions.">
-  <meta name="twitter:image" content="https://stageflow.careers/og-image.png">
+  <meta name="twitter:image" content="https://stageflow.careers/og_image.png">
 
   <!-- JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -34,6 +36,7 @@
     "description": "Internship management software for higher education institutions. Automates convention de stage generation, DocuSign e-signature routing, and coordinator workflows.",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Web",
+    "inLanguage": ["en", "fr"],
     "audience": {
       "@type": "EducationalAudience",
       "educationalRole": "administrator"
@@ -55,1459 +58,943 @@
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Courier+Prime:wght@400;700&family=Herr+Von+Muellerhoff&family=Mr+De+Haviland&family=Mrs+Saint+Delafield&family=Newsreader:wght@500;600&display=swap" rel="stylesheet">
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --black:    #110F0F;
-      --dark:     #1C1B1F;
-      --gray-600: #565658;
-      --gray-400: #909090;
-      --gray-200: #d9d9d9;
-      --offwhite: #F7F7F7;
-      --white:    #ffffff;
-      --teal:     #18BFC9;
-      --green:    #38a169;
-      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --bg:    #f6f6f4;
+      --card:  #ffffff;
+      --ink:   #110f0f;
+      --muted: #5e5e62;
+      --hair:  #dddcd7;
+      --soft:  #eeede9;
+      --pen:   #1a30c9;
+      --red:   #e2351f;
+      --hl:    #ffe45c;
+      --r-l: 24px;
+      --r-m: 14px;
+      --r-s: 10px;
+      --sans:  'Archivo', 'Helvetica Neue', Arial, sans-serif;
+      --typed: 'Courier Prime', 'Courier New', monospace;
     }
 
     html { scroll-behavior: smooth; }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(22px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-    @keyframes scaleIn {
-      from { opacity: 0; transform: scale(0.88); }
-      to   { opacity: 1; transform: scale(1); }
-    }
-
-    /* Hero entrance - each child staggered */
-    .hero-mark       { animation: scaleIn 0.6s cubic-bezier(0.16,1,0.3,1) both; animation-delay: 0.05s; }
-    .hero-badge      { animation: fadeUp  0.6s cubic-bezier(0.16,1,0.3,1) both; animation-delay: 0.15s; }
-    .hero h1         { animation: fadeUp  0.7s cubic-bezier(0.16,1,0.3,1) both; animation-delay: 0.25s; }
-    .hero-sub        { animation: fadeUp  0.7s cubic-bezier(0.16,1,0.3,1) both; animation-delay: 0.35s; }
-    .hero-ctas       { animation: fadeUp  0.6s cubic-bezier(0.16,1,0.3,1) both; animation-delay: 0.45s; }
-    .hero-meta       { animation: fadeUp  0.6s cubic-bezier(0.16,1,0.3,1) both; animation-delay: 0.55s; }
-    .mockup-wrap     { animation: fadeUp  0.8s cubic-bezier(0.16,1,0.3,1) both; animation-delay: 0.65s; }
-
-    /* Scroll-triggered */
-    .reveal {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1),
-                  transform 0.65s cubic-bezier(0.16,1,0.3,1);
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
     body {
-      font-family: var(--font);
-      color: var(--black);
-      background: var(--offwhite);
-      line-height: 1.6;
+      font-family: var(--sans);
+      font-size: 17px;
+      line-height: 1.55;
+      color: var(--ink);
+      background: var(--bg);
       -webkit-font-smoothing: antialiased;
     }
+    a { color: inherit; }
+    button { font: inherit; color: inherit; }
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+    :focus-visible { outline: 3px solid var(--pen); outline-offset: 2px; border-radius: 6px; }
 
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 0 28px;
-    }
-
-    /* ── BUTTONS ── */
-    .btn-primary {
-      display: inline-flex;
-      align-items: center;
-      padding: 10px 20px;
-      background: var(--black);
-      color: var(--white);
-      font-size: 14px;
-      font-weight: 500;
-      border-radius: 7px;
-      text-decoration: none;
-      transition: opacity 0.15s;
-      white-space: nowrap;
-    }
-    .btn-primary:hover { opacity: 0.8; transform: translateY(-1px); }
-    .btn-primary { transition: opacity 0.15s, transform 0.15s; }
-    .btn-ghost {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--gray-600);
-      text-decoration: none;
-    }
-    .btn-ghost:hover { color: var(--black); }
-
-    /* ── NAV ── */
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(247,247,247,0.9);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--gray-200);
-    }
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      height: 64px;
-    }
-    .nav-logo { display: flex; align-items: center; text-decoration: none; }
-    .nav-logo svg { height: 22px; width: auto; }
-    .nav-right { display: flex; align-items: center; gap: 28px; }
-    .nav-link { font-size: 14px; color: var(--gray-600); text-decoration: none; }
-    .nav-link:hover { color: var(--black); }
-
-    /* ── HERO MARK ── */
-    .hero-mark {
-      display: flex;
-      align-items: center;
-      margin-bottom: 28px;
-    }
-    .hero-mark-icon {
-      width: 64px;
-      height: 64px;
-      background: var(--black);
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 20px rgba(17,15,15,0.18);
-    }
-    .hero-mark-icon svg { width: 34px; height: 34px; }
-    .hero-mark-wordmark {
-      margin-left: 16px;
-    }
-    .hero-mark-wordmark svg { height: 26px; width: auto; display: block; }
-
-    /* ── HERO ── */
-    .hero {
-      padding: 80px 28px 80px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 5px 13px;
-      border: 1px solid var(--gray-200);
-      border-radius: 100px;
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--gray-600);
-      background: var(--white);
-      margin-bottom: 32px;
-    }
-    .hero-badge-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--green);
-    }
-    .hero h1 {
-      font-size: clamp(38px, 5.5vw, 64px);
-      font-weight: 600;
-      line-height: 1.08;
-      letter-spacing: -0.03em;
-      max-width: 720px;
-      margin-bottom: 24px;
-    }
-    .hero h1 em {
-      font-style: normal;
-      color: var(--gray-400);
-    }
-    .hero-sub {
-      font-size: 18px;
-      color: var(--gray-600);
-      max-width: 580px;
-      line-height: 1.7;
-      margin-bottom: 40px;
-    }
-    .hero-ctas {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-bottom: 40px;
-    }
-    .hero-meta {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .hero-proof {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 13px;
-      color: var(--gray-400);
-    }
-    .hero-proof-sep {
-      width: 1px;
-      height: 14px;
-      background: var(--gray-200);
-    }
-    .hero-proof-name {
-      font-weight: 500;
-      color: var(--gray-600);
-    }
-    .hero-docusign {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 4px 12px;
-      border: 1px solid var(--gray-200);
-      border-radius: 100px;
-      font-size: 12px;
-      color: var(--gray-600);
-      background: var(--white);
-    }
-    .docusign-dot {
-      width: 8px;
-      height: 8px;
-      border-radius: 2px;
-      background: #FFB81C;
-    }
-    .hero-onboarding {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 4px 12px;
-      border: 1px solid #c6f6d5;
-      border-radius: 100px;
-      font-size: 12px;
-      color: #276749;
-      background: #f0fff4;
-    }
-    .onboarding-dot { width: 6px; height: 6px; background: var(--green); border-radius: 50%; }
-
-    /* ── MOCKUP ── */
-    .mockup-wrap {
-      max-width: 1100px;
-      margin: 0 auto 100px;
-      padding: 0 28px;
-    }
-    .browser-frame {
-      background: var(--white);
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid var(--gray-200);
-      box-shadow:
-        0 2px 4px rgba(0,0,0,0.03),
-        0 8px 24px rgba(0,0,0,0.06),
-        0 32px 80px rgba(0,0,0,0.06);
-    }
-    .browser-chrome {
-      background: #EBEBEB;
-      padding: 12px 16px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      border-bottom: 1px solid var(--gray-200);
-    }
-    .browser-dots { display: flex; gap: 7px; }
-    .b-dot { width: 11px; height: 11px; border-radius: 50%; }
-    .b-dot-r { background: #FF5F56; }
-    .b-dot-y { background: #FFBD2E; }
-    .b-dot-g { background: #27C93F; }
-    .browser-addressbar {
-      flex: 1;
-      max-width: 320px;
-      height: 24px;
-      background: var(--white);
-      border-radius: 5px;
-      border: 1px solid #D1D1D1;
-      display: flex;
-      align-items: center;
-      padding: 0 10px;
-      gap: 6px;
-    }
-    .addr-lock {
-      width: 8px; height: 8px;
-      border: 1.5px solid #bbb;
-      border-radius: 2px;
-      position: relative;
-      flex-shrink: 0;
-    }
-    .addr-lock::before {
-      content: '';
-      position: absolute;
-      top: -4px; left: 1px;
-      width: 4px; height: 4px;
-      border: 1.5px solid #bbb;
-      border-bottom: none;
-      border-radius: 3px 3px 0 0;
-    }
-    .addr-text { font-size: 11px; color: #777; }
-
-    /* ── DASHBOARD ── */
-    .dashboard {
-      display: grid;
-      grid-template-columns: 200px 1fr;
-      min-height: 460px;
-      background: var(--offwhite);
-      font-family: var(--font);
-    }
-
-    /* Sidebar */
-    .db-sidebar {
-      background: var(--white);
-      border-right: 1px solid #EBEBEB;
-      padding: 20px 14px;
-    }
-    .db-sidebar-brand {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 4px 6px;
-      margin-bottom: 28px;
-    }
-    .db-favicon {
-      width: 20px; height: 20px;
-      background: var(--black);
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .db-favicon svg { width: 11px; height: 11px; }
-    .db-brand-name {
-      font-size: 13px;
-      font-weight: 600;
-      color: var(--black);
-      letter-spacing: -0.01em;
-    }
-    .db-nav-section {
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--gray-400);
-      padding: 0 8px;
-      margin-bottom: 6px;
-    }
-    .db-nav-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 8px;
-      border-radius: 6px;
-      font-size: 12px;
-      color: var(--gray-600);
-      margin-bottom: 2px;
-      cursor: default;
-    }
-    .db-nav-item.active {
-      background: var(--black);
-      color: var(--white);
-    }
-    .db-nav-item svg {
-      width: 13px; height: 13px;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      flex-shrink: 0;
-    }
-    .db-nav-count {
-      margin-left: auto;
-      font-size: 10px;
-      background: rgba(0,0,0,0.08);
-      color: inherit;
-      border-radius: 10px;
-      padding: 1px 6px;
-    }
-    .db-nav-item.active .db-nav-count {
-      background: rgba(255,255,255,0.2);
-    }
-
-    /* Main content */
-    .db-main { padding: 24px 24px 20px; }
-    .db-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-    }
-    .db-title {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--black);
-      letter-spacing: -0.01em;
-    }
-    .db-new-btn {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      padding: 6px 12px;
-      background: var(--black);
-      color: var(--white);
-      font-size: 11px;
-      font-weight: 500;
-      border-radius: 6px;
-    }
-
-    /* Stats */
-    .db-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 20px;
-    }
-    .db-stat {
-      background: var(--white);
-      border: 1px solid #EBEBEB;
-      border-radius: 9px;
-      padding: 14px 16px;
-    }
-    .db-stat-val {
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--black);
+    /* Headline device borrowed from the wordmark: heavy word, hairline word */
+    .display {
+      font-stretch: 110%;
+      font-weight: 800;
+      letter-spacing: -0.028em;
       line-height: 1;
-      margin-bottom: 4px;
-      letter-spacing: -0.02em;
+      text-wrap: balance;
     }
-    .db-stat-label {
-      font-size: 11px;
-      color: var(--gray-400);
-    }
+    .display .thin { font-weight: 200; letter-spacing: -0.035em; }
+    h2.display { font-size: clamp(31px, 4vw, 52px); }
 
-    /* Table */
-    .db-table-wrap {
-      background: var(--white);
-      border: 1px solid #EBEBEB;
-      border-radius: 9px;
-      overflow: hidden;
-    }
-    .db-table-head {
-      display: grid;
-      grid-template-columns: 1.8fr 1.8fr 1fr 1.1fr;
-      padding: 9px 16px;
-      background: var(--offwhite);
-      border-bottom: 1px solid #EBEBEB;
-      gap: 8px;
-    }
-    .db-th {
-      font-size: 10px;
-      font-weight: 600;
-      color: var(--gray-400);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-    .db-row {
-      display: grid;
-      grid-template-columns: 1.8fr 1.8fr 1fr 1.1fr;
-      padding: 11px 16px;
-      border-bottom: 1px solid #F5F5F5;
-      gap: 8px;
-      align-items: center;
-    }
-    .db-row:last-child { border-bottom: none; }
-    .db-cell-name {
-      font-size: 12px;
-      font-weight: 500;
-      color: var(--black);
-    }
-    .db-cell-sub {
-      font-size: 11px;
-      color: var(--gray-400);
-      margin-top: 1px;
-    }
-    .db-cell-text {
-      font-size: 12px;
-      color: var(--gray-600);
-    }
-    .db-cell-date {
-      font-size: 11px;
-      color: var(--gray-400);
-    }
-    .db-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      padding: 3px 8px;
-      border-radius: 100px;
-      font-size: 10px;
-      font-weight: 500;
-      width: fit-content;
-      white-space: nowrap;
-    }
-    .badge-signed   { background: #DCFCE7; color: #166534; }
-    .badge-employer { background: #FEF9C3; color: #854D0E; }
-    .badge-student  { background: #FEF9C3; color: #854D0E; }
-    .badge-draft    { background: #F3F4F6; color: #4B5563; }
-    .db-badge-dot {
-      width: 5px; height: 5px;
-      border-radius: 50%;
-      background: currentColor;
-    }
+    .label { font-size: 11.5px; font-weight: 600; font-stretch: 90%; letter-spacing: 0.04em; text-transform: uppercase; }
+    .typed { font-family: var(--typed); }
 
-    /* ── FEATURES ── */
-    .features {
-      padding: 100px 28px;
-      background: var(--white);
-      border-top: 1px solid var(--gray-200);
-      border-bottom: 1px solid var(--gray-200);
+    .btn {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 13px 20px;
+      font-size: 15px; font-weight: 650;
+      text-decoration: none; white-space: nowrap;
+      border: 1px solid var(--ink); border-radius: var(--r-m);
+      background: var(--ink); color: #fff;
+      cursor: pointer;
+      transition: background .15s, color .15s, border-color .15s;
     }
-    .section-eyebrow {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gray-400);
-      margin-bottom: 12px;
+    .btn:hover { background: #33302f; border-color: #33302f; }
+    .btn .arrow { transition: transform .15s; }
+    .btn:hover .arrow { transform: translateX(3px); }
+    .btn-line { background: var(--card); color: var(--ink); border-color: var(--hair); }
+    .btn-line:hover { background: var(--card); border-color: var(--ink); }
+
+    /* ---------- Top bar ---------- */
+    .top { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 20px; padding-bottom: 20px; }
+    .top .mark { display: block; width: 132px; height: 34px; }
+    .top nav { display: flex; align-items: center; gap: 26px; font-size: 15px; }
+    .top nav a { text-decoration: none; }
+    .top nav a:not(.btn) { color: var(--muted); }
+    .top nav a:not(.btn):hover { color: var(--ink); }
+    .top nav a.signin { color: var(--ink); font-weight: 650; }
+    .top .btn { padding: 9px 15px; font-size: 14px; border-radius: var(--r-s); }
+
+    .lang { display: inline-flex; padding: 3px; background: var(--soft); border-radius: 999px; }
+    .lang button { border: 0; background: none; padding: 4px 10px; border-radius: 999px; font-size: 12.5px; font-weight: 700; letter-spacing: 0.03em; color: var(--muted); cursor: pointer; }
+    .lang button[aria-pressed="true"] { background: var(--card); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.12); }
+
+    /* ---------- Hero ---------- */
+    .hero { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: 64px; padding-top: 64px; padding-bottom: 96px; align-items: center; }
+    .hero h1 { font-size: clamp(40px, 5.7vw, 78px); margin-bottom: 28px; }
+    .hero-sub { font-size: 19px; max-width: 32em; color: var(--muted); margin-bottom: 34px; }
+    .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 52px; }
+    .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; padding-top: 22px; border-top: 1px solid var(--hair); }
+    .facts .label { display: block; color: var(--muted); margin-bottom: 5px; }
+    .facts p { font-size: 15px; line-height: 1.35; font-weight: 550; }
+
+    /* ---------- The convention (hero paper) ---------- */
+    .sheet-zone { position: relative; }
+    .sheet-zone::before {
+      content: ''; position: absolute; inset: 0; background: #e6e5df; border-radius: 4px;
+      transform: rotate(-3.2deg) translate(-10px, 8px);
     }
-    .section-title {
-      font-size: clamp(26px, 3.2vw, 40px);
-      font-weight: 600;
-      letter-spacing: -0.025em;
-      line-height: 1.18;
-      max-width: 480px;
-      margin-bottom: 60px;
-    }
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--gray-200);
-      border: 1px solid var(--gray-200);
-      border-radius: 14px;
-      overflow: hidden;
-    }
-    .feature-card {
-      background: var(--white);
-      padding: 36px 32px;
-      transition: transform 0.22s cubic-bezier(0.16,1,0.3,1),
-                  box-shadow 0.22s cubic-bezier(0.16,1,0.3,1);
-    }
-    .feature-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 40px rgba(0,0,0,0.07);
-      z-index: 1;
+    .sheet {
       position: relative;
+      background: var(--card);
+      padding: 30px 30px 26px;
+      border-radius: 4px;
+      transform: rotate(1.1deg);
+      box-shadow: 0 1px 0 rgba(0,0,0,.04), 0 34px 60px -30px rgba(17, 15, 15, .38);
     }
-    .feature-icon {
-      width: 40px; height: 40px;
-      border-radius: 9px;
-      background: var(--black);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
+    .sheet-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 12px; padding-bottom: 12px; border-bottom: 2px solid var(--ink); }
+    .sheet-title { font-stretch: 118%; font-weight: 800; font-size: 20px; letter-spacing: 0.01em; line-height: 1.1; }
+    .sheet-no { font-family: var(--typed); font-size: 12.5px; text-align: right; line-height: 1.3; color: var(--muted); }
+    .boxes { display: grid; grid-template-columns: 1fr 1fr; border-left: 1px solid var(--ink); margin-top: 16px; }
+    .boxes > div { border: 1px solid var(--ink); border-left: 0; padding: 6px 9px 7px; margin-top: -1px; min-width: 0; }
+    .boxes .wide { grid-column: 1 / -1; }
+    .boxes .label { display: block; font-size: 9.5px; color: var(--muted); }
+    .boxes .typed { font-size: 13px; line-height: 1.3; display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .boxes .yours { background: var(--hl); padding: 0 4px; margin-left: -4px; }
+    .clause { font-size: 10.5px; line-height: 1.5; color: var(--muted); margin: 14px 0 16px; }
+    .clause b { color: var(--ink); font-weight: 700; }
+    .sigs { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--ink); }
+    .sig { padding: 7px 9px 8px; min-height: 104px; display: flex; flex-direction: column; }
+    .sig + .sig { border-left: 1px solid var(--ink); }
+    .sig .label { font-size: 9.5px; color: var(--muted); }
+    .sig .hand {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      color: var(--pen); line-height: 1; white-space: nowrap;
+      clip-path: inset(-30% -12% -30% -12%);
+      animation: write .9s cubic-bezier(.45,.05,.4,1) both;
     }
-    .feature-icon svg {
-      width: 19px; height: 19px;
-      stroke: white;
-      fill: none;
-      stroke-width: 1.75;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+    .sig .when { font-family: var(--typed); font-size: 10px; color: var(--muted); animation: appear .3s both; }
+    .hand-a { font-family: 'Mrs Saint Delafield', cursive; font-size: 34px; transform: rotate(-5deg); }
+    .hand-b { font-family: 'Herr Von Muellerhoff', cursive; font-size: 33px; transform: rotate(-3deg); }
+    .hand-c { font-family: 'Mr De Haviland', cursive; font-size: 29px; transform: rotate(-6deg); }
+    .sig:nth-child(1) .hand { animation-delay: .7s; }  .sig:nth-child(1) .when { animation-delay: 1.5s; }
+    .sig:nth-child(2) .hand { animation-delay: 2.0s; } .sig:nth-child(2) .when { animation-delay: 2.8s; }
+    .sig:nth-child(3) .hand { animation-delay: 3.3s; } .sig:nth-child(3) .when { animation-delay: 4.1s; }
+    .stamp {
+      position: absolute; right: 18px; bottom: 124px;
+      padding: 7px 14px 6px;
+      border: 3px double var(--red); border-radius: 5px; color: var(--red);
+      font-stretch: 122%; font-weight: 800; font-size: 21px; letter-spacing: 0.06em; line-height: 1.05; text-align: center;
+      transform: rotate(-9deg);
+      mix-blend-mode: multiply;
+      animation: stamp .28s cubic-bezier(.2,1.4,.5,1) 4.6s both;
     }
-    .feature-icon.teal { background: var(--teal); }
-    .feature-card h3 {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 10px;
-      letter-spacing: -0.01em;
-    }
-    .feature-card p {
-      font-size: 14px;
-      color: var(--gray-600);
-      line-height: 1.68;
-    }
-    .feature-card .ds-note {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      margin-top: 14px;
-      font-size: 12px;
-      color: var(--gray-400);
-      border: 1px solid var(--gray-200);
-      border-radius: 5px;
-      padding: 4px 9px;
-    }
-    .ds-note-dot {
-      width: 7px; height: 7px;
-      border-radius: 1.5px;
-      background: #FFB81C;
-    }
+    .stamp small { display: block; font-family: var(--typed); font-size: 10.5px; font-weight: 700; letter-spacing: 0; }
+    @keyframes write  { from { clip-path: inset(-30% 112% -30% -12%); } to { clip-path: inset(-30% -12% -30% -12%); } }
+    @keyframes appear { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes stamp  { from { opacity: 0; transform: rotate(-9deg) scale(1.9); } to { opacity: .92; transform: rotate(-9deg) scale(1); } }
 
-    /* ── HOW IT WORKS ── */
-    .how { padding: 100px 28px; }
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 40px;
-      margin-top: 56px;
-    }
-    .step-num {
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      color: var(--teal);
-      margin-bottom: 14px;
-    }
-    .step h3 {
-      font-size: 15px;
-      font-weight: 600;
-      margin-bottom: 9px;
-      letter-spacing: -0.01em;
-    }
-    .step p { font-size: 14px; color: var(--gray-600); line-height: 1.68; }
+    /* ---------- Sections ---------- */
+    section { padding: 104px 0; }
+    .sec-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 56px; align-items: end; margin-bottom: 48px; }
+    .sec-head p { color: var(--muted); max-width: 34em; }
 
-    .flow-note {
-      margin-top: 48px;
-      padding: 20px 24px;
-      background: #f9f9f9;
-      border: 1px solid var(--gray-200);
-      border-radius: 10px;
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-    }
-    .flow-note-icon {
-      width: 18px;
-      height: 18px;
-      flex-shrink: 0;
-      margin-top: 1px;
-      color: var(--teal);
-    }
-    .flow-note p {
-      font-size: 13.5px;
-      color: var(--gray-600);
-      line-height: 1.65;
-      margin: 0;
-    }
-    .flow-note strong { color: var(--dark); font-weight: 600; }
+    /* Routing slip */
+    .circuit { padding-top: 40px; }
+    .slip { background: var(--card); border: 1px solid var(--hair); border-radius: var(--r-l); overflow: hidden; }
+    .slip-row { display: grid; grid-template-columns: 64px 190px minmax(0, 1fr) 150px; align-items: start; border-top: 1px solid var(--hair); }
+    .slip-row > * { padding: 24px 22px; }
+    .slip-cols { border-top: 0; background: var(--soft); color: var(--muted); }
+    .slip-cols > * { padding: 11px 22px; }
+    .slip ol { list-style: none; }
+    .slip .n { font-family: var(--typed); font-size: 20px; font-weight: 700; color: var(--muted); }
+    .slip .who { font-weight: 650; font-size: 15.5px; line-height: 1.4; padding-top: 27px; }
+    .slip h3 { font-size: 20px; font-stretch: 106%; font-weight: 700; letter-spacing: -0.012em; line-height: 1.25; margin-bottom: 5px; }
+    .slip p { font-size: 15.5px; color: var(--muted); max-width: 46em; }
+    .tick { display: flex; align-items: center; gap: 10px; font-family: var(--typed); font-size: 14px; }
+    .tick svg { width: 26px; height: 26px; flex: none; overflow: visible; }
+    .tick rect { fill: none; stroke: var(--ink); stroke-width: 1.5; }
+    .tick path { fill: none; stroke: var(--pen); stroke-width: 3.2; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 40; stroke-dashoffset: 40; transition: stroke-dashoffset .45s ease-out; }
+    .tick span { opacity: .35; transition: opacity .3s .3s; }
+    .slip-row.done .tick path { stroke-dashoffset: 0; }
+    .slip-row.done .tick span { opacity: 1; }
+    .footnote { display: grid; grid-template-columns: 22px minmax(0, 1fr); margin-top: 20px; font-size: 15px; color: var(--muted); max-width: 58em; }
+    .footnote b { color: var(--ink); }
 
-    /* ── PROOF ── */
-    .proof {
-      background: var(--dark);
-      padding: 80px 28px;
-    }
-    .proof-inner {
-      max-width: 620px;
-      margin: 0 auto;
-      text-align: center;
-    }
-    .proof-stat {
-      font-size: clamp(20px, 2.5vw, 28px);
-      font-weight: 500;
-      color: var(--white);
-      line-height: 1.5;
-      letter-spacing: -0.02em;
-      margin-bottom: 12px;
-    }
-    .proof-sub { font-size: 14px; color: #666; }
+    /* ---------- Platform mock + school themes ---------- */
+    .controls { display: flex; justify-content: space-between; align-items: flex-end; gap: 20px 32px; flex-wrap: wrap; margin-bottom: 18px; }
+    .control .label { display: block; color: var(--muted); margin-bottom: 8px; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { display: inline-flex; align-items: center; gap: 9px; padding: 9px 15px 9px 11px; background: var(--card); border: 1px solid var(--hair); border-radius: 999px; font-size: 14.5px; font-weight: 600; cursor: pointer; transition: border-color .15s, box-shadow .15s; }
+    .chip i { width: 16px; height: 16px; border-radius: 50%; background: var(--sw); }
+    .chip:hover { border-color: #aaa9a3; }
+    .chip[aria-pressed="true"] { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink); }
+    .seg { display: inline-flex; padding: 4px; background: var(--soft); border-radius: var(--r-m); }
+    .tab { border: 0; background: none; padding: 8px 16px; border-radius: var(--r-s); font-size: 14.5px; font-weight: 600; color: var(--muted); cursor: pointer; }
+    .tab:hover { color: var(--ink); }
+    .tab[aria-selected="true"] { background: var(--card); color: var(--ink); box-shadow: 0 1px 2px rgba(0,0,0,.12); }
 
-    /* ── CTA ── */
-    .cta {
-      padding: 104px 28px;
-      border-top: 1px solid var(--gray-200);
+    .mock {
+      --ac: #e4502b; --ac-fg: #fff; --tint: #fdeee8; --r: 16px;
+      --bar-bg: #fff; --bar-fg: var(--ink); --bar-line: var(--hair);
+      --crest-bg: var(--ac); --crest-fg: #fff; --crest-r: 50%;
+      --hfont: var(--sans); --hstretch: 112%; --hweight: 800; --hcase: none; --hspace: -0.02em;
+      background: var(--card); border: 1px solid var(--hair); border-radius: var(--r-l); overflow: hidden;
+      box-shadow: 0 30px 60px -40px rgba(17, 15, 15, .3);
     }
-    .cta-inner {
-      max-width: 600px;
-      margin: 0 auto;
-      text-align: center;
+    .mock[data-theme="marceau"] {
+      --ac: #14573f; --tint: #e8f1ec; --r: 8px;
+      --bar-bg: #14573f; --bar-fg: #fff; --bar-line: #14573f;
+      --crest-bg: #fff; --crest-fg: #14573f; --crest-r: 7px;
+      --hfont: 'Newsreader', Georgia, serif; --hstretch: 100%; --hweight: 500; --hspace: -0.012em;
     }
-    .cta-inner h2 {
-      font-size: clamp(28px, 4vw, 46px);
-      font-weight: 600;
-      letter-spacing: -0.03em;
-      line-height: 1.12;
-      margin-bottom: 16px;
+    .mock[data-theme="nordale"] {
+      --ac: #3d4edb; --tint: #eceefd; --r: 12px;
+      --bar-bg: #171a3d; --bar-fg: #fff; --bar-line: #171a3d;
+      --crest-bg: #3d4edb; --crest-fg: #fff; --crest-r: 11px;
+      --hstretch: 70%; --hweight: 700; --hcase: uppercase; --hspace: 0.015em;
     }
-    .cta-inner p {
-      font-size: 16px;
-      color: var(--gray-600);
-      line-height: 1.65;
-      margin-bottom: 36px;
+    .mock, .mock * { transition: background-color .25s, border-color .25s, color .25s, border-radius .25s; }
+    .themed { font-family: var(--hfont); font-stretch: var(--hstretch); font-weight: var(--hweight); text-transform: var(--hcase); letter-spacing: var(--hspace); }
+
+    .mock-bar { display: flex; align-items: center; gap: 13px; padding: 15px 28px; background: var(--bar-bg); color: var(--bar-fg); border-bottom: 1px solid var(--bar-line); }
+    .crest { display: grid; place-items: center; width: 38px; height: 38px; flex: none; background: var(--crest-bg); color: var(--crest-fg); border-radius: var(--crest-r); font-size: 20px; line-height: 1; }
+    .mock-bar .school { font-size: 19px; line-height: 1.15; display: block; }
+    .mock-bar small { font-size: 12.5px; opacity: .72; display: block; }
+    .mock-bar .powered { margin-left: auto; font-size: 12px; opacity: .6; white-space: nowrap; }
+
+    .panel { padding: 28px; min-height: 452px; }
+    .panel[hidden] { display: none; }
+    .panel-head { display: flex; justify-content: space-between; align-items: baseline; gap: 6px 16px; flex-wrap: wrap; margin-bottom: 20px; }
+    .panel-head h3 { font-size: 23px; line-height: 1.2; }
+    .panel-head p { font-size: 14.5px; color: var(--muted); }
+    .counts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 22px; }
+    .counts div { padding: 13px 16px 12px; background: var(--tint); border-radius: var(--r); }
+    .counts .label { display: block; color: var(--muted); }
+    .counts b { font-size: 36px; line-height: 1.15; display: block; }
+    table { width: 100%; border-collapse: collapse; font-size: 15px; }
+    th { text-align: left; padding: 8px 12px 8px 0; border-bottom: 1px solid var(--hair); color: var(--muted); }
+    td { padding: 12px 12px 12px 0; border-bottom: 1px solid var(--hair); vertical-align: top; }
+    tr:last-child td { border-bottom: 0; padding-bottom: 0; }
+    td small { display: block; font-size: 13px; color: var(--muted); }
+    td.when { color: var(--muted); white-space: nowrap; }
+    .st { display: inline-block; font-size: 13px; font-weight: 600; padding: 3px 10px; border-radius: 999px; white-space: nowrap; }
+    .st-signed { background: var(--tint); color: var(--ac); }
+    .st-wait { background: #fff3c4; color: #6b4e00; }
+    .st-draft { background: var(--soft); color: var(--muted); }
+    .formgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .formgrid .label { display: block; color: var(--muted); margin-bottom: 5px; }
+    .formgrid .val { display: block; padding: 10px 13px; border: 1px solid var(--hair); border-radius: var(--r); font-size: 15.5px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .formgrid.read .val { background: var(--tint); border-color: transparent; }
+    .fake-btn { display: inline-block; margin-top: 22px; padding: 12px 18px; background: var(--ac); color: var(--ac-fg); font-weight: 650; font-size: 15px; border-radius: var(--r); }
+    .fake-btn.alt { background: none; color: var(--ink); box-shadow: inset 0 0 0 1px var(--hair); margin-left: 8px; }
+    .caption { margin-top: 16px; font-size: 14px; color: var(--muted); max-width: 52em; }
+
+    /* ---------- Articles ---------- */
+    .articles { border-top: 1px solid var(--ink); }
+    .article { display: grid; grid-template-columns: 88px minmax(0, .9fr) minmax(0, 1.1fr); gap: 0 32px; padding: 28px 0 30px; border-bottom: 1px solid var(--hair); }
+    .article .art { font-family: var(--typed); font-size: 14.5px; color: var(--muted); padding-top: 5px; }
+    .article h3 { font-size: 24px; font-stretch: 106%; font-weight: 700; letter-spacing: -0.016em; line-height: 1.18; text-wrap: balance; }
+    .article p { color: var(--muted); font-size: 16.5px; }
+    .article p + p { margin-top: 10px; font-family: var(--typed); font-size: 13.5px; color: var(--ink); }
+
+    /* ---------- Reference ---------- */
+    .reference { padding: 0; }
+    .ref-card { background: var(--ink); color: #fff; border-radius: 32px; padding: 72px 64px; }
+    .ref-card .label { color: rgba(255,255,255,.6); display: block; margin-bottom: 20px; }
+    .ref-card blockquote { font-size: clamp(25px, 3.1vw, 40px); font-stretch: 106%; font-weight: 300; line-height: 1.2; letter-spacing: -0.02em; max-width: 24em; text-wrap: balance; }
+    .ref-card blockquote b { font-weight: 800; }
+    .ref-card p { margin-top: 26px; font-size: 15px; color: rgba(255,255,255,.65); }
+
+    /* ---------- FAQ ---------- */
+    .faq-grid { display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 56px; align-items: start; }
+    .faq-grid h2 { position: sticky; top: 32px; }
+    .faq-list { border-top: 1px solid var(--ink); }
+    details { border-bottom: 1px solid var(--hair); }
+    summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 20px; padding: 19px 0; font-size: 18px; font-weight: 650; line-height: 1.3; }
+    summary::-webkit-details-marker { display: none; }
+    summary::after { content: '+'; display: grid; place-items: center; flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--soft); font-size: 18px; font-weight: 400; line-height: 1; }
+    details[open] summary::after { content: '\2212'; background: var(--ink); color: #fff; }
+    details p { padding: 0 56px 22px 0; color: var(--muted); font-size: 16.5px; }
+
+    /* ---------- Contact ---------- */
+    .contact { padding-top: 0; }
+    .contact-grid { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 64px; align-items: start; }
+    .contact h2 { margin-bottom: 24px; }
+    .contact-copy p { color: var(--muted); max-width: 30em; }
+    .contact-copy .terms { margin-top: 26px; padding-top: 20px; border-top: 1px solid var(--hair); font-size: 15px; }
+    .contact-copy .terms a { color: var(--ink); font-weight: 650; text-underline-offset: 4px; }
+    .request { background: var(--card); border: 1px solid var(--hair); border-radius: var(--r-l); padding: 30px; box-shadow: 0 30px 60px -40px rgba(17, 15, 15, .3); }
+    .request h3 { font-size: 21px; font-stretch: 106%; letter-spacing: -0.012em; margin-bottom: 20px; }
+    .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .fld { display: block; }
+    .fld.wide { grid-column: 1 / -1; }
+    .fld .label { display: block; color: var(--muted); margin-bottom: 6px; }
+    .fld input, .fld textarea { width: 100%; padding: 11px 13px; border: 1px solid var(--hair); border-radius: var(--r-s); background: var(--bg); font: inherit; font-size: 16px; color: var(--ink); outline: 0; transition: border-color .15s, background .15s; }
+    .fld input:focus, .fld textarea:focus { border-color: var(--ink); background: var(--card); box-shadow: 0 0 0 1px var(--ink); }
+    .fld textarea { resize: vertical; min-height: 104px; display: block; }
+    .fld ::placeholder { color: #a5a4a0; }
+    .request-foot { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 20px; }
+    .request .btn[disabled] { opacity: .5; cursor: default; }
+    .request-note { font-size: 14px; color: var(--muted); }
+    #cf-status { font-size: 15px; font-weight: 650; margin-top: 14px; }
+    #cf-status.ok { color: #14573f; }
+    #cf-status.err { color: var(--red); }
+
+    footer { border-top: 1px solid var(--hair); padding: 26px 0 30px; font-size: 14.5px; color: var(--muted); }
+    footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 14px 28px; flex-wrap: wrap; }
+    footer .mark { width: 96px; height: 25px; display: block; color: var(--ink); }
+    footer div { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+    footer a { text-decoration: none; }
+    footer a:hover { color: var(--ink); }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 980px) {
+      .top nav .opt { display: none; }
+      .hero { grid-template-columns: 1fr; gap: 56px; padding-top: 44px; padding-bottom: 80px; }
+      .sheet-zone { max-width: 500px; width: 100%; margin: 0 auto; }
+      .sec-head, .faq-grid, .contact-grid { grid-template-columns: 1fr; gap: 22px; }
+      .sec-head { margin-bottom: 36px; }
+      .faq-grid h2 { position: static; }
+      .article { grid-template-columns: 64px minmax(0, 1fr); }
+      .article p, .article > div { grid-column: 2; margin-top: 10px; }
+      .slip-row { grid-template-columns: 52px 140px minmax(0, 1fr) 138px; }
+      .slip-row > * { padding-left: 18px; padding-right: 10px; }
+      .ref-card { padding: 56px 40px; }
     }
-    .cta-email-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 26px;
-      background: var(--black);
-      color: var(--white);
-      font-size: 15px;
-      font-weight: 500;
-      border-radius: 9px;
-      text-decoration: none;
-      transition: opacity 0.15s;
+    @media (max-width: 760px) {
+      body { font-size: 16px; }
+      .wrap { padding: 0 18px; }
+      section { padding: 76px 0; }
+      .circuit { padding-top: 16px; }
+      .top nav { gap: 14px; }
+      .top nav .btn { display: none; }
+      .top .mark { width: 112px; height: 29px; }
+      .facts { grid-template-columns: 1fr; gap: 14px; }
+      .sheet { padding: 20px 18px 18px; }
+      .boxes .typed { font-size: 11.5px; }
+      .boxes > div { padding: 5px 7px 6px; }
+      .hand-a { font-size: 27px; } .hand-b { font-size: 26px; } .hand-c { font-size: 23px; }
+      .sig { min-height: 88px; padding: 6px; }
+      .stamp { font-size: 17px; right: 12px; }
+      .slip-cols { display: none; }
+      .slip-row { grid-template-columns: 44px minmax(0, 1fr); }
+      .slip li:first-child { border-top: 0; }
+      .slip-row > * { padding: 0 16px 0 0; }
+      .slip-row .n { grid-row: span 3; padding: 18px 0 0 16px; }
+      .slip-row .who { padding-top: 20px; font-size: 13.5px; color: var(--muted); }
+      .slip-row > div { padding-top: 2px; }
+      .slip-row .tick { padding: 10px 0 18px; }
+      .seg { width: 100%; }
+      .tab { flex: 1; padding: 8px 6px; font-size: 13.5px; }
+      .control { width: 100%; }
+      .mock-bar { padding: 13px 18px; }
+      .mock-bar .powered { display: none; }
+      .panel { padding: 18px; min-height: 0; }
+      .counts { gap: 8px; }
+      .counts div { padding: 10px 11px; }
+      .counts b { font-size: 28px; }
+      .hide-s { display: none; }
+      .formgrid, .fields { grid-template-columns: 1fr; }
+      .fake-btn.alt { margin-left: 0; }
+      .article { grid-template-columns: 1fr; padding: 22px 0 24px; }
+      .article p, .article > div { grid-column: 1; }
+      .article h3 { font-size: 21px; margin-top: 4px; }
+      .ref-card { padding: 44px 26px; border-radius: 24px; }
+      details p { padding-right: 0; }
+      .request { padding: 20px; }
     }
-    .cta-email-link:hover { opacity: 0.8; }
-
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--gray-200);
-      padding: 32px 28px;
-    }
-    .footer-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-    .footer-left { display: flex; align-items: center; gap: 20px; }
-    .footer-logo svg { height: 18px; width: auto; display: block; }
-    .footer-copy { font-size: 13px; color: var(--gray-400); }
-    .footer-right { display: flex; align-items: center; gap: 20px; }
-    .footer-link { font-size: 13px; color: var(--gray-400); text-decoration: none; }
-    .footer-link:hover { color: var(--black); }
-
-    /* ── VIEW TABS ── */
-    .mockup-header { text-align: center; margin-bottom: 28px; }
-    .mockup-header-sub { font-size: 15px; color: var(--gray-600); margin-top: 8px; line-height: 1.5; }
-    .role-selector { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px; }
-    .role-btn { padding: 10px 20px; border-radius: 10px; border: 1.5px solid var(--gray-200); background: var(--white); cursor: pointer; transition: border-color 0.18s, background 0.18s; text-align: center; min-width: 120px; user-select: none; }
-    .role-btn:hover:not(.active) { border-color: #aaa; }
-    .role-btn.active { background: var(--dark); border-color: var(--dark); }
-    .role-btn-label { font-size: 13px; font-weight: 600; color: var(--dark); }
-    .role-btn.active .role-btn-label { color: var(--white); }
-    .role-btn-sub { font-size: 11px; color: var(--gray-400); margin-top: 3px; }
-    .role-btn.active .role-btn-sub { color: rgba(247,247,247,0.55); }
-    .mockup-disclaimer { text-align: center; font-size: 12px; color: var(--gray-400); margin-top: 14px; font-style: italic; }
-    .tab-panel { display: none; }
-    .tab-panel.active { display: block; }
-
-    /* ── STUDENT FORM ── */
-    .sf-wrap { padding: 20px 24px 24px; }
-    .sf-head { margin-bottom: 18px; }
-    .sf-head-title { font-size: 13.5px; font-weight: 600; color: var(--dark); margin-bottom: 3px; }
-    .sf-head-sub { font-size: 12px; color: var(--gray-400); }
-    .sf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 10px; }
-    .sf-field { display: flex; flex-direction: column; gap: 4px; }
-    .sf-field label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-400); }
-    .sf-input { padding: 7px 10px; background: var(--white); border: 1px solid var(--gray-200); border-radius: 6px; font-size: 12px; color: var(--dark); }
-    .sf-submit { margin-top: 16px; display: inline-flex; align-items: center; gap: 7px; padding: 9px 18px; background: var(--dark); color: var(--white); border-radius: 7px; font-size: 12px; font-weight: 600; }
-
-    /* ── EMPLOYER REVIEW ── */
-    .er-wrap { padding: 20px 24px 24px; }
-    .er-head { margin-bottom: 16px; }
-    .er-head-title { font-size: 13.5px; font-weight: 600; color: var(--dark); margin-bottom: 3px; }
-    .er-head-sub { font-size: 12px; color: var(--gray-400); }
-    .er-block { background: #f9f9f9; border: 1px solid var(--gray-200); border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; }
-    .er-block-label { font-size: 10px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-400); margin-bottom: 8px; }
-    .er-row { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 5px; }
-    .er-row:last-child { margin-bottom: 0; }
-    .er-key { color: var(--gray-400); }
-    .er-val { color: var(--dark); font-weight: 500; }
-    .er-actions { display: flex; gap: 8px; margin-top: 14px; }
-    .er-btn-confirm { padding: 8px 16px; background: var(--dark); color: var(--white); border-radius: 7px; font-size: 12px; font-weight: 600; }
-    .er-btn-query { padding: 8px 14px; background: var(--white); border: 1px solid var(--gray-200); color: var(--gray-600); border-radius: 7px; font-size: 12px; }
-
-    /* ── STAFF APPROVAL ── */
-    .sa-wrap { padding: 20px 24px 24px; }
-    .sa-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
-    .sa-head-title { font-size: 13.5px; font-weight: 600; color: var(--dark); }
-    .sa-pending-badge { background: #fff3cd; color: #7a5c00; font-size: 10.5px; font-weight: 600; padding: 3px 9px; border-radius: 20px; }
-    .sa-row { display: flex; align-items: center; gap: 10px; padding: 10px 0; border-bottom: 1px solid var(--gray-200); }
-    .sa-info { flex: 1; }
-    .sa-name { font-size: 12.5px; font-weight: 600; color: var(--dark); }
-    .sa-meta { font-size: 11px; color: var(--gray-400); margin-top: 1px; }
-    .sa-employer { font-size: 12px; color: var(--gray-600); flex: 1; }
-    .sa-btns { display: flex; gap: 6px; }
-    .sa-btn-approve { padding: 5px 11px; background: #e8f5ee; color: #38a169; border-radius: 6px; font-size: 11px; font-weight: 600; }
-    .sa-btn-query { padding: 5px 9px; background: var(--white); border: 1px solid var(--gray-200); color: var(--gray-400); border-radius: 6px; font-size: 11px; }
-    .sa-recent { display: flex; align-items: center; gap: 8px; margin-top: 14px; padding-top: 12px; border-top: 1px dashed var(--gray-200); }
-    .sa-recent-icon { width: 16px; height: 16px; background: #e8f5ee; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 9px; color: #38a169; flex-shrink: 0; }
-    .sa-recent-text { font-size: 11px; color: var(--gray-400); }
-
-    /* ── NO MORE STRIP ── */
-    .no-more-strip { background: #f4f4f4; border-top: 1px solid var(--gray-200); border-bottom: 1px solid var(--gray-200); padding: 18px 28px; text-align: center; }
-    .no-more-strip p { font-size: 14px; color: var(--gray-600); line-height: 1.6; }
-
-    /* ── FAQ ── */
-    .faq { padding: 100px 28px; background: var(--white); border-top: 1px solid var(--gray-200); border-bottom: 1px solid var(--gray-200); }
-    .faq-list { max-width: 680px; margin: 56px auto 0; }
-    .faq-item { border-bottom: 1px solid var(--gray-200); }
-    .faq-q { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; cursor: pointer; gap: 16px; }
-    .faq-q-text { font-size: 15px; font-weight: 600; color: var(--dark); letter-spacing: -0.01em; }
-    .faq-chevron { width: 18px; height: 18px; flex-shrink: 0; stroke: var(--gray-400); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; transition: transform 0.25s cubic-bezier(0.16,1,0.3,1); }
-    .faq-item.open .faq-chevron { transform: rotate(180deg); }
-    .faq-a { font-size: 14.5px; color: var(--gray-600); line-height: 1.7; max-height: 0; overflow: hidden; transition: max-height 0.35s cubic-bezier(0.16,1,0.3,1), padding 0.25s; }
-    .faq-item.open .faq-a { max-height: 300px; padding-bottom: 20px; }
-
-    /* ── CONTACT FORM ── */
-    .cta-form { width: 100%; text-align: left; }
-    .cta-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
-    .cta-form-field { display: flex; flex-direction: column; gap: 5px; }
-    .cta-form-field label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--gray-400); }
-    .cta-form-field input, .cta-form-field textarea { padding: 10px 12px; background: var(--white); border: 1px solid var(--gray-200); border-radius: 7px; font-size: 14px; font-family: var(--font); color: var(--dark); outline: none; transition: border-color 0.15s; }
-    .cta-form-field input:focus, .cta-form-field textarea:focus { border-color: var(--teal); }
-    .cta-form-field textarea { resize: vertical; min-height: 90px; }
-    .cta-form-submit { display: inline-flex; align-items: center; gap: 10px; padding: 12px 24px; background: var(--black); color: var(--white); font-size: 14px; font-weight: 500; border: none; border-radius: 7px; cursor: pointer; font-family: var(--font); transition: opacity 0.15s; margin-top: 4px; }
-    .cta-form-submit:hover { opacity: 0.8; }
-    .cta-form-note { font-size: 12px; color: var(--gray-400); margin-top: 14px; text-align: center; }
-    .cta-pricing { font-size: 13px; color: var(--gray-400); margin-top: -18px; margin-bottom: 28px; }
-
-    /* ── PROOF QUOTE ── */
-    .proof-quote { font-size: 15px; color: rgba(247,247,247,0.55); line-height: 1.7; font-style: italic; max-width: 520px; margin: 0 auto 16px; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .features-grid { grid-template-columns: 1fr 1fr; }
-      .steps { grid-template-columns: 1fr 1fr; gap: 36px; }
-    }
-    @media (max-width: 700px) {
-      .dashboard { grid-template-columns: 1fr; }
-      .db-sidebar { display: none; }
-      .db-stats { grid-template-columns: 1fr 1fr; }
-      .db-table-head,
-      .db-row { grid-template-columns: 1.8fr 1fr 1.1fr; }
-      .db-table-head > .db-th:nth-child(2),
-      .db-row > .db-cell-text:nth-child(2) { display: none; }
-      .nav-right .nav-link { display: none; }
-    }
-    @media (max-width: 560px) {
-      .features-grid { grid-template-columns: 1fr; }
-      .steps { grid-template-columns: 1fr; }
-      .hero h1 { font-size: 34px; }
-      .hero-sub { font-size: 16px; }
-      .db-stats { grid-template-columns: 1fr; }
-      .cta-form-row { grid-template-columns: 1fr; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .sig .hand, .sig .when, .stamp { animation: none; }
+      .stamp { opacity: .92; }
+      .tick path, .tick span, .mock, .mock * { transition: none; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ── NAV ── -->
-  <nav>
-    <div class="container nav-inner">
-      <a href="/" class="nav-logo" aria-label="StageFlow">
-        <svg width="130" height="33" viewBox="0 0 391 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M242.588 69.0518V25.052H235.3V22.6363H242.588V15.3927C242.588 10.383 243.699 6.64585 245.919 4.18821C248.139 1.72707 251.355 0.5 255.559 0.5H258.137V2.91569H255.426C251.989 2.91569 249.391 3.94699 247.628 6.01309C245.865 8.07919 244.985 11.2815 244.985 15.6234V22.6398H257.646V25.0554H244.985V69.0553H242.584L242.588 69.0518ZM266.311 69.0518H263.866V1.04537H266.311V69.0518ZM287.416 66.9333C283.801 64.7937 280.944 61.8711 278.84 58.1654C276.736 54.4598 275.685 50.3905 275.685 45.9576C275.685 41.5248 276.736 37.4101 278.84 33.7044C280.944 29.9987 283.801 27.0691 287.416 24.9121C291.031 22.7551 294.969 21.6784 299.235 21.6784C303.501 21.6784 307.433 22.7551 311.031 24.9121C314.628 27.0691 317.479 29.9987 319.583 33.7044C321.687 37.4101 322.737 41.4933 322.737 45.9576C322.737 50.422 321.687 54.4528 319.583 58.141C317.479 61.8292 314.628 64.7553 311.031 66.9088C307.433 69.0658 303.501 70.1425 299.235 70.1425C294.969 70.1425 291.031 69.0728 287.416 66.9298V66.9333ZM309.83 64.8147C313.043 62.9024 315.6 60.284 317.496 56.9559C319.392 53.6312 320.34 49.964 320.34 45.9541C320.34 41.9443 319.392 38.2736 317.496 34.9315C315.6 31.5928 313.046 28.9569 309.83 27.0272C306.615 25.0974 303.099 24.136 299.28 24.136C295.46 24.136 291.883 25.1009 288.637 27.0272C285.394 28.9569 282.823 31.5824 280.927 34.907C279.031 38.2316 278.083 41.9128 278.083 45.9541C278.083 49.9954 279.031 53.6312 280.927 56.9559C282.823 60.2805 285.39 62.8989 288.637 64.8147C291.88 66.727 295.426 67.6849 299.28 67.6849C303.133 67.6849 306.618 66.727 309.83 64.8147ZM369.833 66.0453L387.562 22.6363H390.185L371.211 69.0518H368.677L357.349 41.1298L345.973 69.0518H343.44L324.466 22.6363H327.089L344.684 66.0453L362.236 22.6363H364.858L358.55 38.1687L369.833 66.0453ZM0.18457 63.1786L6.67048 52.6104C8.62443 53.8864 10.9501 54.9772 13.6474 55.8896C16.3414 56.802 18.875 57.2565 21.245 57.2565C24.3243 57.2565 25.8656 56.435 25.8656 54.7954C25.8656 54.2185 25.6201 53.7116 25.1325 53.2711C24.6448 52.8307 23.7923 52.3762 22.5783 51.9042C21.3644 51.4323 19.6014 50.8799 17.2928 50.2402C12.8495 49.0271 9.22119 47.1567 6.4079 44.6362C3.59461 42.1156 2.18627 38.9133 2.18627 35.0259C2.18627 32.1417 2.9774 29.5372 4.56307 27.2124C6.14874 24.8876 8.4437 23.0523 11.4514 21.6993C14.4556 20.3499 18.0055 19.6717 22.0941 19.6717C24.9381 19.6717 27.898 20.1891 30.9807 21.2204C34.06 22.2517 37.0369 23.6955 39.9116 25.5484L33.2484 36.5256C31.7377 35.5537 29.8281 34.7042 27.5161 33.9736C25.2041 33.2464 23.1614 32.8793 21.3848 32.8793C19.9628 32.8793 18.8955 33.0926 18.1862 33.5156C17.4769 33.9421 17.1189 34.5329 17.1189 35.2915C17.1189 35.8684 17.3541 36.3613 17.8281 36.7703C18.3021 37.1793 19.0933 37.5919 20.2049 38.0009C21.3166 38.4099 22.9534 38.9063 25.1154 39.4797C28.58 40.3921 31.4547 41.4759 33.736 42.7379C36.0173 43.9999 37.7803 45.622 39.0216 47.6112C40.2662 49.6004 40.8869 52.0371 40.8869 54.9212C40.8869 57.8054 40.1026 60.4728 38.5305 62.8255C36.9585 65.1783 34.7317 67.0311 31.8434 68.3841C28.9551 69.7335 25.6167 70.4117 21.8247 70.4117C13.8861 70.4117 6.67389 67.996 0.18798 63.1681L0.18457 63.1786ZM61.8552 69.0553H46.8374V34.8441H41.1494V20.7694H46.7931V9.56496L61.8996 5.74041V20.7694H71.0078V34.8441H61.8552V69.0518V69.0553ZM110.551 20.7694H121.657V69.0518H110.104L108.46 64.6784C105.084 68.3526 100.757 70.1915 95.4851 70.1915C91.1611 70.1915 87.185 69.0588 83.5568 66.7969C79.9285 64.535 77.047 61.4656 74.9157 57.5956C72.7844 53.7221 71.7171 49.4955 71.7171 44.9089C71.7171 40.3222 72.7844 36.148 74.9157 32.292C77.047 28.436 79.9353 25.3841 83.5806 23.1362C87.2225 20.8883 91.1918 19.7661 95.4885 19.7661C100.791 19.7661 105.173 21.6644 108.641 25.461L110.551 20.7694ZM102.22 54.4528C103.806 53.5263 105.057 52.2433 105.974 50.6037C106.892 48.9641 107.352 47.1113 107.352 45.0452C107.352 42.9791 106.898 41.1123 105.998 39.4412C105.095 37.7702 103.85 36.4662 102.268 35.5223C100.682 34.5819 98.9292 34.1099 97.0026 34.1099C95.0759 34.1099 93.2856 34.5819 91.7136 35.5223C90.145 36.4627 88.9071 37.7702 88.0034 39.4412C87.0998 41.1123 86.6497 42.9791 86.6497 45.0452C86.6497 47.1113 87.093 48.9641 87.983 50.6037C88.873 52.2433 90.0938 53.5263 91.6488 54.4528C93.2038 55.3792 94.9599 55.8407 96.9139 55.8407C98.8679 55.8407 100.638 55.3792 102.223 54.4528H102.22ZM164.934 20.7694H176.487V61.7663C176.487 66.9298 175.539 71.3626 173.643 75.0683C171.747 78.774 168.954 81.6057 165.268 83.5634C161.582 85.5211 157.115 86.5 151.874 86.5C148.29 86.5 144.484 85.9686 140.453 84.9059C136.426 83.8431 133.21 82.4307 130.813 80.6688L136.412 69.0063C138.782 70.3733 141.101 71.4115 143.366 72.1247C145.633 72.8379 147.966 73.1945 150.363 73.1945C153.828 73.1945 156.583 72.3205 158.629 70.576C160.672 68.8315 161.695 66.1956 161.695 62.6717V62.2172C158.435 64.8602 154.602 66.1781 150.186 66.1781C146.066 66.1781 142.261 65.2307 138.765 63.3324C135.27 61.4341 132.494 58.7947 130.435 55.4072C128.375 52.0231 127.345 48.202 127.345 43.951C127.345 39.6999 128.382 35.6621 130.455 31.925C132.528 28.1913 135.321 25.2058 138.83 22.9754C142.339 20.745 146.138 19.6263 150.227 19.6263C155.41 19.6263 159.764 21.4791 163.29 25.1848L164.934 20.7659V20.7694ZM157.313 51.8133C158.837 50.9184 160.03 49.7193 160.89 48.216C161.749 46.7128 162.179 45.1116 162.179 43.4091C162.179 41.5283 161.742 39.8118 160.869 38.2631C159.996 36.7144 158.803 35.4908 157.292 34.5959C155.781 33.7009 154.107 33.2534 152.273 33.2534C150.438 33.2534 148.747 33.7009 147.209 34.5959C145.667 35.4908 144.46 36.7144 143.587 38.2631C142.714 39.8118 142.278 41.5283 142.278 43.4091C142.278 45.1116 142.714 46.7128 143.587 48.216C144.46 49.7193 145.667 50.9184 147.209 51.8133C148.75 52.7083 150.438 53.1558 152.273 53.1558C154.107 53.1558 155.788 52.7083 157.316 51.8133H157.313ZM196.968 49.8766C197.797 52.3063 199.181 54.1801 201.121 55.5015C203.062 56.823 205.306 57.4837 207.853 57.4837C209.78 57.4837 211.488 57.1726 212.985 56.5503C214.479 55.928 215.88 55.0401 217.183 53.8864L224.027 64.0002C221.807 66.0348 219.249 67.608 216.361 68.7162C213.473 69.8244 210.312 70.3802 206.874 70.3802C202.165 70.3802 197.93 69.2406 194.168 66.9647C190.407 64.6889 187.468 61.6194 185.35 57.7634C183.232 53.9074 182.172 49.7158 182.172 45.192C182.172 40.6683 183.178 36.3263 185.193 32.4389C187.208 28.5514 189.998 25.468 193.568 23.1921C197.139 20.9163 201.173 19.7766 205.674 19.7766C210.622 19.7766 214.871 20.8324 218.424 22.9439C221.977 25.0554 224.675 27.992 226.509 31.7572C228.344 35.5223 229.265 39.8502 229.265 44.7376C229.265 46.4086 229.132 48.1251 228.866 49.8836H196.965L196.968 49.8766ZM200.191 34.1169C198.516 35.4524 197.353 37.3821 196.702 39.9027H215.543C214.922 37.3507 213.817 35.4174 212.231 34.0959C210.646 32.7745 208.668 32.1137 206.301 32.1137C203.935 32.1137 201.865 32.7815 200.191 34.1169Z" fill="#110F0F"/></svg>
-      </a>
-      <div class="nav-right">
-        <a href="#platform" class="nav-link">Platform</a>
-        <a href="#features" class="nav-link">Features</a>
-        <a href="#how-it-works" class="nav-link">How it works</a>
-        <a href="https://stageflow.parsonsparis.newschool.org/" class="nav-link" style="font-weight:600;">Sign in</a>
-        <a href="mailto:hello@stageflow.careers" class="btn-primary">Request a demo</a>
-      </div>
-    </div>
-  </nav>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="wordmark" viewBox="0 0 391 100"><path fill="currentColor" d="M242.588 69.0518V25.052H235.3V22.6363H242.588V15.3927C242.588 10.383 243.699 6.64585 245.919 4.18821C248.139 1.72707 251.355 0.5 255.559 0.5H258.137V2.91569H255.426C251.989 2.91569 249.391 3.94699 247.628 6.01309C245.865 8.07919 244.985 11.2815 244.985 15.6234V22.6398H257.646V25.0554H244.985V69.0553H242.584L242.588 69.0518ZM266.311 69.0518H263.866V1.04537H266.311V69.0518ZM287.416 66.9333C283.801 64.7937 280.944 61.8711 278.84 58.1654C276.736 54.4598 275.685 50.3905 275.685 45.9576C275.685 41.5248 276.736 37.4101 278.84 33.7044C280.944 29.9987 283.801 27.0691 287.416 24.9121C291.031 22.7551 294.969 21.6784 299.235 21.6784C303.501 21.6784 307.433 22.7551 311.031 24.9121C314.628 27.0691 317.479 29.9987 319.583 33.7044C321.687 37.4101 322.737 41.4933 322.737 45.9576C322.737 50.422 321.687 54.4528 319.583 58.141C317.479 61.8292 314.628 64.7553 311.031 66.9088C307.433 69.0658 303.501 70.1425 299.235 70.1425C294.969 70.1425 291.031 69.0728 287.416 66.9298V66.9333ZM309.83 64.8147C313.043 62.9024 315.6 60.284 317.496 56.9559C319.392 53.6312 320.34 49.964 320.34 45.9541C320.34 41.9443 319.392 38.2736 317.496 34.9315C315.6 31.5928 313.046 28.9569 309.83 27.0272C306.615 25.0974 303.099 24.136 299.28 24.136C295.46 24.136 291.883 25.1009 288.637 27.0272C285.394 28.9569 282.823 31.5824 280.927 34.907C279.031 38.2316 278.083 41.9128 278.083 45.9541C278.083 49.9954 279.031 53.6312 280.927 56.9559C282.823 60.2805 285.39 62.8989 288.637 64.8147C291.88 66.727 295.426 67.6849 299.28 67.6849C303.133 67.6849 306.618 66.727 309.83 64.8147ZM369.833 66.0453L387.562 22.6363H390.185L371.211 69.0518H368.677L357.349 41.1298L345.973 69.0518H343.44L324.466 22.6363H327.089L344.684 66.0453L362.236 22.6363H364.858L358.55 38.1687L369.833 66.0453ZM0.18457 63.1786L6.67048 52.6104C8.62443 53.8864 10.9501 54.9772 13.6474 55.8896C16.3414 56.802 18.875 57.2565 21.245 57.2565C24.3243 57.2565 25.8656 56.435 25.8656 54.7954C25.8656 54.2185 25.6201 53.7116 25.1325 53.2711C24.6448 52.8307 23.7923 52.3762 22.5783 51.9042C21.3644 51.4323 19.6014 50.8799 17.2928 50.2402C12.8495 49.0271 9.22119 47.1567 6.4079 44.6362C3.59461 42.1156 2.18627 38.9133 2.18627 35.0259C2.18627 32.1417 2.9774 29.5372 4.56307 27.2124C6.14874 24.8876 8.4437 23.0523 11.4514 21.6993C14.4556 20.3499 18.0055 19.6717 22.0941 19.6717C24.9381 19.6717 27.898 20.1891 30.9807 21.2204C34.06 22.2517 37.0369 23.6955 39.9116 25.5484L33.2484 36.5256C31.7377 35.5537 29.8281 34.7042 27.5161 33.9736C25.2041 33.2464 23.1614 32.8793 21.3848 32.8793C19.9628 32.8793 18.8955 33.0926 18.1862 33.5156C17.4769 33.9421 17.1189 34.5329 17.1189 35.2915C17.1189 35.8684 17.3541 36.3613 17.8281 36.7703C18.3021 37.1793 19.0933 37.5919 20.2049 38.0009C21.3166 38.4099 22.9534 38.9063 25.1154 39.4797C28.58 40.3921 31.4547 41.4759 33.736 42.7379C36.0173 43.9999 37.7803 45.622 39.0216 47.6112C40.2662 49.6004 40.8869 52.0371 40.8869 54.9212C40.8869 57.8054 40.1026 60.4728 38.5305 62.8255C36.9585 65.1783 34.7317 67.0311 31.8434 68.3841C28.9551 69.7335 25.6167 70.4117 21.8247 70.4117C13.8861 70.4117 6.67389 67.996 0.18798 63.1681L0.18457 63.1786ZM61.8552 69.0553H46.8374V34.8441H41.1494V20.7694H46.7931V9.56496L61.8996 5.74041V20.7694H71.0078V34.8441H61.8552V69.0518V69.0553ZM110.551 20.7694H121.657V69.0518H110.104L108.46 64.6784C105.084 68.3526 100.757 70.1915 95.4851 70.1915C91.1611 70.1915 87.185 69.0588 83.5568 66.7969C79.9285 64.535 77.047 61.4656 74.9157 57.5956C72.7844 53.7221 71.7171 49.4955 71.7171 44.9089C71.7171 40.3222 72.7844 36.148 74.9157 32.292C77.047 28.436 79.9353 25.3841 83.5806 23.1362C87.2225 20.8883 91.1918 19.7661 95.4885 19.7661C100.791 19.7661 105.173 21.6644 108.641 25.461L110.551 20.7694ZM102.22 54.4528C103.806 53.5263 105.057 52.2433 105.974 50.6037C106.892 48.9641 107.352 47.1113 107.352 45.0452C107.352 42.9791 106.898 41.1123 105.998 39.4412C105.095 37.7702 103.85 36.4662 102.268 35.5223C100.682 34.5819 98.9292 34.1099 97.0026 34.1099C95.0759 34.1099 93.2856 34.5819 91.7136 35.5223C90.145 36.4627 88.9071 37.7702 88.0034 39.4412C87.0998 41.1123 86.6497 42.9791 86.6497 45.0452C86.6497 47.1113 87.093 48.9641 87.983 50.6037C88.873 52.2433 90.0938 53.5263 91.6488 54.4528C93.2038 55.3792 94.9599 55.8407 96.9139 55.8407C98.8679 55.8407 100.638 55.3792 102.223 54.4528H102.22ZM164.934 20.7694H176.487V61.7663C176.487 66.9298 175.539 71.3626 173.643 75.0683C171.747 78.774 168.954 81.6057 165.268 83.5634C161.582 85.5211 157.115 86.5 151.874 86.5C148.29 86.5 144.484 85.9686 140.453 84.9059C136.426 83.8431 133.21 82.4307 130.813 80.6688L136.412 69.0063C138.782 70.3733 141.101 71.4115 143.366 72.1247C145.633 72.8379 147.966 73.1945 150.363 73.1945C153.828 73.1945 156.583 72.3205 158.629 70.576C160.672 68.8315 161.695 66.1956 161.695 62.6717V62.2172C158.435 64.8602 154.602 66.1781 150.186 66.1781C146.066 66.1781 142.261 65.2307 138.765 63.3324C135.27 61.4341 132.494 58.7947 130.435 55.4072C128.375 52.0231 127.345 48.202 127.345 43.951C127.345 39.6999 128.382 35.6621 130.455 31.925C132.528 28.1913 135.321 25.2058 138.83 22.9754C142.339 20.745 146.138 19.6263 150.227 19.6263C155.41 19.6263 159.764 21.4791 163.29 25.1848L164.934 20.7659V20.7694ZM157.313 51.8133C158.837 50.9184 160.03 49.7193 160.89 48.216C161.749 46.7128 162.179 45.1116 162.179 43.4091C162.179 41.5283 161.742 39.8118 160.869 38.2631C159.996 36.7144 158.803 35.4908 157.292 34.5959C155.781 33.7009 154.107 33.2534 152.273 33.2534C150.438 33.2534 148.747 33.7009 147.209 34.5959C145.667 35.4908 144.46 36.7144 143.587 38.2631C142.714 39.8118 142.278 41.5283 142.278 43.4091C142.278 45.1116 142.714 46.7128 143.587 48.216C144.46 49.7193 145.667 50.9184 147.209 51.8133C148.75 52.7083 150.438 53.1558 152.273 53.1558C154.107 53.1558 155.788 52.7083 157.316 51.8133H157.313ZM196.968 49.8766C197.797 52.3063 199.181 54.1801 201.121 55.5015C203.062 56.823 205.306 57.4837 207.853 57.4837C209.78 57.4837 211.488 57.1726 212.985 56.5503C214.479 55.928 215.88 55.0401 217.183 53.8864L224.027 64.0002C221.807 66.0348 219.249 67.608 216.361 68.7162C213.473 69.8244 210.312 70.3802 206.874 70.3802C202.165 70.3802 197.93 69.2406 194.168 66.9647C190.407 64.6889 187.468 61.6194 185.35 57.7634C183.232 53.9074 182.172 49.7158 182.172 45.192C182.172 40.6683 183.178 36.3263 185.193 32.4389C187.208 28.5514 189.998 25.468 193.568 23.1921C197.139 20.9163 201.173 19.7766 205.674 19.7766C210.622 19.7766 214.871 20.8324 218.424 22.9439C221.977 25.0554 224.675 27.992 226.509 31.7572C228.344 35.5223 229.265 39.8502 229.265 44.7376C229.265 46.4086 229.132 48.1251 228.866 49.8836H196.965L196.968 49.8766ZM200.191 34.1169C198.516 35.4524 197.353 37.3821 196.702 39.9027H215.543C214.922 37.3507 213.817 35.4174 212.231 34.0959C210.646 32.7745 208.668 32.1137 206.301 32.1137C203.935 32.1137 201.865 32.7815 200.191 34.1169Z"/></symbol>
+  </svg>
 
-  <!-- ── HERO ── -->
-  <section class="hero">
-    <div class="hero-mark">
-      <div class="hero-mark-icon">
-        <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M1.5 13.72L3.57 10.39C4.2 10.79 4.94 11.13 5.8 11.42C6.66 11.71 7.47 11.85 8.23 11.85C9.21 11.85 9.7 11.59 9.7 11.08C9.7 10.89 9.62 10.73 9.47 10.6C9.31 10.46 9.04 10.31 8.65 10.16C8.26 10.02 7.7 9.84 6.96 9.64C5.55 9.26 4.39 8.67 3.49 7.87C2.59 7.08 2.14 6.07 2.14 4.84C2.14 3.93 2.39 3.11 2.9 2.38C3.4 1.64 4.14 1.07 5.1 0.64C6.06 0.21 7.19 0 8.5 0C9.41 0 10.35 0.16 11.34 0.49C12.32 0.81 13.27 1.27 14.19 1.85L12.06 5.31C11.58 5.01 10.97 4.74 10.23 4.51C9.49 4.28 8.84 4.16 8.27 4.16C7.82 4.16 7.48 4.23 7.25 4.37C7.02 4.5 6.91 4.69 6.91 4.93C6.91 5.11 6.98 5.26 7.14 5.39C7.29 5.52 7.54 5.65 7.89 5.78C8.25 5.91 8.77 6.07 9.46 6.25C10.57 6.53 11.49 6.88 12.22 7.27C12.94 7.67 13.51 8.18 13.9 8.81C14.3 9.44 14.5 10.21 14.5 11.12C14.5 12.02 14.25 12.87 13.75 13.61C13.25 14.35 12.53 14.93 11.61 15.36C10.69 15.79 9.62 16 8.41 16C5.88 16 3.57 15.24 1.5 13.72Z" fill="#F7F7F7"/>
-        </svg>
+  <header>
+    <div class="wrap top">
+      <a href="/" aria-label="StageFlow"><svg class="mark" role="img" aria-label="StageFlow"><use href="#wordmark"/></svg></a>
+      <nav aria-label="Main">
+        <a class="opt" href="#how-it-works" data-i18n="nav.how">How it works</a>
+        <a class="opt" href="#platform" data-i18n="nav.platform">Platform</a>
+        <a class="opt" href="#features" data-i18n="nav.features">Features</a>
+        <a class="opt" href="#faq">FAQ</a>
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-lang="en" aria-pressed="true" aria-label="English">EN</button>
+          <button type="button" data-lang="fr" aria-pressed="false" aria-label="Fran&ccedil;ais">FR</button>
+        </div>
+        <a class="signin" href="https://stageflow.parsonsparis.newschool.org/" data-i18n="nav.signin">Sign in</a>
+        <a class="btn" href="#contact" data-i18n="cta.demo">Request a demo</a>
+      </nav>
+    </div>
+
+    <div class="wrap hero">
+      <div>
+        <h1 class="display" data-i18n="hero.h1">Every convention de&nbsp;stage, <span class="thin">signed and filed.</span></h1>
+        <p class="hero-sub" data-i18n="hero.sub">StageFlow takes an internship from the student's form to a fully signed convention. The agreement is generated, sent to each signatory in the right order through DocuSign, and recorded. Your internship office stops chasing paper.</p>
+        <div class="hero-cta">
+          <a class="btn" href="#contact"><span data-i18n="cta.demo">Request a demo</span> <span class="arrow" aria-hidden="true">&rarr;</span></a>
+          <a class="btn btn-line" href="#how-it-works" data-i18n="cta.how">See how it works</a>
+        </div>
+        <div class="facts">
+          <div><span class="label" data-i18n="fact1.l">In use at</span><p data-i18n="fact1.v">A leading Parisian art and design university</p></div>
+          <div><span class="label">Signatures</span><p data-i18n="fact2.v">DocuSign, eIDAS-compliant</p></div>
+          <div><span class="label" data-i18n="fact3.l">Availability</span><p data-i18n="fact3.v">Now onboarding new institutions</p></div>
+        </div>
       </div>
-      <div class="hero-mark-wordmark">
-        <svg width="140" height="36" viewBox="0 0 391 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M242.588 69.0518V25.052H235.3V22.6363H242.588V15.3927C242.588 10.383 243.699 6.64585 245.919 4.18821C248.139 1.72707 251.355 0.5 255.559 0.5H258.137V2.91569H255.426C251.989 2.91569 249.391 3.94699 247.628 6.01309C245.865 8.07919 244.985 11.2815 244.985 15.6234V22.6398H257.646V25.0554H244.985V69.0553H242.584L242.588 69.0518ZM266.311 69.0518H263.866V1.04537H266.311V69.0518ZM287.416 66.9333C283.801 64.7937 280.944 61.8711 278.84 58.1654C276.736 54.4598 275.685 50.3905 275.685 45.9576C275.685 41.5248 276.736 37.4101 278.84 33.7044C280.944 29.9987 283.801 27.0691 287.416 24.9121C291.031 22.7551 294.969 21.6784 299.235 21.6784C303.501 21.6784 307.433 22.7551 311.031 24.9121C314.628 27.0691 317.479 29.9987 319.583 33.7044C321.687 37.4101 322.737 41.4933 322.737 45.9576C322.737 50.422 321.687 54.4528 319.583 58.141C317.479 61.8292 314.628 64.7553 311.031 66.9088C307.433 69.0658 303.501 70.1425 299.235 70.1425C294.969 70.1425 291.031 69.0728 287.416 66.9298V66.9333ZM309.83 64.8147C313.043 62.9024 315.6 60.284 317.496 56.9559C319.392 53.6312 320.34 49.964 320.34 45.9541C320.34 41.9443 319.392 38.2736 317.496 34.9315C315.6 31.5928 313.046 28.9569 309.83 27.0272C306.615 25.0974 303.099 24.136 299.28 24.136C295.46 24.136 291.883 25.1009 288.637 27.0272C285.394 28.9569 282.823 31.5824 280.927 34.907C279.031 38.2316 278.083 41.9128 278.083 45.9541C278.083 49.9954 279.031 53.6312 280.927 56.9559C282.823 60.2805 285.39 62.8989 288.637 64.8147C291.88 66.727 295.426 67.6849 299.28 67.6849C303.133 67.6849 306.618 66.727 309.83 64.8147ZM369.833 66.0453L387.562 22.6363H390.185L371.211 69.0518H368.677L357.349 41.1298L345.973 69.0518H343.44L324.466 22.6363H327.089L344.684 66.0453L362.236 22.6363H364.858L358.55 38.1687L369.833 66.0453ZM0.18457 63.1786L6.67048 52.6104C8.62443 53.8864 10.9501 54.9772 13.6474 55.8896C16.3414 56.802 18.875 57.2565 21.245 57.2565C24.3243 57.2565 25.8656 56.435 25.8656 54.7954C25.8656 54.2185 25.6201 53.7116 25.1325 53.2711C24.6448 52.8307 23.7923 52.3762 22.5783 51.9042C21.3644 51.4323 19.6014 50.8799 17.2928 50.2402C12.8495 49.0271 9.22119 47.1567 6.4079 44.6362C3.59461 42.1156 2.18627 38.9133 2.18627 35.0259C2.18627 32.1417 2.9774 29.5372 4.56307 27.2124C6.14874 24.8876 8.4437 23.0523 11.4514 21.6993C14.4556 20.3499 18.0055 19.6717 22.0941 19.6717C24.9381 19.6717 27.898 20.1891 30.9807 21.2204C34.06 22.2517 37.0369 23.6955 39.9116 25.5484L33.2484 36.5256C31.7377 35.5537 29.8281 34.7042 27.5161 33.9736C25.2041 33.2464 23.1614 32.8793 21.3848 32.8793C19.9628 32.8793 18.8955 33.0926 18.1862 33.5156C17.4769 33.9421 17.1189 34.5329 17.1189 35.2915C17.1189 35.8684 17.3541 36.3613 17.8281 36.7703C18.3021 37.1793 19.0933 37.5919 20.2049 38.0009C21.3166 38.4099 22.9534 38.9063 25.1154 39.4797C28.58 40.3921 31.4547 41.4759 33.736 42.7379C36.0173 43.9999 37.7803 45.622 39.0216 47.6112C40.2662 49.6004 40.8869 52.0371 40.8869 54.9212C40.8869 57.8054 40.1026 60.4728 38.5305 62.8255C36.9585 65.1783 34.7317 67.0311 31.8434 68.3841C28.9551 69.7335 25.6167 70.4117 21.8247 70.4117C13.8861 70.4117 6.67389 67.996 0.18798 63.1681L0.18457 63.1786ZM61.8552 69.0553H46.8374V34.8441H41.1494V20.7694H46.7931V9.56496L61.8996 5.74041V20.7694H71.0078V34.8441H61.8552V69.0518V69.0553ZM110.551 20.7694H121.657V69.0518H110.104L108.46 64.6784C105.084 68.3526 100.757 70.1915 95.4851 70.1915C91.1611 70.1915 87.185 69.0588 83.5568 66.7969C79.9285 64.535 77.047 61.4656 74.9157 57.5956C72.7844 53.7221 71.7171 49.4955 71.7171 44.9089C71.7171 40.3222 72.7844 36.148 74.9157 32.292C77.047 28.436 79.9353 25.3841 83.5806 23.1362C87.2225 20.8883 91.1918 19.7661 95.4885 19.7661C100.791 19.7661 105.173 21.6644 108.641 25.461L110.551 20.7694ZM102.22 54.4528C103.806 53.5263 105.057 52.2433 105.974 50.6037C106.892 48.9641 107.352 47.1113 107.352 45.0452C107.352 42.9791 106.898 41.1123 105.998 39.4412C105.095 37.7702 103.85 36.4662 102.268 35.5223C100.682 34.5819 98.9292 34.1099 97.0026 34.1099C95.0759 34.1099 93.2856 34.5819 91.7136 35.5223C90.145 36.4627 88.9071 37.7702 88.0034 39.4412C87.0998 41.1123 86.6497 42.9791 86.6497 45.0452C86.6497 47.1113 87.093 48.9641 87.983 50.6037C88.873 52.2433 90.0938 53.5263 91.6488 54.4528C93.2038 55.3792 94.9599 55.8407 96.9139 55.8407C98.8679 55.8407 100.638 55.3792 102.223 54.4528H102.22ZM164.934 20.7694H176.487V61.7663C176.487 66.9298 175.539 71.3626 173.643 75.0683C171.747 78.774 168.954 81.6057 165.268 83.5634C161.582 85.5211 157.115 86.5 151.874 86.5C148.29 86.5 144.484 85.9686 140.453 84.9059C136.426 83.8431 133.21 82.4307 130.813 80.6688L136.412 69.0063C138.782 70.3733 141.101 71.4115 143.366 72.1247C145.633 72.8379 147.966 73.1945 150.363 73.1945C153.828 73.1945 156.583 72.3205 158.629 70.576C160.672 68.8315 161.695 66.1956 161.695 62.6717V62.2172C158.435 64.8602 154.602 66.1781 150.186 66.1781C146.066 66.1781 142.261 65.2307 138.765 63.3324C135.27 61.4341 132.494 58.7947 130.435 55.4072C128.375 52.0231 127.345 48.202 127.345 43.951C127.345 39.6999 128.382 35.6621 130.455 31.925C132.528 28.1913 135.321 25.2058 138.83 22.9754C142.339 20.745 146.138 19.6263 150.227 19.6263C155.41 19.6263 159.764 21.4791 163.29 25.1848L164.934 20.7659V20.7694ZM157.313 51.8133C158.837 50.9184 160.03 49.7193 160.89 48.216C161.749 46.7128 162.179 45.1116 162.179 43.4091C162.179 41.5283 161.742 39.8118 160.869 38.2631C159.996 36.7144 158.803 35.4908 157.292 34.5959C155.781 33.7009 154.107 33.2534 152.273 33.2534C150.438 33.2534 148.747 33.7009 147.209 34.5959C145.667 35.4908 144.46 36.7144 143.587 38.2631C142.714 39.8118 142.278 41.5283 142.278 43.4091C142.278 45.1116 142.714 46.7128 143.587 48.216C144.46 49.7193 145.667 50.9184 147.209 51.8133C148.75 52.7083 150.438 53.1558 152.273 53.1558C154.107 53.1558 155.788 52.7083 157.316 51.8133H157.313ZM196.968 49.8766C197.797 52.3063 199.181 54.1801 201.121 55.5015C203.062 56.823 205.306 57.4837 207.853 57.4837C209.78 57.4837 211.488 57.1726 212.985 56.5503C214.479 55.928 215.88 55.0401 217.183 53.8864L224.027 64.0002C221.807 66.0348 219.249 67.608 216.361 68.7162C213.473 69.8244 210.312 70.3802 206.874 70.3802C202.165 70.3802 197.93 69.2406 194.168 66.9647C190.407 64.6889 187.468 61.6194 185.35 57.7634C183.232 53.9074 182.172 49.7158 182.172 45.192C182.172 40.6683 183.178 36.3263 185.193 32.4389C187.208 28.5514 189.998 25.468 193.568 23.1921C197.139 20.9163 201.173 19.7766 205.674 19.7766C210.622 19.7766 214.871 20.8324 218.424 22.9439C221.977 25.0554 224.675 27.992 226.509 31.7572C228.344 35.5223 229.265 39.8502 229.265 44.7376C229.265 46.4086 229.132 48.1251 228.866 49.8836H196.965L196.968 49.8766ZM200.191 34.1169C198.516 35.4524 197.353 37.3821 196.702 39.9027H215.543C214.922 37.3507 213.817 35.4174 212.231 34.0959C210.646 32.7745 208.668 32.1137 206.301 32.1137C203.935 32.1137 201.865 32.7815 200.191 34.1169Z" fill="#110F0F"/></svg>
+
+      <div class="sheet-zone" role="img" aria-label="A sample convention de stage, signed in turn by the host organisation, the student and the school, then stamped as signed." data-i18n-aria="hero.docalt">
+        <div class="sheet" aria-hidden="true" lang="fr">
+          <div class="sheet-head">
+            <div class="sheet-title">CONVENTION<br>DE STAGE</div>
+            <div class="sheet-no">N&deg; 2027-0417<br>Ann&eacute;e 2026-2027</div>
+          </div>
+          <div class="boxes">
+            <div class="wide"><span class="label">&Eacute;tablissement d'enseignement</span><span class="typed"><span class="yours">Votre &eacute;tablissement</span></span></div>
+            <div><span class="label">Stagiaire</span><span class="typed">Sophie Renard</span></div>
+            <div><span class="label">Formation</span><span class="typed">Mode, 3e ann&eacute;e</span></div>
+            <div><span class="label">Organisme d'accueil</span><span class="typed">Maison Vauclair</span></div>
+            <div><span class="label">Tuteur de stage</span><span class="typed">Laurent Dupont</span></div>
+            <div><span class="label">P&eacute;riode</span><span class="typed">01/02 au 30/06/2027</span></div>
+            <div><span class="label">Dur&eacute;e et gratification</span><span class="typed">35 h, 700 &euro;/mois</span></div>
+          </div>
+          <p class="clause"><b>Article 1. Objet de la convention.</b> La pr&eacute;sente convention r&egrave;gle les rapports de l'organisme d'accueil avec l'&eacute;tablissement d'enseignement et le stagiaire.</p>
+          <div class="sigs">
+            <div class="sig"><span class="label">L'organisme d'accueil</span><span class="hand hand-a">L. Dupont</span><span class="when">Sign&eacute; le 12/01/2027</span></div>
+            <div class="sig"><span class="label">Le stagiaire</span><span class="hand hand-b">S. Renard</span><span class="when">Sign&eacute; le 13/01/2027</span></div>
+            <div class="sig"><span class="label">L'&eacute;tablissement</span><span class="hand hand-c">C. Moreau</span><span class="when">Sign&eacute; le 14/01/2027</span></div>
+          </div>
+          <div class="stamp">SIGN&Eacute;E<small>3 / 3 le 14/01/2027</small></div>
+        </div>
       </div>
     </div>
-    <div class="hero-badge">
-      <span class="hero-badge-dot"></span>
-      Internship Management Platform
-    </div>
-    <h1>Conventions&nbsp;de&nbsp;stage,<br><em>without the chaos.</em></h1>
-    <p class="hero-sub">
-      StageFlow automates the full lifecycle of French internship agreements,
-      from student submission to fully signed convention, so your team
-      can focus on students, not paperwork.
-    </p>
-    <div class="hero-ctas">
-      <a href="mailto:hello@stageflow.careers" class="btn-primary">Request a demo</a>
-      <a href="#how-it-works" class="btn-ghost">See how it works &rarr;</a>
-    </div>
-    <div class="hero-meta">
-      <div class="hero-proof">
-        <span>Currently deployed at</span>
-        <span class="hero-proof-sep"></span>
-        <span class="hero-proof-name">a leading Parisian art and design university</span>
+  </header>
+
+  <main>
+
+  <!-- HOW IT WORKS -->
+  <section id="how-it-works" class="circuit">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="display" data-i18n="how.h2">From submission to signed agreement. <span class="thin">Hours, not weeks.</span></h2>
+        <p data-i18n="how.p">One agreement, passed along like a routing slip. Each person does their part once and StageFlow hands it to the next. No scanning, no printing, no chasing.</p>
       </div>
-      <div class="hero-docusign">
-        <span class="docusign-dot"></span>
-        Integrated with DocuSign
+
+      <div class="slip">
+        <div class="slip-row slip-cols label" aria-hidden="true"><span data-i18n="slip.c1">No.</span><span data-i18n="slip.c2">Handled by</span><span data-i18n="slip.c3">What happens</span><span data-i18n="slip.c4">Done</span></div>
+        <ol>
+          <li class="slip-row">
+            <span class="n">1</span>
+            <span class="who" data-i18n="role.student">Student</span>
+            <div><h3 data-i18n="s1.h">Student submits</h3><p data-i18n="s1.p">The student fills out internship details (employer, role, dates, supervisor) through a guided online form. No attachments, no PDFs, no back and forth.</p></div>
+            <span class="tick"><svg viewBox="0 0 26 26" aria-hidden="true"><rect x="1" y="3" width="20" height="20" rx="5"/><path d="M5 13.5l5 5.5L24 2"/></svg><span data-i18n="s1.t">Submitted</span></span>
+          </li>
+          <li class="slip-row">
+            <span class="n">2</span>
+            <span class="who">StageFlow</span>
+            <div><h3 data-i18n="s2.h">Convention generated</h3><p data-i18n="s2.p">StageFlow generates a fully compliant convention de stage PDF from those details. No manual editing. No copy-pasting between systems.</p></div>
+            <span class="tick"><svg viewBox="0 0 26 26" aria-hidden="true"><rect x="1" y="3" width="20" height="20" rx="5"/><path d="M5 13.5l5 5.5L24 2"/></svg><span data-i18n="s2.t">Generated</span></span>
+          </li>
+          <li class="slip-row">
+            <span class="n">3</span>
+            <span class="who" data-i18n="s3.who">Every signatory</span>
+            <div><h3 data-i18n="s3.h">All parties sign</h3><p data-i18n="s3.p">DocuSign routes the agreement to the student, employer, academic tutor, and institution director, in the right sequence, automatically.</p></div>
+            <span class="tick"><svg viewBox="0 0 26 26" aria-hidden="true"><rect x="1" y="3" width="20" height="20" rx="5"/><path d="M5 13.5l5 5.5L24 2"/></svg><span data-i18n="s3.t">Signed</span></span>
+          </li>
+          <li class="slip-row">
+            <span class="n">4</span>
+            <span class="who" data-i18n="role.office">Internship office</span>
+            <div><h3 data-i18n="s4.h">Agreement archived</h3><p data-i18n="s4.p">The fully signed convention is recorded, searchable, and exportable. Every record in one place.</p></div>
+            <span class="tick"><svg viewBox="0 0 26 26" aria-hidden="true"><rect x="1" y="3" width="20" height="20" rx="5"/><path d="M5 13.5l5 5.5L24 2"/></svg><span data-i18n="s4.t">Filed</span></span>
+          </li>
+        </ol>
       </div>
-      <div class="hero-onboarding">
-        <span class="onboarding-dot"></span>
-        Now onboarding new institutions
+      <p class="footnote"><span aria-hidden="true">*</span><span data-i18n="how.note"><b>This flow is an example.</b> StageFlow is deployed per institution, so the process is set up around your programme: signing order, approval stages, required fields, notification logic, and more. You own the flow.</span></p>
+    </div>
+  </section>
+
+  <!-- PLATFORM -->
+  <section id="platform">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="display" data-i18n="plat.h2">One convention, three desks. <span class="thin">In your school's colours.</span></h2>
+        <p data-i18n="plat.p">The internship office, the student and the employer each see their own part of the same agreement. StageFlow is deployed per institution, so it can carry your name, colours and typeface. Try it on three made-up schools.</p>
+      </div>
+
+      <div class="controls">
+        <div class="control">
+          <span class="label" data-i18n="ctl.school">Example school</span>
+          <div class="chips" role="group" aria-label="Example school" data-i18n-aria="ctl.school">
+            <button type="button" class="chip" data-theme="lumen" data-name="&Eacute;cole Lumen" aria-pressed="true" style="--sw:#e4502b"><i></i>&Eacute;cole Lumen</button>
+            <button type="button" class="chip" data-theme="marceau" data-name="Institut Marceau" aria-pressed="false" style="--sw:#14573f"><i></i>Institut Marceau</button>
+            <button type="button" class="chip" data-theme="nordale" data-name="&Eacute;cole Nordale" aria-pressed="false" style="--sw:#3d4edb"><i></i>&Eacute;cole Nordale</button>
+          </div>
+        </div>
+        <div class="control">
+          <span class="label" data-i18n="ctl.view">Viewing as</span>
+          <div class="seg" role="tablist" aria-label="Viewing as" data-i18n-aria="ctl.view">
+            <button class="tab" role="tab" id="tab-office" aria-controls="panel-office" aria-selected="true" data-i18n="role.office">Internship office</button>
+            <button class="tab" role="tab" id="tab-student" aria-controls="panel-student" aria-selected="false" tabindex="-1" data-i18n="role.student">Student</button>
+            <button class="tab" role="tab" id="tab-employer" aria-controls="panel-employer" aria-selected="false" tabindex="-1" data-i18n="role.employer">Employer</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="mock" id="mock" data-theme="lumen">
+        <div class="mock-bar">
+          <span class="crest themed" data-crest aria-hidden="true">L</span>
+          <div><span class="school themed" data-school>&Eacute;cole Lumen</span><small data-i18n="mock.portal">Internship portal</small></div>
+          <span class="powered" data-i18n="mock.powered">Powered by StageFlow</span>
+        </div>
+
+        <div class="panel" role="tabpanel" id="panel-office" aria-labelledby="tab-office">
+          <div class="panel-head"><h3 class="themed" data-i18n="of.h">Internship agreements</h3><p data-i18n="of.term">Spring term 2027</p></div>
+          <div class="counts">
+            <div><span class="label" data-i18n="of.c1">Active this term</span><b class="themed">24</b></div>
+            <div><span class="label" data-i18n="of.c2">Awaiting signatures</span><b class="themed">8</b></div>
+            <div><span class="label" data-i18n="of.c3">Fully signed</span><b class="themed">16</b></div>
+          </div>
+          <table>
+            <thead><tr><th class="label" data-i18n="role.student">Student</th><th class="label hide-s" data-i18n="role.employer">Employer</th><th class="label hide-s" data-i18n="f.period">Period</th><th class="label" data-i18n="f.status">Status</th></tr></thead>
+            <tbody>
+              <tr><td><b>Sophie Renard</b><small data-i18n="pg.fashion">Fashion Design, Year 3</small></td><td class="hide-s">Maison Vauclair</td><td class="when hide-s" data-i18n="d.febjun">Feb to Jun 2027</td><td><span class="st st-signed" data-i18n="st.signed">Signed</span></td></tr>
+              <tr><td><b>Thomas Girard</b><small data-i18n="pg.comm">Communication, Year 2</small></td><td class="hide-s">Agence Brunet &amp; Fils</td><td class="when hide-s" data-i18n="d.marjul">Mar to Jul 2027</td><td><span class="st st-wait" data-i18n="st.emp">Awaiting employer</span></td></tr>
+              <tr><td><b>Emma Leroy</b><small data-i18n="pg.illu">Illustration, Year 3</small></td><td class="hide-s">&Eacute;ditions du Passage</td><td class="when hide-s" data-i18n="d.marjun">Mar to Jun 2027</td><td><span class="st st-wait" data-i18n="st.stu">Awaiting student</span></td></tr>
+              <tr><td><b>Hugo Martin</b><small data-i18n="pg.prod">Product Design, Year 3</small></td><td class="hide-s">Atelier Sorel</td><td class="when hide-s" data-i18n="d.aprjul">Apr to Jul 2027</td><td><span class="st st-signed" data-i18n="st.signed">Signed</span></td></tr>
+              <tr><td><b>Camille Dubois</b><small data-i18n="pg.photo">Photography, Year 2</small></td><td class="hide-s">Galerie Montaigne</td><td class="when hide-s" data-i18n="d.aprjun">Apr to Jun 2027</td><td><span class="st st-draft" data-i18n="st.draft">Draft</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="panel" role="tabpanel" id="panel-student" aria-labelledby="tab-student" hidden>
+          <div class="panel-head"><h3 class="themed" data-i18n="stu.h">New internship application</h3><p data-i18n="stu.p">Fill in your placement details. Your coordinator is notified automatically.</p></div>
+          <div class="formgrid">
+            <div><span class="label" data-i18n="stu.f1">Company name</span><span class="val">Maison Vauclair</span></div>
+            <div><span class="label" data-i18n="f.role">Role</span><span class="val" data-i18n="stu.v2">Visual Design Intern</span></div>
+            <div><span class="label" data-i18n="stu.f3">Start date</span><span class="val">01 / 06 / 2027</span></div>
+            <div><span class="label" data-i18n="stu.f4">End date</span><span class="val">31 / 08 / 2027</span></div>
+            <div><span class="label" data-i18n="stu.f5">Supervisor name</span><span class="val">Laurent Dupont</span></div>
+            <div><span class="label" data-i18n="stu.f6">Supervisor email</span><span class="val">l.dupont@maison-vauclair.example</span></div>
+            <div><span class="label" data-i18n="stu.f7">Hours per week</span><span class="val">35 h</span></div>
+            <div><span class="label" data-i18n="stu.f8">Monthly allowance</span><span class="val">700 &euro;</span></div>
+          </div>
+          <span class="fake-btn" data-i18n="stu.btn">Submit application</span>
+        </div>
+
+        <div class="panel" role="tabpanel" id="panel-employer" aria-labelledby="tab-employer" hidden>
+          <div class="panel-head"><h3 class="themed" data-i18n="emp.h">Review convention de stage</h3><p data-i18n="emp.p">Confirm the internship details below, then sign via DocuSign.</p></div>
+          <div class="formgrid read">
+            <div><span class="label" data-i18n="role.student">Student</span><span class="val">Sophie Renard</span></div>
+            <div><span class="label" data-i18n="f.programme">Programme</span><span class="val" data-i18n="pg.fashion">Fashion Design, Year 3</span></div>
+            <div><span class="label" data-i18n="f.institution">Institution</span><span class="val" data-school>&Eacute;cole Lumen</span></div>
+            <div><span class="label" data-i18n="f.role">Role</span><span class="val" data-i18n="emp.v4">Fashion Design Intern</span></div>
+            <div><span class="label" data-i18n="f.period">Period</span><span class="val" data-i18n="d.febjun">Feb to Jun 2027</span></div>
+            <div><span class="label" data-i18n="emp.f6">Hours and allowance</span><span class="val" data-i18n="emp.v6">35 h / week, 700 &euro; / month</span></div>
+          </div>
+          <span class="fake-btn" data-i18n="emp.btn1">Confirm and sign via DocuSign</span>
+          <span class="fake-btn alt" data-i18n="emp.btn2">Request a change</span>
+        </div>
+      </div>
+
+      <p class="caption" data-i18n="plat.cap">A simplified overview of a few key screens, with sample data and made-up schools. The full platform includes many more views, settings, and features.</p>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section id="features" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="display" data-i18n="feat.h2">Everything your internship office <span class="thin">needs.</span></h2>
+        <p data-i18n="feat.p">Built for the convention de stage process, not adapted from a generic HR tool.</p>
+      </div>
+      <div class="articles">
+        <div class="article">
+          <span class="art">Art. 1</span>
+          <h3 data-i18n="a1.h">Automated agreement generation</h3>
+          <p data-i18n="a1.p">Your team stops editing templates and chasing PDFs by email. Students submit their details once, and StageFlow generates a compliant, pre-filled convention de stage, ready to route for signatures.</p>
+        </div>
+        <div class="article">
+          <span class="art">Art. 2</span>
+          <h3 data-i18n="a2.h">DocuSign e&#8209;signature routing</h3>
+          <div>
+            <p data-i18n="a2.p">Every party signs in the correct legal sequence, automatically. Full audit trail included. DocuSign signatures are eIDAS-compliant and legally binding across the EU.</p>
+            <p data-i18n="a2.n">Powered by DocuSign</p>
+          </div>
+        </div>
+        <div class="article">
+          <span class="art">Art. 3</span>
+          <h3 data-i18n="a3.h">Role-based dashboards</h3>
+          <p data-i18n="a3.p">Students never need to chase their coordinator for updates. Coordinators have every internship visible in one place. Employers confirm online in minutes. No one is left guessing about where things stand.</p>
+        </div>
+        <div class="article">
+          <span class="art">Art. 4</span>
+          <h3 data-i18n="a4.h">Automated email notifications</h3>
+          <p data-i18n="a4.p">Your team stops being the messenger. Every status change notifies the right person at the right moment, so coordinators are only involved when a decision is actually needed.</p>
+        </div>
+        <div class="article">
+          <span class="art">Art. 5</span>
+          <h3 data-i18n="a5.h">Reporting, charts, and CSV export</h3>
+          <p data-i18n="a5.p">Live charts by cohort, employer, and status. Export filtered CSV reports at any time. Only the structured data needed for the agreement is stored. No contracts are retained on our servers, which keeps your data lean and GDPR-friendly.</p>
+        </div>
+        <div class="article">
+          <span class="art">Art. 6</span>
+          <h3 data-i18n="a6.h">Designed around the convention de stage</h3>
+          <p data-i18n="a6.p">Document templates, signing sequences, approval stages, and required fields are all configured to fit your institution's exact requirements.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ── DASHBOARD MOCKUP ── -->
-  <div class="mockup-wrap" id="platform">
-    <div class="mockup-header">
-      <p class="section-eyebrow">Platform views</p>
-      <p class="mockup-header-sub">Every participant gets their own tailored view. Click a role to explore.</p>
-    </div>
-    <div class="role-selector">
-      <div class="role-btn active" onclick="switchTab('dashboard')">
-        <div class="role-btn-label">Internship office</div>
-        <div class="role-btn-sub">Dashboard, approvals &amp; more</div>
-      </div>
-      <div class="role-btn" onclick="switchTab('student')">
-        <div class="role-btn-label">Student</div>
-        <div class="role-btn-sub">Submit an application</div>
-      </div>
-      <div class="role-btn" onclick="switchTab('employer')">
-        <div class="role-btn-label">Employer</div>
-        <div class="role-btn-sub">Review &amp; sign</div>
-      </div>
-    </div>
-    <div class="browser-frame">
-      <div class="browser-chrome">
-        <div class="browser-dots">
-          <div class="b-dot b-dot-r"></div>
-          <div class="b-dot b-dot-y"></div>
-          <div class="b-dot b-dot-g"></div>
-        </div>
-        <div class="browser-addressbar">
-          <div class="addr-lock"></div>
-          <span class="addr-text">app.stageflow.careers</span>
-        </div>
-      </div>
-
-<div id="panel-dashboard" class="tab-panel active">
-      <div class="dashboard">
-        <!-- Sidebar -->
-        <div class="db-sidebar">
-          <div class="db-sidebar-brand">
-            <div class="db-favicon">
-              <svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1.5 13.72L3.57 10.39C4.2 10.79 4.94 11.13 5.8 11.42C6.66 11.71 7.47 11.85 8.23 11.85C9.21 11.85 9.7 11.59 9.7 11.08C9.7 10.89 9.62 10.73 9.47 10.6C9.31 10.46 9.04 10.31 8.65 10.16C8.26 10.02 7.7 9.84 6.96 9.64C5.55 9.26 4.39 8.67 3.49 7.87C2.59 7.08 2.14 6.07 2.14 4.84C2.14 3.93 2.39 3.11 2.9 2.38C3.4 1.64 4.14 1.07 5.1 0.64C6.06 0.21 7.19 0 8.5 0C9.41 0 10.35 0.16 11.34 0.49C12.32 0.81 13.27 1.27 14.19 1.85L12.06 5.31C11.58 5.01 10.97 4.74 10.23 4.51C9.49 4.28 8.84 4.16 8.27 4.16C7.82 4.16 7.48 4.23 7.25 4.37C7.02 4.5 6.91 4.69 6.91 4.93C6.91 5.11 6.98 5.26 7.14 5.39C7.29 5.52 7.54 5.65 7.89 5.78C8.25 5.91 8.77 6.07 9.46 6.25C10.57 6.53 11.49 6.88 12.22 7.27C12.94 7.67 13.51 8.18 13.9 8.81C14.3 9.44 14.5 10.21 14.5 11.12C14.5 12.02 14.25 12.87 13.75 13.61C13.25 14.35 12.53 14.93 11.61 15.36C10.69 15.79 9.62 16 8.41 16C5.88 16 3.57 15.24 1.5 13.72Z" fill="#F7F7F7"/></svg>
-            </div>
-            <span class="db-brand-name">StageFlow</span>
-          </div>
-          <div class="db-nav-section">Main</div>
-          <div class="db-nav-item active">
-            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-            Internships
-            <span class="db-nav-count">24</span>
-          </div>
-          <div class="db-nav-item">
-            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
-            Students
-          </div>
-          <div class="db-nav-item">
-            <svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
-            Employers
-          </div>
-          <div class="db-nav-item">
-            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-            Reports
-          </div>
-          <div class="db-nav-item">
-            <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            Approvals
-            <span class="db-nav-count" style="background:#FEF9C3;color:#854D0E;">2</span>
-          </div>
-        </div>
-
-        <!-- Main content -->
-        <div class="db-main">
-          <div class="db-header">
-            <span class="db-title">Internship Agreements</span>
-            <div class="db-new-btn">
-              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-              New agreement
-            </div>
-          </div>
-
-          <div class="db-stats">
-            <div class="db-stat">
-              <div class="db-stat-val">24</div>
-              <div class="db-stat-label">Active this term</div>
-            </div>
-            <div class="db-stat">
-              <div class="db-stat-val">8</div>
-              <div class="db-stat-label">Awaiting signatures</div>
-            </div>
-            <div class="db-stat">
-              <div class="db-stat-val">16</div>
-              <div class="db-stat-label">Fully signed</div>
-            </div>
-          </div>
-
-          <div class="db-table-wrap">
-            <div class="db-table-head">
-              <div class="db-th">Student</div>
-              <div class="db-th">Employer</div>
-              <div class="db-th">Period</div>
-              <div class="db-th">Status</div>
-            </div>
-
-            <div class="db-row">
-              <div>
-                <div class="db-cell-name">Sophie Renard</div>
-                <div class="db-cell-sub">Fashion Design, Year 3</div>
-              </div>
-              <div class="db-cell-text">LVMH Moët Hennessy</div>
-              <div class="db-cell-date">Feb&thinsp;&ndash;&thinsp;Jun 2026</div>
-              <div><span class="db-badge badge-signed"><span class="db-badge-dot"></span>Signed</span></div>
-            </div>
-
-            <div class="db-row">
-              <div>
-                <div class="db-cell-name">Thomas Girard</div>
-                <div class="db-cell-sub">Communication, Year 2</div>
-              </div>
-              <div class="db-cell-text">Publicis Groupe</div>
-              <div class="db-cell-date">Mar&thinsp;&ndash;&thinsp;Jul 2026</div>
-              <div><span class="db-badge badge-employer"><span class="db-badge-dot"></span>Awaiting employer</span></div>
-            </div>
-
-            <div class="db-row">
-              <div>
-                <div class="db-cell-name">Emma Leroy</div>
-                <div class="db-cell-sub">Illustration, Year 3</div>
-              </div>
-              <div class="db-cell-text">BNP Paribas</div>
-              <div class="db-cell-date">Mar&thinsp;&ndash;&thinsp;Jun 2026</div>
-              <div><span class="db-badge badge-student"><span class="db-badge-dot"></span>Awaiting student</span></div>
-            </div>
-
-            <div class="db-row">
-              <div>
-                <div class="db-cell-name">Hugo Martin</div>
-                <div class="db-cell-sub">Product Design, Year 3</div>
-              </div>
-              <div class="db-cell-text">Kering S.A.</div>
-              <div class="db-cell-date">Apr&thinsp;&ndash;&thinsp;Jul 2026</div>
-              <div><span class="db-badge badge-signed"><span class="db-badge-dot"></span>Signed</span></div>
-            </div>
-
-            <div class="db-row">
-              <div>
-                <div class="db-cell-name">Camille Dubois</div>
-                <div class="db-cell-sub">Photography, Year 2</div>
-              </div>
-              <div class="db-cell-text">Galeries Lafayette</div>
-              <div class="db-cell-date">Apr&thinsp;&ndash;&thinsp;Jun 2026</div>
-              <div><span class="db-badge badge-draft"><span class="db-badge-dot"></span>Draft</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-      </div><!-- /panel-dashboard -->
-
-      <!-- TAB 2: Student form -->
-      <div id="panel-student" class="tab-panel">
-        <div class="sf-wrap">
-          <div class="sf-head">
-            <div class="sf-head-title">New Internship Application</div>
-            <div class="sf-head-sub">Fill in your placement details. Your coordinator will be notified automatically.</div>
-          </div>
-          <div class="sf-row">
-            <div class="sf-field">
-              <label>Company name</label>
-              <div class="sf-input">Herm&egrave;s International</div>
-            </div>
-            <div class="sf-field">
-              <label>Role / Position</label>
-              <div class="sf-input">Visual Design Intern</div>
-            </div>
-          </div>
-          <div class="sf-row">
-            <div class="sf-field">
-              <label>Start date</label>
-              <div class="sf-input">01 / 06 / 2026</div>
-            </div>
-            <div class="sf-field">
-              <label>End date</label>
-              <div class="sf-input">31 / 08 / 2026</div>
-            </div>
-          </div>
-          <div class="sf-row">
-            <div class="sf-field">
-              <label>Supervisor name</label>
-              <div class="sf-input">Laurent Dupont</div>
-            </div>
-            <div class="sf-field">
-              <label>Supervisor email</label>
-              <div class="sf-input">l.dupont@hermes.com</div>
-            </div>
-          </div>
-          <div class="sf-row">
-            <div class="sf-field">
-              <label>Hours per week</label>
-              <div class="sf-input">35h / week</div>
-            </div>
-            <div class="sf-field">
-              <label>Monthly allowance</label>
-              <div class="sf-input">600 &euro; / month</div>
-            </div>
-          </div>
-          <div class="sf-submit">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-            Submit application
-          </div>
-        </div>
-      </div>
-
-      <!-- TAB 3: Employer review -->
-      <div id="panel-employer" class="tab-panel">
-        <div class="er-wrap">
-          <div class="er-head">
-            <div class="er-head-title">Review Convention de Stage</div>
-            <div class="er-head-sub">Please confirm the internship details below, then proceed to sign via DocuSign.</div>
-          </div>
-          <div class="er-block">
-            <div class="er-block-label">Intern details</div>
-            <div class="er-row"><span class="er-key">Student</span><span class="er-val">Sophie Renard</span></div>
-            <div class="er-row"><span class="er-key">Programme</span><span class="er-val">Fashion Design, Year 3</span></div>
-            <div class="er-row"><span class="er-key">Institution</span><span class="er-val">Parsons Paris, The New School</span></div>
-          </div>
-          <div class="er-block">
-            <div class="er-block-label">Placement details</div>
-            <div class="er-row"><span class="er-key">Role</span><span class="er-val">Fashion Design Intern</span></div>
-            <div class="er-row"><span class="er-key">Period</span><span class="er-val">Feb 2026 &ndash; Jun 2026</span></div>
-            <div class="er-row"><span class="er-key">Hours</span><span class="er-val">35h / week</span></div>
-            <div class="er-row"><span class="er-key">Allowance</span><span class="er-val">600 &euro; / month</span></div>
-          </div>
-          <div class="er-actions">
-            <div class="er-btn-confirm">Confirm and sign via DocuSign</div>
-            <div class="er-btn-query">Request a change</div>
-          </div>
-        </div>
-      </div>
-
-      <!-- TAB 4: Staff approval -->
-      <div id="panel-approval" class="tab-panel">
-        <div class="sa-wrap">
-          <div class="sa-head">
-            <div class="sa-head-title">Pending Approvals</div>
-            <span class="sa-pending-badge">2 awaiting</span>
-          </div>
-          <div class="sa-row">
-            <div class="sa-info">
-              <div class="sa-name">Thomas Girard</div>
-              <div class="sa-meta">Communication, Year 2 &middot; Publicis Groupe</div>
-            </div>
-            <div class="sa-btns">
-              <div class="sa-btn-approve">Approve</div>
-              <div class="sa-btn-query">Query</div>
-            </div>
-          </div>
-          <div class="sa-row">
-            <div class="sa-info">
-              <div class="sa-name">Emma Leroy</div>
-              <div class="sa-meta">Illustration, Year 3 &middot; BNP Paribas</div>
-            </div>
-            <div class="sa-btns">
-              <div class="sa-btn-approve">Approve</div>
-              <div class="sa-btn-query">Query</div>
-            </div>
-          </div>
-          <div class="sa-recent">
-            <div class="sa-recent-icon">&#10003;</div>
-            <div class="sa-recent-text">Hugo Martin / Kering S.A., approved by you 2 hours ago</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-    <p class="mockup-disclaimer">A simplified overview of a few key screens. The full platform includes many more views, settings, and features.</p>
-  </div>
-
-  <!-- ── NO MORE STRIP ── -->
-  <div class="no-more-strip">
-    <p>Agreements collected, signed by all parties, and recorded automatically. No scanning, no printing, no chasing.</p>
-  </div>
-
-  <!-- ── FEATURES ── -->
-  <section id="features" class="features">
-    <div class="container">
-      <p class="section-eyebrow reveal">Features</p>
-      <h2 class="section-title reveal" style="transition-delay:0.08s">Everything your internship office needs</h2>
-      <div class="features-grid">
-
-        <div class="feature-card reveal" style="transition-delay:0.04s">
-          <div class="feature-icon">
-            <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-          </div>
-          <h3>Automated agreement generation</h3>
-          <p>Your team stops editing templates and chasing PDFs by email. Students submit their details once, and StageFlow generates a compliant, pre-filled convention de stage, ready to route for signatures.</p>
-        </div>
-
-        <div class="feature-card reveal" style="transition-delay:0.1s">
-          <div class="feature-icon teal">
-            <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <h3>DocuSign e-signature routing</h3>
-          <p>Every party signs in the correct legal sequence, automatically. Full audit trail included. DocuSign signatures are eIDAS-compliant and legally binding across the EU. No chasing, no lost emails.</p>
-          <div class="ds-note">
-            <span class="ds-note-dot"></span>
-            Powered by DocuSign
-          </div>
-        </div>
-
-        <div class="feature-card reveal" style="transition-delay:0.16s">
-          <div class="feature-icon">
-            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/></svg>
-          </div>
-          <h3>Role-based dashboards</h3>
-          <p>Students never need to chase their coordinator for updates. Coordinators have every internship visible in one place. Employers confirm online in minutes. No one is left guessing about where things stand.</p>
-        </div>
-
-        <div class="feature-card reveal" style="transition-delay:0.04s">
-          <div class="feature-icon">
-            <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-          </div>
-          <h3>Automated email notifications</h3>
-          <p>Your team stops being the messenger. Every status change automatically notifies the right person at the right moment, so internship coordinators are only involved when a decision is actually needed.</p>
-        </div>
-
-        <div class="feature-card reveal" style="transition-delay:0.1s">
-          <div class="feature-icon">
-            <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-          </div>
-          <h3>Reporting, charts, and CSV export</h3>
-          <p>Live charts by cohort, employer, and status. Export filtered CSV reports at any time. Only the structured data needed for the agreement is stored: no contracts retained on our servers, keeping your data lean and GDPR-friendly.</p>
-        </div>
-
-        <div class="feature-card reveal" style="transition-delay:0.16s">
-          <div class="feature-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-          </div>
-          <h3>Designed around the convention de stage</h3>
-          <p>StageFlow is built for the convention de stage process, not adapted from a generic HR tool. Document templates, signing sequences, approval stages, and required fields are all configured to fit your institution's exact requirements.</p>
-        </div>
-
+  <!-- REFERENCE -->
+  <section class="reference">
+    <div class="wrap">
+      <div class="ref-card">
+        <span class="label" data-i18n="ref.l">Reference</span>
+        <blockquote data-i18n="ref.q">Currently deployed at a leading Parisian art and design university, <b>managing every convention de stage for their full student cohort.</b></blockquote>
+        <p data-i18n="ref.p">Built around the convention de stage. Deployed per institution.</p>
       </div>
     </div>
   </section>
 
-  <!-- ── HOW IT WORKS ── -->
-  <section id="how-it-works" class="how">
-    <div class="container">
-      <p class="section-eyebrow reveal">Process</p>
-      <h2 class="section-title reveal" style="transition-delay:0.08s">From student submission to signed agreement. Hours, not weeks.</h2>
-      <div class="steps">
-        <div class="step reveal" style="transition-delay:0.04s">
-          <p class="step-num">01</p>
-          <h3>Student submits</h3>
-          <p>The student fills out internship details (employer, role, dates, supervisor) through a guided online form. No attachments, no PDFs, no back and forth.</p>
-        </div>
-        <div class="step reveal" style="transition-delay:0.1s">
-          <p class="step-num">02</p>
-          <h3>Convention generated</h3>
-          <p>StageFlow auto-generates a fully compliant convention de stage PDF. No manual editing. No copy-pasting between systems.</p>
-        </div>
-        <div class="step reveal" style="transition-delay:0.16s">
-          <p class="step-num">03</p>
-          <h3>All parties sign</h3>
-          <p>DocuSign routes the agreement to the student, employer, academic tutor, and institution director, in the right sequence, automatically.</p>
-        </div>
-        <div class="step reveal" style="transition-delay:0.22s">
-          <p class="step-num">04</p>
-          <h3>Agreement archived</h3>
-          <p>The fully signed convention is stored, searchable, and exportable. Every record in one place, permanently.</p>
-        </div>
-      </div>
-      <div class="flow-note reveal" style="transition-delay:0.28s">
-        <svg class="flow-note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        <p><strong>This flow is an example.</strong> Because StageFlow is deployed per institution, the entire process can be tailored to fit your programme's exact requirements: signing order, approval stages, required fields, notification logic, and more. You own the flow.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── FAQ ── -->
-  <section id="faq" class="faq">
-    <div class="container">
-      <p class="section-eyebrow reveal">FAQ</p>
-      <h2 class="section-title reveal" style="transition-delay:0.08s">Common questions</h2>
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap faq-grid">
+      <h2 class="display" data-i18n="faq.h2">Common <span class="thin">questions.</span></h2>
       <div class="faq-list">
-        <div class="faq-item reveal" style="transition-delay:0.04s">
-          <div class="faq-q">
-            <span class="faq-q-text">Are DocuSign signatures legally binding?</span>
-            <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="faq-a">Yes. StageFlow uses DocuSign, which is eIDAS-compliant. Electronic signatures produced via DocuSign carry the same legal weight as handwritten signatures under EU law, including for the convention de stage.</div>
-        </div>
-        <div class="faq-item reveal" style="transition-delay:0.08s">
-          <div class="faq-q">
-            <span class="faq-q-text">Is the platform GDPR compliant?</span>
-            <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="faq-a">StageFlow stores only the structured data required to generate and manage internship agreements. No PDF contracts are retained on our servers. Data hosting is configured per institution and handled in line with GDPR obligations.</div>
-        </div>
-        <div class="faq-item reveal" style="transition-delay:0.12s">
-          <div class="faq-q">
-            <span class="faq-q-text">How does onboarding work?</span>
-            <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="faq-a">We start with a call or email exchange to understand your institution's process and requirements. From there we scope the setup together. Timeline depends on your needs and how quickly your team can be involved.</div>
-        </div>
-        <div class="faq-item reveal" style="transition-delay:0.16s">
-          <div class="faq-q">
-            <span class="faq-q-text">Can the workflow be adapted to our process?</span>
-            <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="faq-a">Yes. Because StageFlow is deployed per institution, the approval stages, required fields, signing order, and notification logic are all configured to match your existing process. The goal is to fit your process, not the other way around.</div>
-        </div>
-        <div class="faq-item reveal" style="transition-delay:0.20s">
-          <div class="faq-q">
-            <span class="faq-q-text">Does it integrate with our student information system?</span>
-            <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="faq-a">StageFlow currently supports CSV export for student and programme data, with direct integrations under development. If your institution uses a specific SIS, get in touch and we can discuss what is possible.</div>
-        </div>
-        <div class="faq-item reveal" style="transition-delay:0.24s">
-          <div class="faq-q">
-            <span class="faq-q-text">What support is included?</span>
-            <svg class="faq-chevron" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="faq-a">All subscriptions include setup support, configuration assistance, and ongoing access to the StageFlow team. During onboarding, we work directly with your internship office to ensure the platform is configured correctly and your staff are comfortable using it. For institutions with specific requirements, such as integration with existing systems or custom workflows, we're open to discussing what that could look like.</div>
-        </div>
+        <details>
+          <summary data-i18n="q1">Are DocuSign signatures legally binding?</summary>
+          <p data-i18n="r1">Yes. StageFlow uses DocuSign, which is eIDAS-compliant. Electronic signatures produced via DocuSign carry the same legal weight as handwritten signatures under EU law, including for the convention de stage.</p>
+        </details>
+        <details>
+          <summary data-i18n="q2">Is the platform GDPR compliant?</summary>
+          <p data-i18n="r2">StageFlow stores only the structured data required to generate and manage internship agreements. No PDF contracts are retained on our servers. Data hosting is configured per institution and handled in line with GDPR obligations.</p>
+        </details>
+        <details>
+          <summary data-i18n="q3">How does onboarding work?</summary>
+          <p data-i18n="r3">We start with a call or email exchange to understand your institution's process and requirements. From there we scope the setup together. Timeline depends on your needs and how quickly your team can be involved.</p>
+        </details>
+        <details>
+          <summary data-i18n="q4">Can the workflow be adapted to our process?</summary>
+          <p data-i18n="r4">Yes. Because StageFlow is deployed per institution, the approval stages, required fields, signing order, and notification logic are all configured to match your existing process. The goal is to fit your process, not the other way around.</p>
+        </details>
+        <details>
+          <summary data-i18n="q5">Does it integrate with our student information system?</summary>
+          <p data-i18n="r5">StageFlow currently supports CSV export for student and programme data, with direct integrations under development. If your institution uses a specific SIS, get in touch and we can discuss what is possible.</p>
+        </details>
+        <details>
+          <summary data-i18n="q6">What support is included?</summary>
+          <p data-i18n="r6">All subscriptions include setup support, configuration assistance, and ongoing access to the StageFlow team. During onboarding, we work directly with your internship office to ensure the platform is configured correctly and your staff are comfortable using it. For institutions with specific requirements, such as integration with existing systems or custom workflows, we're open to discussing what that could look like.</p>
+        </details>
       </div>
     </div>
   </section>
 
-  <!-- ── PROOF ── -->
-  <section class="proof">
-    <div class="proof-inner">
-      <p class="proof-stat reveal">Currently deployed at a leading Parisian art and design university, managing every convention de stage for their full student cohort.</p>
-      <p class="proof-sub reveal" style="transition-delay:0.1s">Built around the convention de stage. Deployed per institution.</p>
-    </div>
-  </section>
+  <!-- CONTACT -->
+  <section id="contact" class="contact">
+    <div class="wrap contact-grid">
+      <div class="contact-copy">
+        <h2 class="display" data-i18n="ct.h2">Bring StageFlow to your <span class="thin">university.</span></h2>
+        <p data-i18n="ct.p">If your internship office is still managing conventions by email, spreadsheet, or paper, get in touch. StageFlow is configured around your institution's process.</p>
+        <p class="terms"><span data-i18n="ct.terms">Institutional subscription, billed annually. Pricing on request.</span><br><a href="mailto:hello@stageflow.careers">hello@stageflow.careers</a></p>
+      </div>
 
-  <!-- ── CTA ── -->
-  <section class="cta">
-    <div class="cta-inner">
-      <h2 class="reveal">Bring StageFlow to your university</h2>
-      <p class="reveal" style="transition-delay:0.08s">
-        If your internship office is still managing conventions by email, spreadsheet, or paper, get in touch. StageFlow is configured around your institution's process.
-      </p>
-      <p class="cta-pricing reveal" style="transition-delay:0.12s">Institutional subscription, billed annually. Pricing on request.</p>
-      <form id="contact-form" class="cta-form reveal" style="transition-delay:0.16s">
-        <div class="cta-form-row">
-          <div class="cta-form-field">
-            <label for="cf-name">Your name</label>
-            <input type="text" id="cf-name" name="name" placeholder="Marie Dupont" required>
-          </div>
-          <div class="cta-form-field">
-            <label for="cf-institution">Institution</label>
-            <input type="text" id="cf-institution" name="institution" placeholder="Parsons Paris" required>
-          </div>
+      <form id="contact-form" class="request">
+        <h3 data-i18n="cta.demo">Request a demo</h3>
+        <div class="fields">
+          <label class="fld"><span class="label" data-i18n="fm.name">Your name</span><input type="text" id="cf-name" name="name" placeholder="Marie Dupont" autocomplete="name" required></label>
+          <label class="fld"><span class="label" data-i18n="f.institution">Institution</span><input type="text" id="cf-institution" name="institution" placeholder="Your school" data-i18n-ph="fm.inst.ph" autocomplete="organization" required></label>
+          <label class="fld"><span class="label" data-i18n="fm.role">Your role</span><input type="text" id="cf-role" name="role" placeholder="Internship coordinator" data-i18n-ph="fm.role.ph" autocomplete="organization-title"></label>
+          <label class="fld"><span class="label" data-i18n="fm.email">Email</span><input type="email" id="cf-email" name="email" placeholder="marie@school.fr" data-i18n-ph="fm.email.ph" autocomplete="email" required></label>
+          <label class="fld wide"><span class="label" data-i18n="fm.msg">Message (optional)</span><textarea id="cf-message" name="message" placeholder="Tell us about your current process or any questions you have." data-i18n-ph="fm.msg.ph"></textarea></label>
         </div>
-        <div class="cta-form-row">
-          <div class="cta-form-field">
-            <label for="cf-role">Your role</label>
-            <input type="text" id="cf-role" name="role" placeholder="Internship Coordinator">
-          </div>
-          <div class="cta-form-field">
-            <label for="cf-email">Email</label>
-            <input type="email" id="cf-email" name="email" placeholder="marie@institution.fr" required>
-          </div>
+        <div class="request-foot">
+          <button type="submit" id="cf-submit" class="btn"><span data-i18n="fm.send">Send request</span> <span class="arrow" aria-hidden="true">&rarr;</span></button>
+          <span class="request-note" data-i18n="fm.note">We will get back to you as soon as possible.</span>
         </div>
-        <div class="cta-form-field" style="margin-bottom:12px">
-          <label for="cf-message">Message (optional)</label>
-          <textarea id="cf-message" name="message" placeholder="Tell us about your current process or any questions you have."></textarea>
-        </div>
-        <button type="submit" id="cf-submit" class="cta-form-submit">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-          Send message
-        </button>
-        <p id="cf-status" class="cta-form-note" style="display:none"></p>
-        <p class="cta-form-note">We will get back to you as soon as possible.</p>
+        <p id="cf-status" role="status" hidden></p>
       </form>
-      <script>
-        document.getElementById('contact-form').addEventListener('submit', async function(e) {
-          e.preventDefault();
-          const btn = document.getElementById('cf-submit');
-          const status = document.getElementById('cf-status');
-          btn.disabled = true;
-          btn.style.opacity = '0.5';
-          status.style.display = 'none';
-          try {
-            const res = await fetch('https://stageflow-contact.malin-73f.workers.dev/', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                name: document.getElementById('cf-name').value,
-                institution: document.getElementById('cf-institution').value,
-                role: document.getElementById('cf-role').value,
-                email: document.getElementById('cf-email').value,
-                message: document.getElementById('cf-message').value,
-              }),
-            });
-            if (res.ok) {
-              status.textContent = 'Message sent. We\'ll be in touch shortly.';
-              status.style.color = 'var(--teal)';
-              this.reset();
-            } else {
-              throw new Error();
-            }
-          } catch {
-            status.textContent = 'Something went wrong. Please email us directly.';
-            status.style.color = '#e05';
-          }
-          status.style.display = 'block';
-          btn.disabled = false;
-          btn.style.opacity = '';
-        });
-      </script>
     </div>
   </section>
 
-  <!-- ── FOOTER ── -->
+  </main>
+
   <footer>
-    <div class="footer-inner container">
-      <div class="footer-left">
-        <a href="/" class="footer-logo" aria-label="StageFlow">
-          <svg width="88" height="22" viewBox="0 0 391 100" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M242.588 69.0518V25.052H235.3V22.6363H242.588V15.3927C242.588 10.383 243.699 6.64585 245.919 4.18821C248.139 1.72707 251.355 0.5 255.559 0.5H258.137V2.91569H255.426C251.989 2.91569 249.391 3.94699 247.628 6.01309C245.865 8.07919 244.985 11.2815 244.985 15.6234V22.6398H257.646V25.0554H244.985V69.0553H242.584L242.588 69.0518ZM266.311 69.0518H263.866V1.04537H266.311V69.0518ZM287.416 66.9333C283.801 64.7937 280.944 61.8711 278.84 58.1654C276.736 54.4598 275.685 50.3905 275.685 45.9576C275.685 41.5248 276.736 37.4101 278.84 33.7044C280.944 29.9987 283.801 27.0691 287.416 24.9121C291.031 22.7551 294.969 21.6784 299.235 21.6784C303.501 21.6784 307.433 22.7551 311.031 24.9121C314.628 27.0691 317.479 29.9987 319.583 33.7044C321.687 37.4101 322.737 41.4933 322.737 45.9576C322.737 50.422 321.687 54.4528 319.583 58.141C317.479 61.8292 314.628 64.7553 311.031 66.9088C307.433 69.0658 303.501 70.1425 299.235 70.1425C294.969 70.1425 291.031 69.0728 287.416 66.9298V66.9333ZM309.83 64.8147C313.043 62.9024 315.6 60.284 317.496 56.9559C319.392 53.6312 320.34 49.964 320.34 45.9541C320.34 41.9443 319.392 38.2736 317.496 34.9315C315.6 31.5928 313.046 28.9569 309.83 27.0272C306.615 25.0974 303.099 24.136 299.28 24.136C295.46 24.136 291.883 25.1009 288.637 27.0272C285.394 28.9569 282.823 31.5824 280.927 34.907C279.031 38.2316 278.083 41.9128 278.083 45.9541C278.083 49.9954 279.031 53.6312 280.927 56.9559C282.823 60.2805 285.39 62.8989 288.637 64.8147C291.88 66.727 295.426 67.6849 299.28 67.6849C303.133 67.6849 306.618 66.727 309.83 64.8147ZM369.833 66.0453L387.562 22.6363H390.185L371.211 69.0518H368.677L357.349 41.1298L345.973 69.0518H343.44L324.466 22.6363H327.089L344.684 66.0453L362.236 22.6363H364.858L358.55 38.1687L369.833 66.0453ZM0.18457 63.1786L6.67048 52.6104C8.62443 53.8864 10.9501 54.9772 13.6474 55.8896C16.3414 56.802 18.875 57.2565 21.245 57.2565C24.3243 57.2565 25.8656 56.435 25.8656 54.7954C25.8656 54.2185 25.6201 53.7116 25.1325 53.2711C24.6448 52.8307 23.7923 52.3762 22.5783 51.9042C21.3644 51.4323 19.6014 50.8799 17.2928 50.2402C12.8495 49.0271 9.22119 47.1567 6.4079 44.6362C3.59461 42.1156 2.18627 38.9133 2.18627 35.0259C2.18627 32.1417 2.9774 29.5372 4.56307 27.2124C6.14874 24.8876 8.4437 23.0523 11.4514 21.6993C14.4556 20.3499 18.0055 19.6717 22.0941 19.6717C24.9381 19.6717 27.898 20.1891 30.9807 21.2204C34.06 22.2517 37.0369 23.6955 39.9116 25.5484L33.2484 36.5256C31.7377 35.5537 29.8281 34.7042 27.5161 33.9736C25.2041 33.2464 23.1614 32.8793 21.3848 32.8793C19.9628 32.8793 18.8955 33.0926 18.1862 33.5156C17.4769 33.9421 17.1189 34.5329 17.1189 35.2915C17.1189 35.8684 17.3541 36.3613 17.8281 36.7703C18.3021 37.1793 19.0933 37.5919 20.2049 38.0009C21.3166 38.4099 22.9534 38.9063 25.1154 39.4797C28.58 40.3921 31.4547 41.4759 33.736 42.7379C36.0173 43.9999 37.7803 45.622 39.0216 47.6112C40.2662 49.6004 40.8869 52.0371 40.8869 54.9212C40.8869 57.8054 40.1026 60.4728 38.5305 62.8255C36.9585 65.1783 34.7317 67.0311 31.8434 68.3841C28.9551 69.7335 25.6167 70.4117 21.8247 70.4117C13.8861 70.4117 6.67389 67.996 0.18798 63.1681L0.18457 63.1786ZM61.8552 69.0553H46.8374V34.8441H41.1494V20.7694H46.7931V9.56496L61.8996 5.74041V20.7694H71.0078V34.8441H61.8552V69.0518V69.0553ZM110.551 20.7694H121.657V69.0518H110.104L108.46 64.6784C105.084 68.3526 100.757 70.1915 95.4851 70.1915C91.1611 70.1915 87.185 69.0588 83.5568 66.7969C79.9285 64.535 77.047 61.4656 74.9157 57.5956C72.7844 53.7221 71.7171 49.4955 71.7171 44.9089C71.7171 40.3222 72.7844 36.148 74.9157 32.292C77.047 28.436 79.9353 25.3841 83.5806 23.1362C87.2225 20.8883 91.1918 19.7661 95.4885 19.7661C100.791 19.7661 105.173 21.6644 108.641 25.461L110.551 20.7694ZM102.22 54.4528C103.806 53.5263 105.057 52.2433 105.974 50.6037C106.892 48.9641 107.352 47.1113 107.352 45.0452C107.352 42.9791 106.898 41.1123 105.998 39.4412C105.095 37.7702 103.85 36.4662 102.268 35.5223C100.682 34.5819 98.9292 34.1099 97.0026 34.1099C95.0759 34.1099 93.2856 34.5819 91.7136 35.5223C90.145 36.4627 88.9071 37.7702 88.0034 39.4412C87.0998 41.1123 86.6497 42.9791 86.6497 45.0452C86.6497 47.1113 87.093 48.9641 87.983 50.6037C88.873 52.2433 90.0938 53.5263 91.6488 54.4528C93.2038 55.3792 94.9599 55.8407 96.9139 55.8407C98.8679 55.8407 100.638 55.3792 102.223 54.4528H102.22ZM164.934 20.7694H176.487V61.7663C176.487 66.9298 175.539 71.3626 173.643 75.0683C171.747 78.774 168.954 81.6057 165.268 83.5634C161.582 85.5211 157.115 86.5 151.874 86.5C148.29 86.5 144.484 85.9686 140.453 84.9059C136.426 83.8431 133.21 82.4307 130.813 80.6688L136.412 69.0063C138.782 70.3733 141.101 71.4115 143.366 72.1247C145.633 72.8379 147.966 73.1945 150.363 73.1945C153.828 73.1945 156.583 72.3205 158.629 70.576C160.672 68.8315 161.695 66.1956 161.695 62.6717V62.2172C158.435 64.8602 154.602 66.1781 150.186 66.1781C146.066 66.1781 142.261 65.2307 138.765 63.3324C135.27 61.4341 132.494 58.7947 130.435 55.4072C128.375 52.0231 127.345 48.202 127.345 43.951C127.345 39.6999 128.382 35.6621 130.455 31.925C132.528 28.1913 135.321 25.2058 138.83 22.9754C142.339 20.745 146.138 19.6263 150.227 19.6263C155.41 19.6263 159.764 21.4791 163.29 25.1848L164.934 20.7659V20.7694ZM157.313 51.8133C158.837 50.9184 160.03 49.7193 160.89 48.216C161.749 46.7128 162.179 45.1116 162.179 43.4091C162.179 41.5283 161.742 39.8118 160.869 38.2631C159.996 36.7144 158.803 35.4908 157.292 34.5959C155.781 33.7009 154.107 33.2534 152.273 33.2534C150.438 33.2534 148.747 33.7009 147.209 34.5959C145.667 35.4908 144.46 36.7144 143.587 38.2631C142.714 39.8118 142.278 41.5283 142.278 43.4091C142.278 45.1116 142.714 46.7128 143.587 48.216C144.46 49.7193 145.667 50.9184 147.209 51.8133C148.75 52.7083 150.438 53.1558 152.273 53.1558C154.107 53.1558 155.788 52.7083 157.316 51.8133H157.313ZM196.968 49.8766C197.797 52.3063 199.181 54.1801 201.121 55.5015C203.062 56.823 205.306 57.4837 207.853 57.4837C209.78 57.4837 211.488 57.1726 212.985 56.5503C214.479 55.928 215.88 55.0401 217.183 53.8864L224.027 64.0002C221.807 66.0348 219.249 67.608 216.361 68.7162C213.473 69.8244 210.312 70.3802 206.874 70.3802C202.165 70.3802 197.93 69.2406 194.168 66.9647C190.407 64.6889 187.468 61.6194 185.35 57.7634C183.232 53.9074 182.172 49.7158 182.172 45.192C182.172 40.6683 183.178 36.3263 185.193 32.4389C187.208 28.5514 189.998 25.468 193.568 23.1921C197.139 20.9163 201.173 19.7766 205.674 19.7766C210.622 19.7766 214.871 20.8324 218.424 22.9439C221.977 25.0554 224.675 27.992 226.509 31.7572C228.344 35.5223 229.265 39.8502 229.265 44.7376C229.265 46.4086 229.132 48.1251 228.866 49.8836H196.965L196.968 49.8766ZM200.191 34.1169C198.516 35.4524 197.353 37.3821 196.702 39.9027H215.543C214.922 37.3507 213.817 35.4174 212.231 34.0959C210.646 32.7745 208.668 32.1137 206.301 32.1137C203.935 32.1137 201.865 32.7815 200.191 34.1169Z" fill="#909090"/></svg>
-        </a>
-        <span class="footer-copy">&copy; 2026 StageFlow</span>
+    <div class="wrap">
+      <div>
+        <a href="/" aria-label="StageFlow"><svg class="mark" role="img" aria-label="StageFlow"><use href="#wordmark"/></svg></a>
+        <span>&copy; 2026 StageFlow</span>
       </div>
-      <div class="footer-right">
-        <a href="https://stageflow.parsonsparis.newschool.org/" class="footer-link">Parsons Paris sign in</a>
-        <a href="mailto:hello@stageflow.careers" class="footer-link">hello@stageflow.careers</a>
+      <div>
+        <a href="https://stageflow.parsonsparis.newschool.org/" data-i18n="ft.signin">Parsons Paris sign in</a>
+        <a href="mailto:hello@stageflow.careers">hello@stageflow.careers</a>
       </div>
     </div>
   </footer>
 
   <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
+    /* ---------- French copy (English lives in the HTML) ---------- */
+    const FR = {
+      'meta.title': "StageFlow : logiciel de gestion des stages pour l'enseignement supérieur",
+      'meta.desc': "StageFlow est un logiciel de gestion des stages conçu pour l'enseignement supérieur. Générez automatiquement les conventions de stage, recueillez les signatures électroniques via DocuSign et offrez aux coordinateurs un tableau de bord clair.",
+      'nav.how': "Fonctionnement",
+      'nav.platform': "Plateforme",
+      'nav.features': "Fonctionnalités",
+      'nav.signin': "Connexion",
+      'cta.demo': "Demander une démo",
+      'cta.how': "Voir le fonctionnement",
+      'hero.h1': 'Chaque convention de&nbsp;stage, <span class="thin">signée et archivée.</span>',
+      'hero.sub': "StageFlow accompagne chaque stage, du formulaire de l'étudiant à la convention entièrement signée. La convention est générée, envoyée à chaque signataire dans le bon ordre via DocuSign, puis enregistrée. Votre bureau des stages n'a plus à courir après les papiers.",
+      'hero.docalt': "Exemple de convention de stage, signée tour à tour par l'organisme d'accueil, le stagiaire et l'établissement, puis tamponnée comme signée.",
+      'fact1.l': "Déjà utilisé par",
+      'fact1.v': "Une grande école parisienne d'art et de design",
+      'fact2.v': "DocuSign, conforme eIDAS",
+      'fact3.l': "Disponibilité",
+      'fact3.v': "Ouvert aux nouveaux établissements",
+      'how.h2': 'De la demande à la convention signée. <span class="thin">En quelques heures, pas en semaines.</span>',
+      'how.p': "Une seule convention, transmise comme un bordereau de circulation. Chacun fait sa part une fois, et StageFlow la passe au suivant. Pas de scan, pas d'impression, pas de relances.",
+      'slip.c1': "N°",
+      'slip.c2': "Qui",
+      'slip.c3': "Ce qui se passe",
+      'slip.c4': "Fait",
+      'role.student': "Étudiant",
+      'role.office': "Bureau des stages",
+      'role.employer': "Employeur",
+      's1.h': "L'étudiant dépose sa demande",
+      's1.p': "L'étudiant renseigne les informations du stage (employeur, poste, dates, tuteur) dans un formulaire guidé en ligne. Pas de pièces jointes, pas de PDF, pas d'allers-retours.",
+      's1.t': "Déposée",
+      's2.h': "La convention est générée",
+      's2.p': "À partir de ces informations, StageFlow génère une convention de stage conforme, au format PDF. Aucune modification manuelle. Aucun copier-coller entre outils.",
+      's2.t': "Générée",
+      's3.who': "Chaque signataire",
+      's3.h': "Toutes les parties signent",
+      's3.p': "DocuSign transmet la convention à l'étudiant, à l'employeur, au tuteur pédagogique et à la direction de l'établissement, dans le bon ordre, automatiquement.",
+      's3.t': "Signée",
+      's4.h': "La convention est archivée",
+      's4.p': "La convention entièrement signée est enregistrée, consultable et exportable. Tous les dossiers au même endroit.",
+      's4.t': "Archivée",
+      'how.note': "<b>Ce parcours est un exemple.</b> StageFlow est déployé établissement par établissement. Le processus est donc configuré selon votre programme : ordre des signatures, étapes de validation, champs obligatoires, logique de notification, etc. Le parcours vous appartient.",
+      'plat.h2': 'Une convention, trois bureaux. <span class="thin">Aux couleurs de votre école.</span>',
+      'plat.p': "Le bureau des stages, l'étudiant et l'employeur voient chacun leur partie de la même convention. StageFlow est déployé établissement par établissement et peut donc porter votre nom, vos couleurs et votre typographie. Essayez avec trois écoles fictives.",
+      'ctl.school': "École d'exemple",
+      'ctl.view': "Vue",
+      'mock.portal': "Portail des stages",
+      'mock.powered': "Propulsé par StageFlow",
+      'of.h': "Conventions de stage",
+      'of.term': "Printemps 2027",
+      'of.c1': "En cours ce semestre",
+      'of.c2': "En attente de signature",
+      'of.c3': "Entièrement signées",
+      'f.period': "Période",
+      'f.status': "Statut",
+      'f.role': "Poste",
+      'f.programme': "Formation",
+      'f.institution': "Établissement",
+      'pg.fashion': "Design de mode, 3e année",
+      'pg.comm': "Communication, 2e année",
+      'pg.illu': "Illustration, 3e année",
+      'pg.prod': "Design produit, 3e année",
+      'pg.photo': "Photographie, 2e année",
+      'd.febjun': "Févr. à juin 2027",
+      'd.marjul': "Mars à juil. 2027",
+      'd.marjun': "Mars à juin 2027",
+      'd.aprjul': "Avr. à juil. 2027",
+      'd.aprjun': "Avr. à juin 2027",
+      'st.signed': "Signée",
+      'st.emp': "Attente employeur",
+      'st.stu': "Attente étudiant",
+      'st.draft': "Brouillon",
+      'stu.h': "Nouvelle demande de stage",
+      'stu.p': "Renseignez les informations de votre stage. Votre coordinateur est prévenu automatiquement.",
+      'stu.f1': "Nom de l'entreprise",
+      'stu.v2': "Stagiaire en design visuel",
+      'stu.f3': "Date de début",
+      'stu.f4': "Date de fin",
+      'stu.f5': "Nom du tuteur",
+      'stu.f6': "E-mail du tuteur",
+      'stu.f7': "Heures par semaine",
+      'stu.f8': "Gratification mensuelle",
+      'stu.btn': "Envoyer la demande",
+      'emp.h': "Vérifier la convention de stage",
+      'emp.p': "Vérifiez les informations du stage ci-dessous, puis signez via DocuSign.",
+      'emp.v4': "Stagiaire en design de mode",
+      'emp.f6': "Durée et gratification",
+      'emp.v6': "35 h / semaine, 700 € / mois",
+      'emp.btn1': "Confirmer et signer via DocuSign",
+      'emp.btn2': "Demander une modification",
+      'plat.cap': "Aperçu simplifié de quelques écrans, avec des données d'exemple et des écoles fictives. La plateforme complète comprend bien d'autres vues, réglages et fonctionnalités.",
+      'feat.h2': 'Tout ce dont votre bureau des stages <span class="thin">a besoin.</span>',
+      'feat.p': "Conçu pour la convention de stage, et non adapté d'un outil RH générique.",
+      'a1.h': "Génération automatique des conventions",
+      'a1.p': "Votre équipe ne modifie plus de modèles et ne court plus après des PDF par e-mail. Les étudiants saisissent leurs informations une seule fois, et StageFlow génère une convention de stage conforme et préremplie, prête à partir en signature.",
+      'a2.h': "Circuit de signature électronique DocuSign",
+      'a2.p': "Chaque partie signe dans l'ordre légal, automatiquement. Piste d'audit complète incluse. Les signatures DocuSign sont conformes au règlement eIDAS et juridiquement valables dans toute l'UE.",
+      'a2.n': "Signature assurée par DocuSign",
+      'a3.h': "Un tableau de bord par rôle",
+      'a3.p': "Les étudiants n'ont plus à relancer leur coordinateur pour savoir où en est leur dossier. Les coordinateurs voient tous les stages au même endroit. Les employeurs confirment en ligne en quelques minutes. Chacun sait où en est la convention.",
+      'a4.h': "Notifications automatiques par e-mail",
+      'a4.p': "Votre équipe n'a plus à jouer les messagers. Chaque changement de statut prévient la bonne personne au bon moment, et les coordinateurs n'interviennent que lorsqu'une décision est réellement nécessaire.",
+      'a5.h': "Rapports, graphiques et export CSV",
+      'a5.p': "Graphiques en temps réel par promotion, employeur et statut. Export de rapports CSV filtrés à tout moment. Seules les données structurées nécessaires à la convention sont stockées. Aucun contrat n'est conservé sur nos serveurs, ce qui limite les données au strict nécessaire, dans l'esprit du RGPD.",
+      'a6.h': "Pensé pour la convention de stage",
+      'a6.p': "Modèles de documents, ordre des signatures, étapes de validation et champs obligatoires sont configurés selon les exigences précises de votre établissement.",
+      'ref.l': "Référence",
+      'ref.q': "Actuellement déployé dans une grande école parisienne d'art et de design, <b>où il gère toutes les conventions de stage de l'ensemble des étudiants.</b>",
+      'ref.p': "Conçu autour de la convention de stage. Déployé établissement par établissement.",
+      'faq.h2': 'Questions <span class="thin">fréquentes.</span>',
+      'q1': "Les signatures DocuSign ont-elles une valeur juridique ?",
+      'r1': "Oui. StageFlow utilise DocuSign, conforme au règlement eIDAS. Les signatures électroniques réalisées via DocuSign ont la même valeur juridique qu'une signature manuscrite en droit européen, y compris pour la convention de stage.",
+      'q2': "La plateforme est-elle conforme au RGPD ?",
+      'r2': "StageFlow ne stocke que les données structurées nécessaires à la génération et au suivi des conventions de stage. Aucun contrat PDF n'est conservé sur nos serveurs. L'hébergement des données est configuré pour chaque établissement et géré dans le respect des obligations du RGPD.",
+      'q3': "Comment se passe la mise en place ?",
+      'r3': "Nous commençons par un appel ou un échange d'e-mails pour comprendre le processus et les besoins de votre établissement. Nous définissons ensuite ensemble le périmètre de la mise en place. Le calendrier dépend de vos besoins et de la disponibilité de votre équipe.",
+      'q4': "Le parcours peut-il être adapté à notre fonctionnement ?",
+      'r4': "Oui. StageFlow étant déployé établissement par établissement, les étapes de validation, les champs obligatoires, l'ordre des signatures et la logique de notification sont configurés selon votre fonctionnement actuel. C'est l'outil qui s'adapte à votre processus, pas l'inverse.",
+      'q5': "Peut-on le connecter à notre logiciel de scolarité ?",
+      'r5': "StageFlow propose aujourd'hui l'export CSV des données étudiants et formations, et des intégrations directes sont en cours de développement. Si votre établissement utilise un logiciel de scolarité en particulier, contactez-nous pour voir ce qui est possible.",
+      'q6': "Quel accompagnement est inclus ?",
+      'r6': "Tous les abonnements comprennent l'aide à la mise en place, l'assistance à la configuration et un accès continu à l'équipe StageFlow. Pendant la mise en place, nous travaillons directement avec votre bureau des stages pour que la plateforme soit correctement configurée et que votre équipe soit à l'aise avec l'outil. Pour les établissements ayant des besoins particuliers, comme une intégration à des systèmes existants ou des parcours sur mesure, nous sommes ouverts à la discussion.",
+      'ct.h2': 'StageFlow dans votre <span class="thin">établissement.</span>',
+      'ct.p': "Si votre bureau des stages gère encore les conventions par e-mail, sur tableur ou sur papier, écrivez-nous. StageFlow se configure selon le processus de votre établissement.",
+      'ct.terms': "Abonnement par établissement, facturé annuellement. Tarifs sur demande.",
+      'fm.name': "Votre nom",
+      'fm.role': "Votre fonction",
+      'fm.email': "E-mail",
+      'fm.msg': "Message (facultatif)",
+      'fm.inst.ph': "Votre école",
+      'fm.role.ph': "Responsable des stages",
+      'fm.email.ph': "marie@ecole.fr",
+      'fm.msg.ph': "Parlez-nous de votre fonctionnement actuel ou posez-nous vos questions.",
+      'fm.send': "Envoyer la demande",
+      'fm.note': "Nous vous répondrons dès que possible.",
+      'fm.ok': "Demande envoyée. Nous revenons vers vous très vite.",
+      'fm.err': "Une erreur est survenue. Écrivez-nous directement à hello@stageflow.careers.",
+      'ft.signin': "Connexion Parsons Paris"
+    };
+    const EN = {
+      'meta.title': document.title,
+      'meta.desc': document.querySelector('meta[name="description"]').content,
+      'fm.ok': "Request sent. We'll be in touch shortly.",
+      'fm.err': "Something went wrong. Please email us directly at hello@stageflow.careers."
+    };
+    const i18nText = document.querySelectorAll('[data-i18n]');
+    const i18nPh = document.querySelectorAll('[data-i18n-ph]');
+    const i18nAria = document.querySelectorAll('[data-i18n-aria]');
+    i18nText.forEach(el => { EN[el.dataset.i18n] = EN[el.dataset.i18n] || el.innerHTML; });
+    i18nPh.forEach(el => { EN[el.dataset.i18nPh] = el.placeholder; });
+    i18nAria.forEach(el => { EN[el.dataset.i18nAria] = EN[el.dataset.i18nAria] || el.getAttribute('aria-label'); });
+
+    let lang = 'en';
+    const t = key => (lang === 'fr' && FR[key]) || EN[key];
+    function setLang(next, remember) {
+      lang = next === 'fr' ? 'fr' : 'en';
+      document.documentElement.lang = lang;
+      i18nText.forEach(el => { el.innerHTML = t(el.dataset.i18n); });
+      i18nPh.forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
+      i18nAria.forEach(el => { el.setAttribute('aria-label', t(el.dataset.i18nAria)); });
+      document.title = t('meta.title');
+      document.querySelector('meta[name="description"]').content = t('meta.desc');
+      document.querySelectorAll('.lang button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === lang));
+      const status = document.getElementById('cf-status');
+      if (!status.hidden) status.textContent = t(status.className === 'ok' ? 'fm.ok' : 'fm.err');
+      if (remember) { try { localStorage.setItem('sf-lang', lang); } catch (e) {} }
+    }
+    document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang, true)));
+    // Start in: ?lang=fr|en, else the visitor's last choice, else French for French-language browsers
+    let saved = null;
+    try { saved = localStorage.getItem('sf-lang'); } catch (e) {}
+    const start = new URLSearchParams(location.search).get('lang') || saved || ((navigator.language || '').toLowerCase().startsWith('fr') ? 'fr' : 'en');
+    if (start === 'fr') setLang('fr', false);
+
+    /* ---------- Example school themes ---------- */
+    const mock = document.getElementById('mock');
+    const chips = document.querySelectorAll('.chip');
+    chips.forEach(chip => chip.addEventListener('click', () => {
+      chips.forEach(c => c.setAttribute('aria-pressed', c === chip));
+      mock.dataset.theme = chip.dataset.theme;
+      const name = chip.dataset.name;
+      document.querySelectorAll('[data-school]').forEach(el => { el.textContent = name; });
+      document.querySelector('[data-crest]').textContent = name.split(' ').pop()[0];
+    }));
+
+    /* ---------- Role tabs ---------- */
+    const tabs = Array.from(document.querySelectorAll('.tab'));
+    function selectTab(tab) {
+      tabs.forEach(tb => {
+        const on = tb === tab;
+        tb.setAttribute('aria-selected', on);
+        tb.tabIndex = on ? 0 : -1;
+        document.getElementById(tb.getAttribute('aria-controls')).hidden = !on;
       });
-    }, { threshold: 0.12 });
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-    document.querySelectorAll('.faq-q').forEach(q => {
-      q.addEventListener('click', () => {
-        q.closest('.faq-item').classList.toggle('open');
+    }
+    tabs.forEach((tab, i) => {
+      tab.addEventListener('click', () => selectTab(tab));
+      tab.addEventListener('keydown', e => {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+        const next = tabs[(i + (e.key === 'ArrowRight' ? 1 : tabs.length - 1)) % tabs.length];
+        selectTab(next);
+        next.focus();
       });
     });
 
-    function switchTab(name) {
-      const tabs = ['dashboard', 'student', 'employer'];
-      document.querySelectorAll('.role-btn').forEach((t, i) => {
-        t.classList.toggle('active', tabs[i] === name);
-      });
-      document.querySelectorAll('.tab-panel').forEach(p => {
-        p.classList.toggle('active', p.id === 'panel-' + name);
-      });
+    /* ---------- Routing slip: tick each box in turn once it is on screen ---------- */
+    const rows = document.querySelectorAll('.slip li');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver(entries => {
+        if (!entries[0].isIntersecting) return;
+        rows.forEach((row, i) => setTimeout(() => row.classList.add('done'), 250 + i * 450));
+        io.disconnect();
+      }, { threshold: 0.35 });
+      io.observe(document.querySelector('.slip'));
+    } else {
+      rows.forEach(row => row.classList.add('done'));
     }
+
+    /* ---------- Contact form ---------- */
+    document.getElementById('contact-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const btn = document.getElementById('cf-submit');
+      const status = document.getElementById('cf-status');
+      btn.disabled = true;
+      status.hidden = true;
+      try {
+        const res = await fetch('https://stageflow-contact.malin-73f.workers.dev/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: document.getElementById('cf-name').value,
+            institution: document.getElementById('cf-institution').value,
+            role: document.getElementById('cf-role').value,
+            email: document.getElementById('cf-email').value,
+            message: document.getElementById('cf-message').value,
+          }),
+        });
+        if (!res.ok) throw new Error();
+        status.className = 'ok';
+        status.textContent = t('fm.ok');
+        this.reset();
+      } catch {
+        status.className = 'err';
+        status.textContent = t('fm.err');
+      }
+      status.hidden = false;
+      btn.disabled = false;
+    });
   </script>
 </body>
 </html>
