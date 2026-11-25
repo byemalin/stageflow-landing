@@ -144,13 +144,14 @@
     .hero h1 { font-size: clamp(40px, 5.7vw, 78px); margin-bottom: 28px; }
     .hero-sub { font-size: 19px; max-width: 32em; color: var(--muted); margin-bottom: 34px; }
     .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 52px; }
-    .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+    .facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+    .facts .wide { grid-column: 1 / -1; }
     .facts div { background: var(--soft); border-radius: var(--r-m); padding: 13px 16px 14px; }
     .facts .label { display: block; color: var(--muted); margin-bottom: 4px; }
     .facts p { font-size: 14.5px; line-height: 1.35; font-weight: 600; }
-    .facts .client { display: block; color: inherit; text-decoration: none; }
+    .facts .client { display: flex; align-items: center; gap: 14px; margin-top: 4px; color: inherit; text-decoration: none; }
     .facts .client:hover p { text-decoration: underline; text-underline-offset: 3px; }
-    .facts .client img { display: block; height: 22px; width: auto; margin-top: 7px; }
+    .facts .client img { display: block; height: 34px; width: auto; flex: none; }
     .ref-card blockquote a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
 
     /* ---------- The convention (hero paper) ---------- */
@@ -350,6 +351,9 @@
     .reference { padding: 0; }
     .ref-card { background: var(--ink); color: #fff; border-radius: 32px; padding: 72px 64px; }
     .ref-card .label { color: rgba(255,255,255,.6); display: block; margin-bottom: 20px; }
+    .ref-head { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 26px; }
+    .ref-head .label { margin-bottom: 0; }
+    .ref-logo img { display: block; height: 48px; width: auto; }
     .ref-card blockquote { font-size: clamp(25px, 3.1vw, 40px); font-stretch: 106%; font-weight: 300; line-height: 1.2; letter-spacing: -0.02em; max-width: 24em; text-wrap: balance; }
     .ref-card blockquote b { font-weight: 800; }
     .ref-card p { margin-top: 26px; font-size: 15px; color: rgba(255,255,255,.65); }
@@ -526,6 +530,7 @@
       .formgrid, .fields { grid-template-columns: minmax(0, 1fr); }
       .fake-btn.alt { margin-left: 0; }
       .ref-card { padding: 44px 26px; border-radius: 24px; }
+      .ref-logo img { height: 36px; }
       details p { padding-right: 0; }
       .request { padding: 20px; }
     }
@@ -589,7 +594,7 @@
           <a class="btn btn-line" href="#how-it-works" data-i18n="cta.how">See how it works</a>
         </div>
         <div class="facts">
-          <div><span class="label" data-i18n="fact1.l">In use at</span><a class="client" href="https://www.newschool.edu/parsons-paris/" target="_blank" rel="noopener"><p>Parsons Paris</p><img src="parsons-paris.svg" alt="" width="92" height="22"></a></div>
+          <div class="wide"><span class="label" data-i18n="fact1.l">In use at</span><a class="client" href="https://www.newschool.edu/parsons-paris/" target="_blank" rel="noopener"><img src="parsons-paris.svg" alt="" width="115" height="34"><p>Parsons Paris</p></a></div>
           <div><span class="label">Signatures</span><p data-i18n="fact2.v">DocuSign, eIDAS-compliant</p></div>
           <div><span class="label" data-i18n="fact3.l">Availability</span><p data-i18n="fact3.v">Now onboarding new institutions</p></div>
         </div>
@@ -835,7 +840,10 @@
   <section class="reference">
     <div class="wrap">
       <div class="ref-card" data-rv>
-        <span class="label" data-i18n="ref.l">Reference</span>
+        <div class="ref-head">
+          <span class="label" data-i18n="ref.l">Reference</span>
+          <a class="ref-logo" href="https://www.newschool.edu/parsons-paris/" target="_blank" rel="noopener"><img src="parsons-paris-white.svg" alt="Parsons Paris" width="162" height="48"></a>
+        </div>
         <blockquote data-i18n="ref.q">Currently deployed at <a href="https://www.newschool.edu/parsons-paris/" target="_blank" rel="noopener">Parsons Paris</a> <b>to manage students’ conventions de stage.</b></blockquote>
         <p data-i18n="ref.p">Built around the convention de stage. Deployed per institution.</p>
       </div>
