@@ -148,7 +148,10 @@
     .facts div { background: var(--soft); border-radius: var(--r-m); padding: 13px 16px 14px; }
     .facts .label { display: block; color: var(--muted); margin-bottom: 4px; }
     .facts p { font-size: 14.5px; line-height: 1.35; font-weight: 600; }
-    .facts .client img { display: block; height: 29px; width: auto; }
+    .facts .client { display: block; color: inherit; text-decoration: none; }
+    .facts .client:hover p { text-decoration: underline; text-underline-offset: 3px; }
+    .facts .client img { display: block; height: 22px; width: auto; margin-top: 7px; }
+    .ref-card blockquote a { color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 4px; }
 
     /* ---------- The convention (hero paper) ---------- */
     .sheet-zone { position: relative; }
@@ -586,7 +589,7 @@
           <a class="btn btn-line" href="#how-it-works" data-i18n="cta.how">See how it works</a>
         </div>
         <div class="facts">
-          <div><span class="label" data-i18n="fact1.l">In use at</span><p class="client"><img src="parsons-paris.svg" alt="Parsons Paris" width="100" height="29"></p></div>
+          <div><span class="label" data-i18n="fact1.l">In use at</span><a class="client" href="https://www.newschool.edu/parsons-paris/" target="_blank" rel="noopener"><p>Parsons Paris</p><img src="parsons-paris.svg" alt="" width="92" height="22"></a></div>
           <div><span class="label">Signatures</span><p data-i18n="fact2.v">DocuSign, eIDAS-compliant</p></div>
           <div><span class="label" data-i18n="fact3.l">Availability</span><p data-i18n="fact3.v">Now onboarding new institutions</p></div>
         </div>
@@ -833,7 +836,7 @@
     <div class="wrap">
       <div class="ref-card" data-rv>
         <span class="label" data-i18n="ref.l">Reference</span>
-        <blockquote data-i18n="ref.q">Currently deployed at Parsons Paris <b>to manage students’ conventions de stage.</b></blockquote>
+        <blockquote data-i18n="ref.q">Currently deployed at <a href="https://www.newschool.edu/parsons-paris/" target="_blank" rel="noopener">Parsons Paris</a> <b>to manage students’ conventions de stage.</b></blockquote>
         <p data-i18n="ref.p">Built around the convention de stage. Deployed per institution.</p>
       </div>
     </div>
@@ -1020,7 +1023,7 @@
       'a6.h': "Pensé pour la convention de stage",
       'a6.p': "Modèles de documents, ordre des signatures, étapes de validation et champs obligatoires sont configurés selon les exigences précises de votre établissement.",
       'ref.l': "Référence",
-      'ref.q': "Actuellement déployé à Parsons Paris <b>pour gérer les conventions de stage de ses étudiants.</b>",
+      'ref.q': "Actuellement déployé à <a href=\"https://www.newschool.edu/parsons-paris/\" target=\"_blank\" rel=\"noopener\">Parsons Paris</a> <b>pour gérer les conventions de stage de ses étudiants.</b>",
       'ref.p': "Conçu autour de la convention de stage. Déployé établissement par établissement.",
       'faq.h2': 'Questions <span class="thin">fréquentes.</span>',
       'q1': "Les signatures DocuSign ont-elles une valeur juridique ?",
